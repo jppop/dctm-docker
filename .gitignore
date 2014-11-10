@@ -1,0 +1,16 @@
+.DS_Store
+base-centos6
+dbdata
+dctm
+dctm-cs.bak.0
+dctm-distrib
+dctm.sublime-project
+dctm.sublime-workspace
+docker-test
+tmp
+*.zip
+*.tar
+*.rpm
+*.gz
+*.bin
+
