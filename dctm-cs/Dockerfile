@@ -20,7 +20,7 @@ RUN	rpm -ivh /bundles/oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm ; \
 
 COPY tnsnames.ora $DOCUMENTUM/dba/
 RUN chown dmadmin:dmadmin $DOCUMENTUM/dba/tnsnames.ora; \
-    chmod a+x $DOCUMENTUM/dba/tnsnames.ora; \
+    chmod a+r $DOCUMENTUM/dba/tnsnames.ora; \
     echo "export ORACLE_HOME=/usr/lib/oracle/11.2/client64" >> /etc/profile.d/documentum.sh ; \
     echo "export TNS_ADMIN=\${DOCUMENTUM}/dba" >> /etc/profile.d/documentum.sh
 
@@ -35,5 +35,6 @@ USER dmadmin
 WORKDIR $DOCUMENTUM
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh"]
-
 CMD ["--repo-name=devbox"]
+##USER root
+##CMD ["/usr/sbin/sshd", "-D"]

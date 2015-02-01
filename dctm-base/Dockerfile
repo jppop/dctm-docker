@@ -1,9 +1,10 @@
 # Documentum Content Server 7.1 Patch 09
 # Documentum is a registred trademark from EMC (http://www.emc.com/legal/emc-corporation-trademarks.htm)
 
-FROM centos:centos6
+##FROM centos:centos6
+FROM base-centos6
 
-MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@steria.com>
+MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
 RUN echo 'root:root' | chpasswd
 
@@ -27,7 +28,12 @@ ENV DOCUMENTUM_SHARED ${DOCUMENTUM}/shared
 ENV DM_HOME ${DOCUMENTUM}/product/7.1
 ENV DOCUMENTUM_DATA /var/dctm-data
 ENV DOCUMENTUM_LOG /var/log/documentum
-RUN mkdir -p ${DM_HOME} ${DOCUMENTUM_SHARED} ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
+RUN mkdir -p ${DM_HOME} ${DOCUMENTUM_SHARED}
+## FIXME: cannot use volumes since chown fails to change ownership (may be specific to OSX)
+## see https://github.com/boot2docker/boot2docker/issues/581
+## VOLUME [ "/var/log/documentum", "/var/dctm-data"]
+## RUN ls -al /var/log/documentum /var/dctm-data 
+RUN mkdir -p ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
 RUN chown -R dmadmin:dmadmin ${DOCUMENTUM} ${DM_HOME} ${DOCUMENTUM_SHARED} ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
 
 RUN echo "dctm            49000/tcp               # documentum repository service" >> /etc/services \
@@ -71,7 +77,7 @@ USER dmadmin
 WORKDIR /tmp
 RUN mkdir patch-install \
  && cd patch-install \
- && cp /bundles/CS_7.1.0090/*.* . \
+ && cp /bundles/patch/*.* . \
  && source /etc/profile.d/documentum.sh \
  && ./patch.bin LAX_VM $(which java) -f patch-install.properties \
  && cp logs/install.log ${DOCUMENTUM_LOG}/patch-install.log \
@@ -81,5 +87,10 @@ RUN mkdir patch-install \
 
 RUN echo ". \$DM_HOME/bin/dm_set_server_env.sh" >> /home/dmadmin/.bash_profile
 
+RUN cp --backup=numbered /bundles/dfc.properties ${DOCUMENTUM_SHARED}/config/
+
 USER root
+# A volume to be ready to forward logs
+VOLUME /var/log/forwarded-logs
 WORKDIR /
+CMD ["/usr/sbin/sshd", "-D"]
