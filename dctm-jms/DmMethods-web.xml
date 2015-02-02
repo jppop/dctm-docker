@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" 
+"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+<display-name>Documentum Method Invocation Servlet</display-name>
+<description>This servlet is for Java method invocation using the DO_METHOD apply call.</description>
+<servlet>
+  <servlet-name>DoMethod</servlet-name>
+  <description>Documentum Method Invocation Servlet</description>
+  <servlet-class>com.documentum.mthdservlet.DoMethod</servlet-class>
+  <init-param>
+    <param-name>trace</param-name>
+    <param-value>f</param-value>
+   </init-param>
+   <init-param>
+      <param-name>docbase_install_owner_name</param-name>
+      <param-value>dmadmin</param-value>
+    </init-param> 
+  <init-param>
+    <param-name>methodlocation-1</param-name>
+    <param-value>/opt/documentum/dba/java_methods</param-value>
+  </init-param>
+   <init-param>
+      <param-name>check-ip</param-name>
+      <param-value>false</param-value>
+    </init-param> 
+  <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet>
+  <servlet-name>DmSampleServlet</servlet-name>
+  <servlet-class>DmSampleServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>DoMethod</servlet-name>
+  <url-pattern>/servlet/DoMethod</url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+  <servlet-name>DmSampleServlet</servlet-name>
+  <url-pattern>/servlet/DmSampleServlet</url-pattern>
+</servlet-mapping>
+</web-app>

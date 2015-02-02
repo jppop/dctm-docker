@@ -32,14 +32,6 @@ die() {
 setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 [ -r $setEnvScript ] && source $setEnvScript
 
-env > /tmp/envA.out
-
-REPOSITORY_NAME=${2:-devbox}
-
-#REPOSITORY_ID=${3:-$RANDOM}
-r=$(od -vAn -N3 -tu4 < /dev/urandom)
-REPOSITORY_ID=${3:-$r}
-
 OPTS=`getopt -o r:i: -l repo-name:,repo-id: -- "$@"`
 if [ $? != 0 ]
 then
@@ -48,6 +40,8 @@ fi
 
 eval set -- "$OPTS"
 
+# default values
+REPOSITORY_ID=$(od -vAn -N3 -tu4 < /dev/urandom)
 while true ; do
     case "$1" in
         --repo-name) REPOSITORY_NAME=$2; shift 2;;
@@ -64,7 +58,7 @@ fi
 
 if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
     echo "Installing the repository $REPOSITORY_NAME ($REPOSITORY_ID)"
-    # create the reponsfile
+    # create the reponse file
     cd ${DM_HOME}/install
     ./delete-schema.sh $REPOSITORY_NAME 2>&1 > delete-schema.out
     ./create-responsefile.sh $REPOSITORY_NAME $REPOSITORY_ID > $REPOSITORY_NAME-install.properties
@@ -90,8 +84,8 @@ LANG=C export LANG
 # Start the server
 logfile=${DOCUMENTUM}/dba/log/repository.log
 touch $logfile
-# link the repository log to the folder where it will forwarded to a centralized place (FUTURE: logstash)
-sudo ln -s $logfile /var/log/forwarded-logs/repository.log
+## link the repository log to the folder where it will forwarded to a centralized place (FUTURE: logstash)
+##sudo ln -s $logfile /var/log/forwarded-logs/repository.log
 
 export REPOSITORY_NAME
 function shutdown() {
@@ -99,10 +93,9 @@ function shutdown() {
 }
 trap shutdown SIGHUP SIGINT SIGTERM
 
-env > /tmp/envB.out
-
 echo "Starting the repository ${REPOSITORY_NAME}.."
-${DM_HOME}/bin/documentum -docbase_name $REPOSITORY_NAME -security acl \
+cd ${DM_HOME}/bin
+./documentum -docbase_name $REPOSITORY_NAME -security acl \
   -init_file $DOCUMENTUM/dba/config/$REPOSITORY_NAME/server.ini 2>&1 | tee -a ${DOCUMENTUM}/dba/log/repository.log
 
 

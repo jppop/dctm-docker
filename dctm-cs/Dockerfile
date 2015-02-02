@@ -34,7 +34,9 @@ EXPOSE 49000 49001
 USER dmadmin
 WORKDIR $DOCUMENTUM
 
-ENTRYPOINT ["/opt/documentum/entrypoint.sh"]
+ENV REPOSITORY_NAME devbox
+
+ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]
 CMD ["--repo-name=devbox"]
 ##USER root
 ##CMD ["/usr/sbin/sshd", "-D"]
