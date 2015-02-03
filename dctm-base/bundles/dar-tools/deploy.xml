@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="deploy-dar" default="deploy">
+    <description>
+            ant script to deploy a dar
+    </description>
+
+    <!-- ================================= 
+          target: deploy              
+         ================================= -->
+    <target name="deploy">
+        <emc.sysproperty name="com.emc.ide.installer.postPublishJobDelay"   value="10"/>
+        <emc.sysproperty name="com.emc.ide.installer.startPublishJobDelay"  value="0" />
+        <emc.sysproperty name="com.emc.ide.installer.finishPublishJobDelay" value="0" />
+
+	 <emc.preferences logTraceMessages="${emc.preferences.logTraceMessages}" logDebugMessages="${emc.preferences.logDebugMessages}" />
+
+        <emc.install dar="${dar}"
+                     docbase="${docbase}"
+                     username="${user}"
+                     password="${password}"
+                     domain="${domain}" 
+                     inputfile="${input_file}"
+	/>
+    	<!--TODO: add localesFolder param if set 
+    	[localesFolder="/path/to/locales/folder"-->
+    </target>
+
+</project>

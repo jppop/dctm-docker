@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="console-file" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="/opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/logs/console.log" />
+		<param name="MaxFileSize" value="500KB" />
+		<!-- Keep 3 backup file -->
+		<param name="MaxBackupIndex" value="3" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601}]|%-5p|%-22t|%C|%M|%-4L] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="org.jboss.logging" class="org.apache.log4j.NullAppender" />
+
+	<appender name="dfc-file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="info" />
+		<param name="file" value="/opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/logs/dfc.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601}]|%-5p|%-22t|%C|%M|%-4L] %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="bpm-file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="info" />
+		<param name="file" value="/opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/logs/bpm.log" />
+		<param name="DatePattern" value="'.'yyyyMMdd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601}]|%-5p|%-22t|%C|%M|%-4L] %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="com.documentum" additivity="true">
+		<level value="INFO" />
+		<appender-ref ref="dfc-file" />
+	</logger>
+	
+	<logger name="com.documentum.bpm" additivity="true">
+		<level value="WARN" />
+		<appender-ref ref="bpm-file" />
+	</logger>
+	
+	<logger name="com.documentum.bpm" additivity="true">
+		<level value="WARN" />
+		<appender-ref ref="bpm-file" />
+	</logger>
+	
+	<root>
+		<priority value="ERROR" />
+		<appender-ref ref="console" />
+	</root>
+
+</log4j:configuration>
