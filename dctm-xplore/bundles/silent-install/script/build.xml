@@ -1,0 +1,408 @@
+<project name="auto_deploy" default="silent.install" basedir=".">
+	<taskdef resource="net/sf/antcontrib/antlib.xml"/>
+	<property environment="env"/>
+	<property file="../config/silent.properties"/>
+	
+	<condition property="isWindows">
+		<os family="windows" />
+	</condition>
+
+	<condition property="isLinux">
+		<os family="unix" />
+	</condition>
+	
+	<target name="show">
+		<if>
+			<equals arg1="${nonPrimary.count}" arg2="0"/>
+			<then>
+				<echo message="user doesn't choose to install non-primary instances"/>
+			</then>
+			<else>
+				<antcall target="config.nonPrimary"/>
+			</else>
+		</if>
+		<if>
+			<equals arg1="${config.indexagent}" arg2="true"/>
+			<then>
+				<antcall target="config.indexagent"/>
+				<antcall target="start.indexagent"/>
+			</then>
+			<else>
+				<echo message="user doesn't choose to install index agent"/>
+			</else>
+		</if>
+	</target>
+	
+	<target name="silent.install">
+		<antcall target="setup"/>
+		<antcall target="primary.config.update"/>
+		<antcall target="config.dsearch"/>
+		<antcall target="start.primaryInstance"/>
+		<if>
+			<equals arg1="${nonPrimary.count}" arg2="0"/>
+			<then>
+				<echo message="user doesn't choose to install non-primary instances"/>
+			</then>
+			<else>
+				<antcall target="config.nonPrimary"/>
+			</else>
+		</if>
+		<if>
+			<equals arg1="${config.indexagent}" arg2="true"/>
+			<then>
+				<antcall target="config.indexagent"/>
+				<!--antcall target="start.indexagent"/-->
+			</then>
+			<else>
+				<echo message="user doesn't choose to install index agent"/>
+			</else>
+		</if>
+		<antcall target="stop.primaryInstance"/>
+		
+	</target>
+	
+	<target name="primary.config.update">
+		<echo message="begin to update primary configuration"/>
+		<propertyfile file="../config/config.properties">
+			<entry key="common.installLocation" value="${common.installLocation}"/>
+			<entry key="ess.data_dir" value="${common.installLocation}/data"/>
+			<entry key="ess.transaction_log_dir" value="${common.installLocation}/dblog"/>
+			<entry key="ess.config_dir" value="${common.installLocation}/config"/>
+			<entry key="ess.configMode.primary" value="1"/>
+			<entry key="ess.configMode.secondary" value="0"/>
+			<entry key="ess.primary" value="true"/>
+			
+			<entry key="ess.name" value="${primary.instance.name}"/>
+			<entry key="ess.instance.password" value="${primary.instance.password}"/>
+			<entry key="ess.instance.port" value="${primary.instance.port}"/>
+			<entry key="ess.essAdmin.active" value="true"/>
+			
+			<entry key="ess.primary_port" value="${primary.instance.port}"/>
+			<entry key="ess.primary_host" value="${ess.host}"/>
+			
+			<entry key="ess.xdb-primary-listener-host" value="${ess.host}"/>
+			<entry key="ess.xdb-primary-listener-port" value="${primary.instance.port}"/>
+			<entry key="ess.xdb-primary-listener-port" type="int" operation="+" value="30" pattern="0000"/>
+			
+			<entry key="ess.xdb-listener-port" value="${primary.instance.port}"/>
+			<entry key="ess.xdb-listener-port" type="int" operation="+" value="30" pattern="0000"/>
+			
+			<entry key="ess.admin-rmi-port" value="${primary.instance.port}"/>
+			<entry key="ess.admin-rmi-port" type="int" operation="+" value="31" pattern="0000"/>
+
+			<entry key="ess.cps-daemon-port" value="${primary.instance.port}"/>
+			<entry key="ess.cps-daemon-port" type="int" operation="+" value="21" pattern="0000"/>
+			
+			<entry key="ess.cps-daemon-local-port" value="${primary.instance.port}"/>
+			<entry key="ess.cps-daemon-local-port" type="int" operation="+" value="22" pattern="0000"/>
+			
+			<entry key="common.installOwner.password" value="${common.installOwner.password}"/>
+		</propertyfile>
+		
+		<echo message="end to update primary configuration"/>
+		
+	</target>
+	
+	<target name="config.nonPrimary">
+		<echo message="there are ${nonPrimary.count} nonPrimary instances needed to be configured"/>
+		<echo message="begin to configure nonPrimary instances"/>
+		<var name="reach.end" value="false"/>
+		<for list="0,1,2,3,4,5,6,7,8,9,10" param="number">
+			  <sequential>
+			  <if>
+					<equals arg1="${reach.end}" arg2="false"/>
+					<then>
+						<if>
+							<equals arg1="${nonPrimary.count}" arg2="@{number}"/>
+							<then>
+								<var name="reach.end" value="true"/>
+							</then>
+							<else>
+								<propertyfile file="../config/config.properties">
+									<entry key="common.installLocation" value="${common.installLocation}"/>
+									<entry key="ess.data_dir" value="${common.installLocation}/data"/>
+									<entry key="ess.transaction_log_dir" value="${common.installLocation}/dblog"/>
+									<entry key="ess.config_dir" value="${common.installLocation}/config"/>
+									<entry key="ess.configMode.primary" value="0"/>
+									<entry key="ess.configMode.secondary" value="1"/>
+									
+									<entry key="ess.primary" value="false"/>
+									
+									<entry key="ess.name" value="${nonPrimary.instance.name.@{number}}"/>
+									<entry key="ess.instance.password" value="${nonPrimary.instance.password.@{number}}"/>
+									<entry key="ess.instance.port" value="${nonPrimary.instance.port.@{number}}"/>
+									<entry key="ess.essAdmin.active" value="false"/>
+									
+									<entry key="ess.primary_port" value="${primary.instance.port}"/>
+									<entry key="ess.primary_host" value="${ess.host}"/>
+			
+									<entry key="ess.xdb-primary-listener-host" value="${ess.host}"/>
+									<entry key="ess.xdb-primary-listener-port" value="${primary.instance.port}"/>
+									<entry key="ess.xdb-primary-listener-port" type="int" operation="+" value="30" pattern="0000"/>
+									
+									<entry key="ess.xdb-listener-port" value="${nonPrimary.instance.port.@{number}}"/>
+									<entry key="ess.xdb-listener-port" type="int" operation="+" value="30" pattern="0000"/>
+									
+									<entry key="ess.admin-rmi-port" value="${nonPrimary.instance.port.@{number}}"/>
+									<entry key="ess.admin-rmi-port" type="int" operation="+" value="31" pattern="0000"/>
+
+									<entry key="ess.cps-daemon-port" value="${nonPrimary.instance.port.@{number}}"/>
+									<entry key="ess.cps-daemon-port" type="int" operation="+" value="21" pattern="0000"/>
+									
+									<entry key="ess.cps-daemon-local-port" value="${nonPrimary.instance.port.@{number}}"/>
+									<entry key="ess.cps-daemon-local-port" type="int" operation="+" value="22" pattern="0000"/>
+									
+									<entry key="common.installOwner.password" value="${common.installOwner.password}"/>
+								</propertyfile>
+								<antcall target="config.dsearch"/>
+								<echo>finish to configure non-primary instance: ${nonPrimary.instance.name.@{number}}</echo>
+								<antcall target="start.nonPrimaryInstance">
+									<param name="name" value="${nonPrimary.instance.name.@{number}}"/>
+									<param name="port" value="${nonPrimary.instance.port.@{number}}"/>
+								</antcall>
+							</else>
+						</if>
+						
+					</then>
+				</if>
+				
+			  </sequential>
+		</for>
+		<echo message="end to configure nonPrimary instance"/>
+		
+	</target>
+	
+	<target name="waitfor.primary.started">
+		<echo message="begin == wait for dsearch (instances) service started"/>
+		<waitfor maxwait="6" maxwaitunit="minute" checkevery="3" checkeveryunit="second">
+			<http url="http://${ess.host}:${primary.instance.port}/dsearch"/>
+		</waitfor>
+		<echo message="end waitfor"/>
+	</target>
+	
+	<target name="config.indexagent">
+		<antcall target="waitfor.primary.started"/>
+		<propertyfile file="../config/configIA.properties">
+			<entry key="common.installLocation" value="${common.installLocation}"/>
+			<entry key="indexagent.ess.port" value="${primary.instance.port}"/>
+			<entry key="indexagent.ess.host" value="${indexagent.ess.host}"/>
+			
+			<entry key="indexagent.name" value="${indexagent.name}"/>
+			<entry key="indexagent.instance.port" value="${indexagent.instance.port}"/>
+			<entry key="indexagent.instance.password" value="${indexagent.instance.password}"/>
+			<entry key="indexagent.docbase.name" value="${indexagent.docbase.name}"/>
+			<entry key="indexagent.docbase.user" value="${indexagent.docbase.user}"/>
+			<entry key="indexagent.docbase.password" value="${indexagent.docbase.password}"/>
+			<entry key="indexagent.connectionBroker.host" value="${indexagent.connectionBroker.host}"/>
+			<entry key="indexagent.connectionBroker.port" value="${indexagent.connectionBroker.port}"/>
+			
+			<entry key="indexagent.globalRegistryRepository.name" value="${indexagent.globalRegistryRepository.name}"/>
+			<entry key="indexagent.globalRegistryRepository.user" value="${indexagent.globalRegistryRepository.user}"/>
+			<entry key="indexagent.globalRegistryRepository.password" value="${indexagent.globalRegistryRepository.password}"/>
+			
+			<entry key="common.installOwner.password" value="${common.installOwner.password}"/>
+		</propertyfile>
+		<copy file="${common.installLocation}/setup/indexagent/config.properties" tofile="${common.installLocation}/setup/indexagent/temp.properties"/>
+		<copy file="../config/configIA.properties" tofile="${common.installLocation}/setup/indexagent/config.properties" overwrite="true"/>
+		<echo message="begin == config index agent"/>
+		
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/setup/indexagent">
+					<arg line="/C configIndexagent.bat"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/setup/indexagent">
+						<arg line="./configIndexagent.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<echo message="end == config index agent"/>
+		<delete file="${common.installLocation}/setup/indexagent/config.properties"/>
+		<copy file="${common.installLocation}/setup/indexagent/temp.properties" tofile="${common.installLocation}/setup/indexagent/config.properties"/>
+	</target>
+
+	
+	<target name="setup">
+		<copy file="../config/silent.properties" todir="${installers.location}" overwrite="true"/>
+		<echo message="begin == setup"/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<echo message="windows install"/>
+				<exec executable="cmd" dir="${installers.location}">
+					<arg line="/C setup.exe -f silent.properties"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<echo message="linux install"/>
+					<chmod file="${installers.location}/setup.bin" perm="ugo+rx"/>
+					<exec executable="bash" dir="${installers.location}">
+						<arg line="./setup.bin -f silent.properties"/>
+					</exec>
+				</then>
+			</elseif>
+			<else>
+				<fail message="sorry, current silent install only supports windows and linux"/>
+			</else>
+		</if>
+		<echo message="end == setup"/>
+	<!--
+		<echo message="waitfor"/>
+		<waitfor maxwait="15" maxwaitunit="minute" checkevery="10" checkeveryunit="second">
+			<available file="${installers.location}/EMC_Documentum_xPlore_InstallLog.log"/>
+		</waitfor>
+		<echo message="end == waitfor"/>
+	-->
+		<delete file="${installers.location}/silent.properties"/>
+	</target>
+
+	<target name="config.dsearch">
+		<move file="${common.installLocation}/setup/dsearch/config.properties" tofile="${common.installLocation}/setup/dsearch/temp.properties" failonerror="false" quiet="true"/>
+		<copy file="../config/config.properties" todir="${common.installLocation}/setup/dsearch" overwrite="true"/>
+		<echo message="begin == configure dsearch"/>
+		
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/setup/dsearch">
+					<arg line="/C configDsearch.bat"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/setup/dsearch">
+						<arg line="./configDsearch.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<echo message="end == configure dsearch"/>
+	<!--
+		<delete file="${common.installLocation}/setup/dsearch/config.properties"/>
+		<move file="${common.installLocation}/setup/dsearch/temp.properties" tofile="${common.installLocation}/setup/dsearch/config.properties"/>
+	-->
+	</target>
+	
+	<target name="start.primaryInstance">
+		<echo message="begin == start primary instance"/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+					<arg line="/C start${primary.instance.name}.cmd"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+						<arg line="./start${primary.instance.name}.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<antcall target="waitfor.primary.started"/>
+		<echo message="end == start primary instance"/>
+	</target>
+	
+	<target name="stop.primaryInstance">
+		<echo message="begin == stop primary instance"/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/jboss7.1.1/server" spawn="false">
+					<arg line="/C stop${primary.instance.name}.cmd"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/jboss7.1.1/server" spawn="false">
+						<arg line="./stop${primary.instance.name}.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<echo message="end == stop primary instance"/>
+	</target>
+
+	<target name="start.nonPrimaryInstance">
+		<echo message="begin == start nonPrimary instance "/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+					<arg line="/C start${name}.cmd"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+						<arg line="./start${name}.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<echo message="begin == wait for nonPrimary instance ${name} started"/>
+		<waitfor maxwait="6" maxwaitunit="minute" checkevery="3" checkeveryunit="second">
+			<http url="http://${ess.host}:${port}/dsearch"/>
+		</waitfor>
+		<echo message="end waitfor"/>
+		<echo message="end == start nonPrimary instance ${name}"/>
+	</target>
+	
+	<target name="start.indexagent">
+		<echo message="begin == start index agent"/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+					<arg line="/C start${indexagent.name}.cmd"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/jboss7.1.1/server" spawn="true">
+						<arg line="./start${indexagent.name}.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+		<waitfor maxwait="6" maxwaitunit="minute" checkevery="3" checkeveryunit="second">
+			<http url="http://${indexagent.ess.host}:${indexagent.instance.port}/IndexAgent"/>
+		</waitfor>
+		<echo message="end == start index agent"/>
+	</target>
+	
+	<target name="stop.indexagent">
+		<echo message="begin == stop index agent"/>
+		<if>
+			<equals arg1="${isWindows}" arg2="true"/>
+			<then>
+				<exec executable="cmd" dir="${common.installLocation}/jboss7.1.1/server" spawn="false">
+					<arg line="/C stop${indexagent.name}.cmd"/>
+				</exec>
+			</then>
+			<elseif>
+				<equals arg1="${isLinux}" arg2="true"/>
+				<then>
+					<exec executable="bash" dir="${common.installLocation}/jboss7.1.1/server" spawn="false">
+						<arg line="./stop${indexagent.name}.sh"/>
+					</exec>
+				</then>
+			</elseif>
+		</if>
+	</target>
+
+</project>
