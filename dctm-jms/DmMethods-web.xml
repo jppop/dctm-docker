@@ -21,10 +21,10 @@
     <param-name>methodlocation-1</param-name>
     <param-value>/opt/documentum/dba/java_methods</param-value>
   </init-param>
-   <init-param>
+  <init-param>
       <param-name>check-ip</param-name>
       <param-value>false</param-value>
-    </init-param> 
+  </init-param>
   <load-on-startup>1</load-on-startup>
 </servlet>
 <servlet>

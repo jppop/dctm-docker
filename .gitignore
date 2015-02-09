@@ -13,4 +13,5 @@ tmp
 *.rpm
 *.gz
 *.bin
-
+*.dar
+build.log

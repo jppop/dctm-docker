@@ -22,6 +22,14 @@ RUN echo "org.apache.jasper.compiler.Parser.STRICT_WHITESPACE=false" >> ${CATALI
 # ovveride web.xml (disable jsp pooling)
 COPY bundles/web.xml ${CATALINA_HOME}/conf/
 
+ENV REPOSITORY_NAME devbox
+ENV REPOSITORY_XPLORE_USER dmadmin
+ENV REPOSITORY_XPLORE_PWD dmadmin
+ENV REGISTRY_NAME devbox
+ENV REGISTRY_USER dm_bof_registry
+ENV REGISTRY_CRYPTPWD AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv
+ENV REGISTRY_PWD dm_bof_registry
+
 WORKDIR ${CATALINA_HOME}
 # FIXME: can't use variable in ENTRYPOINT directive
 ENTRYPOINT [ "./docker-entrypoint.sh", "catalina.sh", "run" ]

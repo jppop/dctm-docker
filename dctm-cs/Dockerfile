@@ -1,5 +1,7 @@
 FROM dctm-base
 
+MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
+
 # helper script used to create a response file
 COPY create-responsefile.sh $DM_HOME/install/create-responsefile.sh
 RUN chown dmadmin:dmadmin $DM_HOME/install/create-responsefile.sh; \
@@ -9,6 +11,11 @@ RUN chown dmadmin:dmadmin $DM_HOME/install/create-responsefile.sh; \
 COPY delete-schema.sh $DM_HOME/install/delete-schema.sh
 RUN chown dmadmin:dmadmin $DM_HOME/install/delete-schema.sh; \
     chmod a+x $DM_HOME/install/delete-schema.sh
+
+# wrapper script starting JMS
+COPY startJms.sh $DM_HOME/install/
+RUN chown dmadmin:dmadmin $DM_HOME/install/startJms.sh; \
+    chmod a+x $DM_HOME/install/startJms.sh
 
 # installing oracle client
 COPY ./bundles /bundles
@@ -26,15 +33,23 @@ RUN chown dmadmin:dmadmin $DOCUMENTUM/dba/tnsnames.ora; \
 
 USER root
 COPY docker-entrypoint.sh $DOCUMENTUM/entrypoint.sh
-RUN chown dmadmin:dmadmin $DOCUMENTUM/entrypoint.sh; \
-    chmod a+x $DOCUMENTUM/entrypoint.sh
+RUN chown dmadmin:dmadmin $DOCUMENTUM/entrypoint.sh \
+ && chmod a+x $DOCUMENTUM/entrypoint.sh
+
+RUN mv /bundles/isalive.sh ${DM_HOME}/bin/ \
+ && chown dmadmin:dmadmin ${DM_HOME}/bin/isalive.sh \
+ && chmod a+x ${DM_HOME}/bin/isalive.sh
 
 EXPOSE 49000 49001
+EXPOSE 9080
 
 USER dmadmin
 WORKDIR $DOCUMENTUM
 
 ENV REPOSITORY_NAME devbox
+ENV JMS_HOME ${DOCUMENTUM_SHARED}/jboss7.1.1/server
+
+RUN mv $DM_HOME/install/startJms.sh ${JMS_HOME}/startJms.sh
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]
 CMD ["--repo-name=devbox"]

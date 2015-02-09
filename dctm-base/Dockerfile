@@ -6,6 +6,12 @@ FROM base-centos6
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
+RUN mkdir /var/dctm-data /var/log/documentum \
+ && chmod 1777 /var/dctm-data /var/log/documentum
+
+VOLUME /var/dctm-data
+VOLUME /var/log/documentum
+
 RUN echo 'root:root' | chpasswd
 
 RUN yum update -y && yum -y --noplugins groupinstall \
@@ -29,12 +35,15 @@ ENV DM_HOME ${DOCUMENTUM}/product/7.1
 ENV DOCUMENTUM_DATA /var/dctm-data
 ENV DOCUMENTUM_LOG /var/log/documentum
 RUN mkdir -p ${DM_HOME} ${DOCUMENTUM_SHARED}
+RUN chown -R dmadmin:dmadmin ${DOCUMENTUM}
+
 ## FIXME: cannot use volumes since chown fails to change ownership (may be specific to OSX)
 ## see https://github.com/boot2docker/boot2docker/issues/581
 ## VOLUME [ "/var/log/documentum", "/var/dctm-data"]
 ## RUN ls -al /var/log/documentum /var/dctm-data 
-RUN mkdir -p ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
-RUN chown -R dmadmin:dmadmin ${DOCUMENTUM} ${DM_HOME} ${DOCUMENTUM_SHARED} ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
+##RUN mkdir -p ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
+##RUN chown -R dmadmin:dmadmin ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
+
 
 RUN echo "dctm            49000/tcp               # documentum repository service" >> /etc/services \
  && echo "dctm_s          49001/tcp               # documentum repository service" >> /etc/services
@@ -87,10 +96,13 @@ RUN mkdir patch-install \
 
 RUN echo ". \$DM_HOME/bin/dm_set_server_env.sh" >> /home/dmadmin/.bash_profile
 
+# fix an issue in dfc.properties (left by installer with an empty broker entry)
 RUN cp --backup=numbered /bundles/dfc.properties ${DOCUMENTUM_SHARED}/config/
 
+# add extra tools (ease dar deploying)
+RUN chmod a+x /bundles/dar-tools/*.sh \
+ && mv /bundles/dar-tools/*.* $DM_HOME/install/
+
 USER root
-# A volume to be ready to forward logs
-VOLUME /var/log/forwarded-logs
 WORKDIR /
 CMD ["/usr/sbin/sshd", "-D"]

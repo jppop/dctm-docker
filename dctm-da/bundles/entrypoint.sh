@@ -1,5 +1,17 @@
 #!/bin/sh
 
+dockerUsage() {
+    cat 2>&1 <<EOF
+This container must be linked with a broker (as 'broker') server.
+Something like:
+  docker run -dP --name dctm-da -h dctm-da --link broker:broker dctm-da
+EOF
+  exit 2
+}
+
+# check container links
+[ -z "${BROKER_NAME}" ] && dockerUsage
+
 CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} ${CATALINA_OPTS}"
 JAVA_OPTS="${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}"
 
