@@ -14,6 +14,10 @@ docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora --link broker:broker
 docker run -d --name jms --link broker:broker -h dctm-jms dctm-jms 
 docker run -dP -it --name xplore -h xplore --link broker:broker dctm-xplore    
 docker run --rm -it --name da -p 8888:8080 --link broker:broker --link dctm-cs:dctm-cs dctm-da  
+docker run -dP -p 8000:8080 --name bam -h bam --link broker:broker --link dbora:dbora dctm-bam  
+docker run -dP -p 8040:8080 --name bps -h bps --link broker:broker dctm-bps  
+docker run -dP -p 7000:8080 --name xms -h xms --link broker:broker --link dctm-cs:dctm-cs --link dbora:dbora --link bam:bam --link xplore:xplore dctm-xmsagent  
+
 ```
 
 # ISSUES

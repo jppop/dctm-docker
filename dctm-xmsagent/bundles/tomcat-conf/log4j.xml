@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="core" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="${catalina.logdir}/xms.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m%n" />
+        </layout>
+	</appender>	
+
+    <appender name="full" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="${catalina.logdir}/xms-full.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m%n" />
+        </layout>
+    </appender> 
+
+    <appender name="command" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="${catalina.logdir}/catalog-commands.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m%n" />
+        </layout>
+    </appender> 
+
+    <appender name="aspectj" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="append" value="true" />
+        <param name="file" value="${catalina.logdir}/xms-aspectj.log" />
+        <param name="DatePattern" value="'.'yyyy-MM-dd" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%-25d{ISO8601}] %-5p %x %C{1} -- %m%n" />
+        </layout>
+    </appender> 
+
+    <logger name="com.documentum.xms">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="com.documentum.deployment">
+        <level value="DEBUG"/>
+    </logger>
+
+    <logger name="com.emc.xcp">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.emc.xms">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.emc.xms.spring.http.converter.xml.XmlRootElementClassesRegistry">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="com.emc.xms.extension.core.impl.AnnotationExtensionLoader">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="com.emc.xms.spring.http.converter.xml.XmlRootElementHttpMessageConverter">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="com.emc.xms.server.controller.ExecutionController">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="internal.com.emc.xcp">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.emc.xms.extension.core.impl.EclipseExtensionLoader">
+        <level value="WARN"/>
+    </logger>
+
+    <logger name="internal.com.emc.xms.commands">
+        <level value="INFO"/>
+    </logger>
+
+    <logger name="com.documentum.xms.commands.impl.CommandLogger" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="command"/> 
+        <appender-ref ref="full"/> 
+    </logger>
+
+    <logger name="com.documentum.xms.logger.aspects.AspectLogger" additivity="false">
+        <level value="DEBUG"/>
+        <appender-ref ref="aspectj"/>
+    </logger>
+
+    <logger name="org.apache.http.client">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="">
+        <level value="WARN"/>
+    </logger>
+
+	<root>
+		<priority value="WARN" />
+        <appender-ref ref="console" />
+        <appender-ref ref="core" />
+        <appender-ref ref="full" />
+        <appender-ref ref="command" />
+	</root>
+
+</log4j:configuration>
