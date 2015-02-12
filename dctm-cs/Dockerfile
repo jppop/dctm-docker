@@ -49,6 +49,9 @@ WORKDIR $DOCUMENTUM
 ENV REPOSITORY_NAME devbox
 ENV JMS_HOME ${DOCUMENTUM_SHARED}/jboss7.1.1/server
 
+ENV BAM_USER bamdbo
+ENV BAM_PWD bamdbo
+
 RUN mv $DM_HOME/install/startJms.sh ${JMS_HOME}/startJms.sh
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]

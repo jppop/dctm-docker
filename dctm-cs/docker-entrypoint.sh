@@ -12,7 +12,7 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a broker (as 'broker') and a db (as 'dbora') server.
 Something like:
-  docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora --link broker:broker dctm-cs
+  docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora --link broker:broker dctm-cs [--repo-name REPOSITORY_NAME]
 EOF
   exit 2
 }
@@ -32,7 +32,7 @@ die() {
 setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 [ -r $setEnvScript ] && source $setEnvScript
 
-OPTS=`getopt -o r:i:b -l no-bpm,repo-name:,repo-id: -- "$@"`
+OPTS=`getopt -o r:i:x -l no-xcp,repo-name:,repo-id: -- "$@"`
 if [ $? != 0 ]
 then
     exit 1
@@ -41,12 +41,12 @@ fi
 eval set -- "$OPTS"
 
 # default values
-REPOSITORY_ID=$(od -vAn -N3 -tu4 < /dev/urandom) INSTALL_BPM=1
+REPOSITORY_ID=$(od -vAn -N3 -tu4 < /dev/urandom) INSTALL_XCP=1
 while true ; do
     case "$1" in
         --repo-name|-r) REPOSITORY_NAME=$2; shift 2;;
         --repo-id|-i) REPOSITORY_ID=$2; shift 2;;
-        --no-bpm|-b) INSTALL_BPM=0; shift ;;
+        --no-xcp|-x) INSTALL_XCP=0; shift ;;
         --) shift; break;;
     esac
 done
@@ -103,7 +103,22 @@ if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
     echo "done"
 
     if [ $INSTALL_BPM -eq 1 ]; then
+
         installProcessEngine
+
+        echo "Installing xCP dars.."
+        cd ${DM_HOME}/install
+        for dar in ImageServices.dar xCP_Viewer_Services.dar Rich_Media_Services.dar Transformation.dar CTSAspects.dar ; do
+            cp /bundles/dars/$dar $DM_HOME/install/DARsInternal/
+          ./dar-deploy.sh -r ${REPOSITORY_NAME} -d $DM_HOME/install/DARsInternal/$dar
+        done
+
+        echo "Create BAM database owner.."
+        sqlplus -s system/oracle@XE << __EOF__
+        create user ${BAM_USER} identified by ${BAM_PWD};
+        grant connect, resource, create view, create sequence to ${BAM_USER};
+        exit;
+
     fi
 
     echo "Stopping the repository"

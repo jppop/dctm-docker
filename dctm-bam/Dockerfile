@@ -2,18 +2,21 @@ FROM tomcat:7
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
+VOLUME /var/log/tomcat
+ENV LOGDIR /var/log/tomcat
+
 # copy BAM war
 COPY bundles/bam-server.war ${CATALINA_HOME}/webapps/
 
 # the entrypoint (wrap catalina script)
 COPY bundles/entrypoint.sh ${CATALINA_HOME}/docker-entrypoint.sh
 
-RUN chmod a+x ${CATALINA_HOME}/docker-entrypoint.sh \
- && chmod a+x ${CATALINA_HOME}/bin/make-dfc.properties
+RUN chmod a+x ${CATALINA_HOME}/docker-entrypoint.sh
 
 # tomcat tuning
 ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -Xmx1024m -DMaxPermSize=128 -XX:+UseParallelOldGC" \
-    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties -Dbam.properties=${catalina_home}/conf/bam.properties -Dcatalina.logdir=${CATALINA_HOME}/log -Dlog4j.properties=${CATALINA_HOME}/conf/log4j.xml"
+    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties -Dbam.properties=${CATALINA_HOME}/conf/bam.properties -Dcatalina.logdir=${LOGDIR} -Dlog4j.properties=${CATALINA_HOME}/conf/log4j.xml"
+ENV CUSTOM_CATALINA_OUT ${LOGDIR}/catalina.out
 
 # ovveride some tomcat configuration web.xml
 COPY bundles/tomcat-conf/*.* ${CATALINA_HOME}/conf/

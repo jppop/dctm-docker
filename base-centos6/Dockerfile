@@ -17,7 +17,7 @@ RUN mkdir -p /root/.ssh && chown root.root /root && chmod 700 /root/.ssh
 
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
-# break nsenter
+# break nsenter (actually docker-enter.sh)
 #ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 

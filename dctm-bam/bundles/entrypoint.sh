@@ -4,25 +4,26 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a broker (as 'broker') server.
 Something like:
-  docker run -dP --name dctm-da -h dctm-da --link broker:broker dctm-da
+  docker run -dP --name bam -h bam --link broker:broker --link dbora:dbora bam
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${BROKER_NAME}" ] && dockerUsage
+[ -z "${BROKER_NAME}" -o -z "${DBORA_NAME}" ] && dockerUsage
 
 CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} ${CATALINA_OPTS}"
 JAVA_OPTS="${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}"
+CATALINA_OUT="${CUSTOM_CATALINA_OUT}"
 
-export CATALINA_OPTS JAVA_OPTS
+export CATALINA_OPTS JAVA_OPTS CATALINA_OUT
 
 # configure dfc
 DFC_DATADIR=${CATALINA_HOME}/temp/dfc
 [ -d ${DFC_DATADIR} ] || mkdir -p ${DFC_DATADIR}
 
-cat << __EOF__
-dcf.name=bam
+cat << __EOF__ >> ${CATALINA_HOME}/conf/dfc.properties
+dfc.name=bam
 dfc.data.dir=${DFC_DATADIR}
 dfc.tokenstorage.enable=false
 dfc.docbroker.host[0]=${DOCBROKER_ADR:-$BROKER_PORT_1489_TCP_ADDR}
