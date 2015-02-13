@@ -1,0 +1,298 @@
+<!DOCTYPE xms-configuration>
+<xms-configuration>
+
+    <!--
+        @copyright  Copyright 2012 (c) EMC. (http://www.emc.com)
+    -->
+
+    <!--
+        For information on the environment profiles and how to customize it, please refer the "Environment profile file"
+        section under Chapter 4 - "Provisioning the Environment" from the "xMS Deployment Guide".
+    -->
+
+
+    <!-- ******************************************************************************** -->
+    <!-- 1. Configuration Context -->
+    <!--
+
+        1. <configuration-context>
+            1.1. <property>
+                1.1.1. <name>: name of the property
+                1.1.2. <value>: value to set or override
+
+    -->
+
+    <configuration-context>
+        <property name="xCPVM1.cpu" value="4"/>
+        <property name="xCPVM1.memory" value="4GB"/>
+        <property name="xCPVM2.cpu" value="4"/>
+        <property name="xCPVM2.memory" value="4GB"/>
+
+        <!-- Repository service runtime properties  -->
+        <property name="appserver.http.port" value="9080"/>
+        <property name="appserver.base.port" value="9180"/>
+        <property name="docbase.name" value="devbox"/>
+        <property name="docbase.id" value="1873"/>
+        <property name="docbase.owner.name" value="mydocuser"/>
+        <property name="common.server.licensing" value="true"/>
+        <property name="tcs.license.key" value="VALIDKEY"/>
+        <property name="install.dms.enable" value="false"/>
+        <property name="install.external.docbroker" value="false"/>
+        <property name="use.external.global.repository" value="false"/>
+
+        <!-- Search service runtime properties -->
+        <property name="indexagent.instance.port" value="9200"/>
+        <property name="ess.instance.port" value="9300"/>
+
+		 <!-- rkm related properties -->
+        <property name="enable.rkm" value="false"/>
+        <property name="rkm.shared.certificate.location" value="\\\\CERT_SHARED_LOCATION_PATH"/>
+        
+        
+    </configuration-context>
+
+
+    <!-- ******************************************************************************** -->
+    <!-- 2. System Accounts -->
+    <!--
+
+        Optional - System Accounts in case user wants to override DEFAULT_SERVICE and DEFAULT_SERVICE_ENDPOINT bindings.
+
+        <system-account name="name of the system account">
+            <system-account-type nameref="type of the system account">
+            <credentials username="username" password="password" domain="">
+        </system-account name>
+
+        2.1. DB_ACCESS_ACCOUNT: Maps to database credentials
+
+        2.2. ORCL_DB_ACCESS_ACCOUNT: Maps to Oracle database credentials
+
+        2.3. APPHOST_ADMIN_ACCESS: Maps to administrator credentials for tcServer / AppHost
+
+        2.4. XPLORE_ACCESS: Maps to xPlore credentials
+
+    -->
+
+	<system-account name="DB_ACCESS_ACCOUNT">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="devbox" password="devbox" domain=""/>
+    </system-account>
+    <system-account name="BAM_DB_ACCESS_ACCOUNT">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="bamdbo" password="bamdbo" domain=""/>
+    </system-account>
+    <system-account name="ORCL_DB_ACCESS_ACCOUNT">
+        <system-account-type nameref="SERVICE_ENDPOINT"/>
+        <credentials username="devbox" password="devbox" domain=""/>
+    </system-account>
+    <system-account name="ORCL_BAM_DB_ACCESS_ACCOUNT">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="bamdbo" password="bamdbo" domain=""/>
+    </system-account>
+    <system-account name="REPO_ADMIN_ACCESS">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="dmadmin" password="dmadmin" domain=""/>
+    </system-account>
+    <!-- Uncomment if using External Global Repository -->
+    <!--  <system-account name="GLOBAL_REPO_ADMIN_ACCESS">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="username" password="password" domain=""/>
+    </system-account>-->
+    <system-account name="APPHOST_ADMIN_ACCESS">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="admin" password="adminPass1" domain=""/>
+    </system-account>
+    <system-account name="XPLORE_ACCESS">
+    	<system-account-type nameref="SERVICE_ENDPOINT"/>
+    	<credentials username="admin" password="adminPass1" domain=""/>
+    </system-account>
+	 <system-account name="RKM_CERT_ACCESS">
+        <system-account-type nameref="SERVICE_ENDPOINT"/>
+        <credentials username="username" password="password" domain=""/>
+    </system-account>
+
+
+    <!-- ******************************************************************************** -->
+    <!-- 3. Environment -->
+    <!--
+
+        3.1. <environment>
+            3.1.1. <name>: Name of the environment
+            3.1.2. <description>: Brief description for the environment
+            3.1.3. <mode>: Allowed values Production|Development
+            3.1.4. <key>: Abbreviation of environment name or short code for environment - used by naming policy
+            3.1.5. <virtual-data-center>
+                3.1.5.1. <nameref>: Name of the virtual datacenter (Map from Virtual DataCentre section in bootstrap-server-configuration)
+            3.1.6. <external-endpoints>
+                3.1.6.1. <endpoint>
+                    3.1.6.1.1. <name>: Name of the endpoint
+                    3.1.6.1.2. <endpoint-type>
+                        3.1.6.1.2.1. <nameref>: Maps to the endpoint type defined in bootstrap DCTM configuration
+                    3.1.6.1.3. <system-account-binding>: System account bindings for the endpoint (Map from System Accounts defined in Section 2 or in bootstrap server configuration)
+                    3.1.6.1.4. <configuration>
+                        3.1.6.1.4.1. <property>
+                            3.1.6.1.4.1.1. <name>: name of the endpoint property (e.g. hostname, port)
+                            3.1.6.1.4.1.2. <value>: value for the endpoint property
+
+    -->
+
+    <environment name="DevDctmEnv" description="Developer's docker containers" mode="Development" key="D2">
+        <virtual-data-center nameref="vdc1"/>
+        
+        <external-endpoints>
+
+           <endpoint name="repositoryDbConfig">
+                <endpoint-type nameref="RepoDatabaseAccess"/>
+            
+                <system-account-binding>
+                    <system-account nameref="ORCL_DB_ACCESS_ACCOUNT"/>
+                </system-account-binding>
+            
+                <configuration>
+                    <property name="connection.type" value="ORACLE"/>
+                    <property name="connection.name" value="XE"/>
+                    <property name="connection.host" value="dbora"/>
+                    <property name="connection.port" value="1521"/>
+                </configuration>
+            </endpoint>
+             
+		    <!-- Uncomment if using External Global Repository --> 
+            <!-- <endpoint name="globalRepositoryConfig"> 
+                <endpoint-type nameref="GlobalRepositoryAccess"/> 
+                
+                <system-account-binding>
+                   <system-account nameref="GLOBAL_REPO_ADMIN_ACCESS"/>
+               	</system-account-binding>
+                
+                <configuration>
+	                <property name="global.repo.name" value="REPO_NAME"/>
+	                <property name="global.docbroker.host" value="GLOBAL_DOCBROKER_HOST"/>
+	                <property name="global.docbroker.port" value="GLOBAL_DOCBROKER_PORT"/>
+                </configuration>
+            </endpoint> -->
+
+            <endpoint name="bamDbConfig">
+   			    <endpoint-type nameref="BamDatabaseAccess"/>
+
+   			    <system-account-binding>
+                    <system-account nameref="ORCL_BAM_DB_ACCESS_ACCOUNT"/>
+                 </system-account-binding>
+            
+                <configuration>
+			        <property name="connection.type" value="oracle" />
+			        <property name="connection.name" value="XE" />
+			        <property name="connection.host" value="dbora" />
+			        <property name="connection.port" value="1521" />
+			        <property name="connection.jdbc.url" value="jdbc:oracle:thin:@127.0.0.1:1521:BAM_DATABASE" />
+		        </configuration>
+            </endpoint>
+			
+			<endpoint name="smtpConfig">
+				<endpoint-type nameref="SMTPEndpoint"/>
+				
+				<configuration>
+					<property name="smtp.host" value="SMTPhost" />  <!--SMTP hostname-->
+				</configuration>
+			</endpoint>
+			
+			<endpoint name="emailNotificationConfig">
+				<endpoint-type nameref="EmailNotificationEndpoint"/>
+				
+				<configuration>
+					<property name="administrator.email" value="AdminEmailId" /> <!--Administrator email to which email notifications must be sent-->
+				</configuration>
+			</endpoint>
+        </external-endpoints>
+
+		  <!-- Uncomment this when using RKM -->
+			<!-- <endpoint name="rkmConfig"> 
+	             <endpoint-type nameref="RKMAccess"/> 
+	                
+                  <system-account-binding>
+                  <system-account nameref="RKM_CERT_ACCESS"/>
+                  </system-account-binding>
+                
+                  <configuration>
+	              <property name="rkm.host" value="0.0.0.0"/>  
+                  <property name="rkm.port" value="38443"/>
+                  </configuration>
+            </endpoint> -->
+		
+        
+        <!-- 
+        	Uncomment this section if you want to override the system account context defined in the VDC
+         -->
+        <!--
+            <system-account-context>
+			    <system-account nameref="SERVICE_SYSTEM_ACCOUNT_NAME" />
+			    <system-account nameref="SERVICE_ENDPOINT_SYSTEM_ACCOUNT_NAME" />
+		    </system-account-context>
+        -->
+    </environment>
+
+
+    <!-- ******************************************************************************** -->
+    <!-- 4.Module -->
+    <!--
+
+        4.1. <module>
+            4.1.1. <environment>
+                4.1.1.1. <nameref>: Map to environment name defined in Section 3
+            4.1.2. <module-template>
+                4.1.2.1. <nameref>: Name of the environment template to be used for provisioning the environment
+
+            <optional> Use this section to override the DEFAULT_SERVICE and DEFAULT_SERVICE_ENDPOINT system account bindings for specific services.
+            4.1.3. <blueprint>
+                4.1.3.1. <services>
+                    4.1.3.1.1. <name>: Name of the service
+                    4.1.3.1.2. <endpoints>
+                        4.1.3.1.2.1. <endpoint>
+                            4.1.3.1.2.1.1. <name>: Name of the endpoint
+                            4.1.3.1.2.1.2. <system-account-binding>: Map to the System Account defined in Section 2
+
+    -->
+
+    <module>
+    	<environment nameref="DevDctmEnv" />
+    	<module-template nameref="DevDockerTemplate" />
+
+		<blueprint>
+			<services>
+				<service name="RepositoryService">
+					<endpoints>
+						<endpoint name="repositoryEndpoint">
+							<system-account-binding>
+							   <system-account nameref="REPO_ADMIN_ACCESS"/>
+							</system-account-binding>
+						</endpoint>
+					</endpoints>
+				</service>
+				<service name="AppHostService">
+					<endpoints>
+						<endpoint name="appHostEndpoint">
+							<system-account-binding>
+							   <system-account nameref="APPHOST_ADMIN_ACCESS"/>
+							</system-account-binding>
+						</endpoint>
+					</endpoints>
+				</service>
+
+
+
+				<service name="SearchService">
+					<endpoints>
+						<endpoint name="xploreEndpoint">
+							<system-account-binding>
+							   <system-account nameref="XPLORE_ACCESS"/>
+							</system-account-binding>
+						</endpoint>
+					</endpoints>
+				</service>
+
+            
+
+			</services>
+		</blueprint>
+    </module>
+    
+</xms-configuration>

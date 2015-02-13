@@ -1,0 +1,5 @@
+import-configuration --file /bundles/bootstrap-server-configuration.xml
+import-configuration --file /bundles/bootstrap-docker-configuration.xml
+import-configuration --file /bundles/blueprint-docker-xcp2.1.xml
+import-configuration --file /bundles/environment-profile-xCP-developer-docker.xml
+exit

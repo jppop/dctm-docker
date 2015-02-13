@@ -4,7 +4,7 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a broker (as 'broker') server.
 Something like:
-  docker run -dP --name bps -h bps --link broker:broker bps
+  docker run -dP --name xms -h xms --link broker:broker dctm-xmsagent
 EOF
   exit 2
 }
@@ -22,7 +22,7 @@ export CATALINA_OPTS JAVA_OPTS CATALINA_OUT
 DFC_DATADIR=${CATALINA_HOME}/temp/dfc
 [ -d ${DFC_DATADIR} ] || mkdir -p ${DFC_DATADIR}
 
-cat << __EOF__ >> ${CATALINA_HOME}/conf/dfc.properties
+cat << __EOF__ > ${CATALINA_HOME}/conf/dfc.properties
 dfc.name=xms-agent
 dfc.data.dir=${DFC_DATADIR}
 dfc.tokenstorage.enable=false

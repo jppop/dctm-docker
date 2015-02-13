@@ -22,7 +22,7 @@ export CATALINA_OPTS JAVA_OPTS CATALINA_OUT
 DFC_DATADIR=${CATALINA_HOME}/temp/dfc
 [ -d ${DFC_DATADIR} ] || mkdir -p ${DFC_DATADIR}
 
-cat << __EOF__ >> ${CATALINA_HOME}/conf/dfc.properties
+cat << __EOF__ > ${CATALINA_HOME}/conf/dfc.properties
 dfc.name=bam
 dfc.data.dir=${DFC_DATADIR}
 dfc.tokenstorage.enable=false
