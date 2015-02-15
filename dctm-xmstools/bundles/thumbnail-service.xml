@@ -1,0 +1,38 @@
+<xms-configuration>
+    <service-type name="ThumbnailServiceType" label="Thumbnail Service Type"/>
+
+   <service-provider name="thumbnail_7_1" label="Thumbnail Service">
+        <version>
+            <name>7.1.0.0</name>
+        </version>
+        <os-info architecture="x64" family="Windows"/>
+        <required-xms-version>
+            <name>1.1.0.0</name>
+        </required-xms-version>
+        <recipe-version>
+            <name>1.1.0.0</name>
+        </recipe-version>
+        <service-type-ref nameref="ThumbnailServiceType"/>
+        <dependency-defs>
+            <dependency-def name="repositoryAccess" label="Repository Access" optional="false">
+                <endpoint-type-ref nameref="RepositoryAccess"/>
+                <required-service-type-ref nameref="RepositoryServiceType"/>
+            </dependency-def>
+        </dependency-defs>
+       <endpoint-defs>
+            <endpoint-def name="thumbnailEndpoint" label="Thumbnail Access Details">
+                <endpoint-type-ref nameref="PortAccess"/>
+                <default-value-map>
+                    <property name="host" value="${context.alternate.address}"/>
+                    <property name="port" value="${component.Thumbnail.port}"/>
+                </default-value-map>
+            </endpoint-def>
+        </endpoint-defs>
+        <component-def name="ThumbnailServer" label="Thumbnail Server" internal="false" optional="true">
+            <component-provider-ref nameref="thumbnail_server_7_1_win"/>
+            <target-cluster-node>PRIMARY_NODE</target-cluster-node>
+            <exclude-cluster-node>NONE</exclude-cluster-node>
+        </component-def>
+    </service-provider>
+
+</xms-configuration>

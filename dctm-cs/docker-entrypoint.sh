@@ -93,8 +93,11 @@ __EOF__
 
 if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
     echo "Installing the repository $REPOSITORY_NAME ($REPOSITORY_ID)"
-    # create the reponse file
     cd ${DM_HOME}/install
+
+    touch .start-install
+
+    # create the reponse file
     ./delete-schema.sh $REPOSITORY_NAME 2>&1 > delete-schema.out
     ./create-responsefile.sh $REPOSITORY_NAME $REPOSITORY_ID > $REPOSITORY_NAME-install.properties
 
@@ -102,15 +105,15 @@ if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
     ./dm_launch_server_config_program.sh -f $REPOSITORY_NAME-install.properties
     echo "done"
 
-    if [ $INSTALL_BPM -eq 1 ]; then
+    if [ $INSTALL_XCP -eq 1 ]; then
 
         installProcessEngine
 
         echo "Installing xCP dars.."
         cd ${DM_HOME}/install
         for dar in ImageServices.dar xCP_Viewer_Services.dar Rich_Media_Services.dar Transformation.dar CTSAspects.dar ; do
-            cp /bundles/dars/$dar $DM_HOME/install/DARsInternal/
-          ./dar-deploy.sh -r ${REPOSITORY_NAME} -d $DM_HOME/install/DARsInternal/$dar
+            cp /bundles/dars/$dar ${DM_HOME}/install/DARsInternal/
+            ${DM_HOME}/install/deploy-dar.sh -r ${REPOSITORY_NAME} -d ${DM_HOME}/install/DARsInternal/$dar
         done
 
         echo "Create BAM database owner.."
@@ -118,11 +121,14 @@ if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
         create user ${BAM_USER} identified by ${BAM_PWD};
         grant connect, resource, create view, create sequence to ${BAM_USER};
         exit;
+__EOF__
 
     fi
 
     echo "Stopping the repository"
     ${DOCUMENTUM}/dba/dm_shutdown_${REPOSITORY_NAME}
+
+    touch .stop-install
 fi
 
 # Set the umask to zero as to not interfere with the server's creation

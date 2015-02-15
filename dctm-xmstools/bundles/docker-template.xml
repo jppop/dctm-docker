@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<!-- ~ Copyright (c) 2011. EMC Corporation. All Rights Reserved. -->
+<xms-configuration>
+    <module-template name="DevDockerTemplate" key="DX" label="xCP-2.1-Developer with Docker">
+        <created-by>xMS</created-by>
+        <blueprint key="XCP">
+            <!-- TODO: XML naming convention guide -->
+            <version>
+                <name>7.1</name>
+            </version>
+            <vm-clusters>
+                <vm-cluster name="repoVM" key="C" description="Repository Service Host Group">
+                    <size>${repoVM.cluster.size=1}</size>
+                    <cpu>${repoVM.cpu=1}</cpu>
+                    <memory>${repoVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                   <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="searchVM" key="I" description="Search Service Host Group">
+                    <size>${searchVM.cluster.size=1}</size>
+                    <cpu>${searchVM.cpu=1}</cpu>
+                    <memory>${searchVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="bamVM" key="B" description="Business Activity Monitor Service Host Group">
+                    <size>${bamVM.cluster.size=1}</size>
+                    <cpu>${bamVM.cpu=1}</cpu>
+                    <memory>${bamVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="appHostVM" key="H" description="Application Host Service Host Group">
+                    <size>${appHostVM.cluster.size=1}</size>
+                    <cpu>${appHostVM.cpu=1}</cpu>
+                    <memory>${appHostVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="xmsVM" key="X" description="XMS Agent Host Service Host Group">
+                    <size>${xmsVM.cluster.size=1}</size>
+                    <cpu>${xmsVM.cpu=1}</cpu>
+                    <memory>${xmsVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="daVM" key="A" description="Documentum Administrator Service Host Group">
+                    <size>${daVM.cluster.size=1}</size>
+                    <cpu>${daVM.cpu=1}</cpu>
+                    <memory>${daVM.memory=2GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                <vm-cluster name="cisVM" key="S" description="Content Intelligence Service Host Group">
+                    <size>${cisVM.cluster.size=1}</size>
+                    <cpu>${cisVM.cpu=1}</cpu>
+                    <memory>${cisVM.memory=2GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                  <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+<!--
+                <vm-cluster name="mtsVM" key="M" description="Monitor Transformation Service Host Group ">
+		            <size>${mtsVM.cluster.size=1}</size>
+		            <cpu>${mtsVM.cpu=1}</cpu>
+		            <memory>${mtsVM.memory=2GB}</memory>
+		             <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+		            <vm-template nameref="DOCKER" />
+		        </vm-cluster>
+		        <vm-cluster name="adtsVM" key="T" description="Advance Document Transformation Service Host Group ">
+		            <size>${adtsVM.cluster.size=1}</size>
+		            <cpu>${adtsVM.cpu=1}</cpu>
+		            <memory>${adtsVM.memory=2GB}</memory>
+		             <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+		            <vm-template nameref="DOCKER" />
+		        </vm-cluster>
+		        <vm-cluster name="avtsVM" key="V" description="Audio Video Transformation Service Host Group ">
+		            <size>${avtsVM.cluster.size=1}</size>
+		            <cpu>${avtsVM.cpu=1}</cpu>
+		            <memory>${avtsVM.memory=2GB}</memory>
+		             <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+		            <vm-template nameref="DOCKER" />
+		        </vm-cluster>
+-->
+                <vm-cluster name="bpsVM" key="P" description="Process Integrator Service Host Group">
+                    <size>${bpsVM.cluster.size=1}</size>
+                    <cpu>${bpsVM.cpu=1}</cpu>
+                    <memory>${bpsVM.memory=2GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+                 <vm-cluster name="thumbVM" key="T" description="Thumbnail Service Host Group">
+                    <size>${thumbVM.cluster.size=1}</size>
+                    <cpu>${thumbVM.cpu=1}</cpu>
+                    <memory>${thumbVM.memory=1GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DOCKER"/>
+                </vm-cluster>
+           </vm-clusters>
+
+            <services>
+                <service name="RepositoryService">
+                    <vm-cluster nameref="repoVM"/>
+
+		            <service-type nameref="RepositoryServiceType"/>
+		            <version><name>7.1</name></version>
+		            <qualifiers>
+		            	<!-- For Oracle use qualifier value "ORACLE" -->
+		            	<qualifier name="DATABASE_TYPE" value="ORACLE"/>
+		            </qualifiers>
+
+                    <dependencies>
+                        <dependency name="repositoryDbConfig"/>
+                        <dependency name="globalRepositoryConfig" />
+                        <dependency name="smtpConfig"/>
+                        <dependency name="emailNotificationConfig"/>
+						<dependency name="rkmConfig"/>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="ContentServer">
+                            <properties>
+                                <property name="appserver.http.port" value="${appserver.http.port=9080}"/>
+                                <property name="appserver.base.port" value="${appserver.base.port=9180}"/>
+                                <property name="docbroker.port" value="${docbroker.port=1489}"/>
+                                <property name="docbase.name" value="${docbase.name=devbox}"/>
+                                <property name="docbase.id" value="${docbase.id=18344}"/>
+                                <property name="docbase.owner.name" value="${docbase.owner.name=devbox}"/>
+                                <property name="common.server.licensing" value="${common.server.licensing=false}"/>
+                                <property name="tcs.license.key" value="${tcs.license.key=ABSSERIAL}"/>
+								<property name="enable.rkm" value="${enable.rkm=false}" />
+						        <property name="rkm.shared.certificate.location" value="${rkm.shared.certificate.location=certificateLocation}" />
+                                <property name="dms.webservices.listen.port"
+                                          value="${dms.webservices.listen.port=8489}"/>
+                                <property name="server.conf.distributed.env" value="${install.dms.enable=false}"/>
+                                <!-- make false if don't want to install DMS -->
+                                <property name="install.external.docbroker" value="${install.external.docbroker=false}" />
+                                <property name="use.external.global.repository" value="${use.external.global.repository=false}" />
+								<property name="use.existing.db" value="${use.existing.db=false}" />
+								<property name="data.dir" value="%installRoot%\Documentum\data" />
+                            </properties>
+                        </service-component>
+
+                        <service-component name="ProcessEngine"
+                                           enabled="${RepositoryService.ProcessEngine.enabled=true}"/>
+
+                        <service-component name="Dis.dar" enabled="${RepositoryService.DisDar.enabled=true}"/>
+
+                        <service-component name="XcpViewer.dar"
+                                           enabled="${RepositoryService.XcpViewerDar.enabled=true}"/>
+
+                        <service-component name="CtsBundled.dar" enabled="${RepositoryService.CtsDar.enabled=true}"/>
+
+                        <service-component name="CisArtifacts.dar" enabled="${RepositoryService.CisDar.enabled=true}"/>
+
+                    </service-components>
+                </service>
+
+                <service name="SearchService">
+                    <vm-cluster nameref="searchVM"/>
+                    
+                    <service-type nameref="SearchServiceType"/>
+                    <version><name>1.4</name></version>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                        <dependency name="smtpConfig"/>
+                        <dependency name="emailNotificationConfig"/>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="Xplore">
+                            <properties>
+                                <property name="ess.instance.port" value="${ess.instance.port=9300}"/>
+                                <property name="indexagent.instance.port" value="${indexagent.instance.port=9200}"/>
+                            </properties>
+                        </service-component>
+                    </service-components>
+                </service>
+
+                <service name="ThumbnailService">
+                    <vm-cluster nameref="thumbVM"/>
+                    <service-type nameref="ThumbnailServiceType"/>
+                    <version><name>7.1</name></version>
+<!--                    
+                    <service-type nameref="ApphostServiceType"/>
+                    <version><name>2.1</name></version>
+-->
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                    </dependencies>
+
+                    <service-components>
+                    
+                        <service-component name="ThumbnailServer"
+                                           enabled="${RepositoryService.ThumbnailServer.enabled=true}">
+                            <properties>
+                                <property name="http.port" value="${ThumbnailServer.http.port=8081}"/>
+                                <property name="admin.port" value="${ThumbnailServer.admin.port=8008}"/>
+                                <property name="connection.type" value="${ThumbnailServer.connection.type=HTTP}"/>
+                            </properties>
+                        </service-component>
+<!--                    
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="ThumbnailServer"/>
+
+                                <property name="http.port" value="${ts.http.port=8080}"/>
+                                <property name="https.port" value="${ts.https.port=8443}"/>
+                                <property name="shutdown.port" value="${ts.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${ts.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${ts.ajp.port=8009}" />
+                                <property name="redirect.port" value="${ts.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+-->
+                    </service-components>
+
+                </service>
+
+                <service name="BamService">
+                    <vm-cluster nameref="bamVM"/>
+                    
+		            <service-type nameref="BAMServiceType"/>
+		            <version><name>2.1</name></version>
+		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+		            <qualifiers>
+            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+            		</qualifiers>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                        <dependency name="bamDbConfig"/>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="BAM"/>
+
+                                <property name="http.port" value="${bam.http.port=8080}"/>
+                                <property name="https.port" value="${bam.https.port=8443}"/>
+                                <property name="shutdown.port" value="${bam.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${bam.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${bam.ajp.port=8009}" />
+								<property name="redirect.port" value="${bam.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+
+                        <service-component name="BamServer"/>
+
+                       
+                    </service-components>
+                </service>
+<!--
+                <service name="MtsService">
+		            <vm-cluster nameref="mtsVM"/>
+		
+		            <service-type nameref="MTSServiceType"/>
+		            <version><name>7.1</name></version>
+		            
+		            <dependencies>
+		                <dependency name="repositoryAccess">
+		                	<service-ref nameref="RepositoryService"/>
+		                </dependency>
+		            </dependencies>
+		            
+		            <service-components>
+		                <service-component name="Mts"/>
+		            </service-components>
+		        </service>
+		        
+		        <service name="AdtsService">
+		            <vm-cluster nameref="adtsVM"/>
+		
+		            <service-type nameref="ADTSServiceType"/>
+		            <version><name>7.1</name></version>
+		            
+		            <dependencies>
+		                <dependency name="repositoryAccess">
+		                	<service-ref nameref="RepositoryService"/>
+		                </dependency>
+		            </dependencies>
+		            
+		            <service-components>
+		                <service-component name="Adts"/>
+		            </service-components>
+		        </service>
+		        
+		        <service name="AvtsService">
+		            <vm-cluster nameref="avtsVM"/>
+		
+		            <service-type nameref="AVTSServiceType"/>
+		            <version><name>7.1</name></version>
+		            
+		            <dependencies>
+		                <dependency name="repositoryAccess">
+		                	<service-ref nameref="RepositoryService"/>
+		                </dependency>
+		            </dependencies>
+		            
+		            <service-components>
+		                <service-component name="Avts"/>
+		            </service-components>
+		        </service>
+-->
+                <service name="AppHostService">
+                    <vm-cluster nameref="appHostVM"/>
+                    
+		            <service-type nameref="ApphostServiceType"/>
+		            <version><name>2.1</name></version>
+		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+		            <qualifiers>
+            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+            		</qualifiers>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                        <dependency name="bamEndpoint">
+                            <service-ref nameref="BamService"/>
+                        </dependency>
+                        <!--dependency name="adtsEndpoint">
+                			<service-ref nameref="AdtsService"/>
+		                </dependency-->
+		                <!-- Enable if AppHost is having AvtsService Dependency -->
+		                <!-- <dependency name="avtsEndpoint">
+		                	<service-ref nameref="AvtsService"/>
+		                </dependency> -->
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="AppServer">
+                            <properties>
+                                <!--NOTE: Without below property, this service uses default tomcat version
+                                <property name="tomcat.version" value="6.0.35.B.RELEASE" />
+                                -->
+                                <property name="server.name" value="ClientApps"/>
+
+                                <property name="http.port" value="${apphost.http.port=8080}"/>
+                                <property name="https.port" value="${apphost.https.port=8443}"/>
+                                <property name="shutdown.port" value="${apphost.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${apphost.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${apphost.ajp.port=8009}" />
+								<property name="redirect.port" value="${apphost.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+
+                       
+                    </service-components>
+                </service>
+
+                <service name="DaService">
+                    <vm-cluster nameref="daVM"/>
+                    
+		            <service-type nameref="DaServiceType"/>
+		            <version><name>7.1</name></version>
+		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+		            <qualifiers>
+            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+            		</qualifiers>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="DA"/>
+
+                                <property name="http.port" value="${da.http.port=8080}"/>
+                                <property name="https.port" value="${da.https.port=8443}"/>
+                                <property name="shutdown.port" value="${da.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${da.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${da.ajp.port=8009}" />
+								<property name="redirect.port" value="${da.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+
+                        <service-component name="DaServer"/>
+                    </service-components>
+                </service>
+
+                <service name="CisService">
+                    <vm-cluster nameref="cisVM"/>
+                    
+		            <service-type nameref="CisServiceType"/>
+		            <version><name>7.0</name></version>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="CIS"/>
+                    </service-components>
+                </service>
+
+                <service name="BpsService">
+                    <vm-cluster nameref="bpsVM"/>
+                    
+		            <service-type nameref="BpsServiceType"/>
+		            <version><name>2.1</name></version>
+		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+		            <qualifiers>
+            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+            		</qualifiers>
+
+                    <dependencies>
+                        <dependency name="repositoryAccess">
+                            <service-ref nameref="RepositoryService"/>
+                        </dependency>
+                    </dependencies>
+
+                    <service-components>
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="BPS"/>
+
+                                <property name="http.port" value="${bps.http.port=8080}"/>
+                                <property name="https.port" value="${bps.https.port=8443}"/>
+                                <property name="shutdown.port" value="${bps.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${bps.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${bps.ajp.port=8009}" />
+								<property name="redirect.port" value="${bps.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+
+                        <service-component name="BpsServer"/>
+
+                        <service-component name="BpsConfig"/>
+                    </service-components>
+                </service>
+
+                <service name="XmsAgentService">
+                    <!-- Specify the same VM as specified for AppHostService -->
+                    <vm-cluster nameref="xmsVM"/>
+                    
+                    <service-type nameref="XmsAgentServiceType"/>
+                    <version><name>1.1</name></version>
+                    <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+                    <qualifiers>
+                        <qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+                    </qualifiers>
+                    
+                    <service-components>
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="xMSAgent"/>
+                                <property name="install.dir" value="%installRoot%\xmsAgentServer"/>
+
+                                <property name="http.port" value="${xmsAgent.http.port=8080}"/>
+                                <property name="https.port" value="${xmsAgent.https.port=8043}"/>
+                                <property name="shutdown.port" value="${xmsAgent.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${xmsAgent.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${xmsAgent.ajp.port=8009}" />
+                                <property name="redirect.port" value="${xmsAgent.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+
+                        <service-component name="XmsServer"/>
+                    </service-components>
+                </service>
+
+            </services>
+        </blueprint>
+    </module-template>
+</xms-configuration>

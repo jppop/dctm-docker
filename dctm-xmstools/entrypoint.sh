@@ -4,7 +4,7 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a xms-agent (as 'xms') server.
 Something like:
-  docker run -it --rm --name xms-tools -h xms-tools --link xms:xms xms-tools
+  docker run -it --rm --name xms-tools -h xms-tools --link xms:xms [-e XMSINIT=true] xms-tools
 EOF
   exit 2
 }
@@ -19,13 +19,15 @@ xms-server-schema = http
 xms-server-context-path = xms-agent
 __EOF__
 
-if [ ! -f  ${XMSTOOL_HOME}/config/.initialized ]; then
+if [ "${XMSINIT}" = "true" ]; then
 	cd bin
 
 	# set password
-	printf "admin\nadminPass1\nexit\n" | ./xms.sh
+	printf "adminPass1\nadminPass1\nexit\n" | ./xms.sh
 
-#	./xms.sh -u admin -p adminPass1 -f init.xms
+#	./xms.sh -u admin -p adminPass1 -f /bundles/init.script
+	echo "Registering Docker Environnement Template..."
+	./xms.sh -u admin -p adminPass1 -f /bundles/init-docker.script
 
 	touch ${XMSTOOL_HOME}/config/.initialized
 fi

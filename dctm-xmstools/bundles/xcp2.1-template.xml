@@ -3,7 +3,7 @@
 
 <!-- ~ Copyright (c) 2011. EMC Corporation. All Rights Reserved. -->
 <xms-configuration>
-    <module-template name="DevDockerTemplate" key="XCD" label="xCP-2.1-Developer with docker">
+    <module-template name="DevDockerTemplate" key="DX" label="xCP-2.1-Developer with Docker">
         <created-by>xMS</created-by>
         <blueprint key="XCP">
             <!-- TODO: XML naming convention guide -->
@@ -43,6 +43,14 @@
                     <max-vms>1</max-vms>
                     <vm-template nameref="DEFAULT_OS_TEMPLATE"/>
                 </vm-cluster>
+                <vm-cluster name="xmsVM" key="X" description="XMS Agent Host Service Host Group">
+                    <size>${xmsVM.cluster.size=1}</size>
+                    <cpu>${xmsVM.cpu=1}</cpu>
+                    <memory>${xmsVM.memory=4GB}</memory>
+                    <min-vms>1</min-vms>
+                    <max-vms>1</max-vms>
+                    <vm-template nameref="DEFAULT_OS_TEMPLATE"/>
+                </vm-cluster>
                 <vm-cluster name="daVM" key="A" description="Documentum Administrator Service Host Group">
                     <size>${daVM.cluster.size=1}</size>
                     <cpu>${daVM.cpu=1}</cpu>
@@ -51,7 +59,6 @@
                     <max-vms>1</max-vms>
                     <vm-template nameref="DEFAULT_OS_TEMPLATE"/>
                 </vm-cluster>
-<!--
                 <vm-cluster name="cisVM" key="S" description="Content Intelligence Service Host Group">
                     <size>${cisVM.cluster.size=1}</size>
                     <cpu>${cisVM.cpu=1}</cpu>
@@ -60,6 +67,7 @@
                     <max-vms>1</max-vms>
                   <vm-template nameref="DEFAULT_OS_TEMPLATE"/>
                 </vm-cluster>
+<!--
                 <vm-cluster name="mtsVM" key="M" description="Monitor Transformation Service Host Group ">
 		            <size>${mtsVM.cluster.size=1}</size>
 		            <cpu>${mtsVM.cpu=1}</cpu>
@@ -187,9 +195,12 @@
 
                 <service name="ThumbnailService">
                     <vm-cluster nameref="thumbVM"/>
-                    
-                    <service-type nameref="ThumbnailServerType"/>
-                    <version><name>7.1.0.0</name></version>
+<!--                    
+                    <service-type nameref="ThumbnailServiceType"/>
+                    <version><name>7.1</name></version>
+-->
+                    <service-type nameref="ApphostServiceType"/>
+                    <version><name>2.1</name></version>
 
                     <dependencies>
                         <dependency name="repositoryAccess">
@@ -197,14 +208,30 @@
                         </dependency>
                     </dependencies>
 
-                    <service-component name="ThumbnailServer"
-                                       enabled="${RepositoryService.ThumbnailServer.enabled=true}">
-                        <properties>
-                            <property name="http.port" value="${ThumbnailServer.http.port=8080}"/>
-                            <property name="admin.port" value="${ThumbnailServer.admin.port=8008}"/>
-                            <property name="connection.type" value="${ThumbnailServer.connection.type=HTTP}"/>
-                        </properties>
-                    </service-component>
+                    <service-components>
+                    <!--
+                        <service-component name="ThumbnailServer"
+                                           enabled="${RepositoryService.ThumbnailServer.enabled=true}">
+                            <properties>
+                                <property name="http.port" value="${ThumbnailServer.http.port=8081}"/>
+                                <property name="admin.port" value="${ThumbnailServer.admin.port=8008}"/>
+                                <property name="connection.type" value="${ThumbnailServer.connection.type=HTTP}"/>
+                            </properties>
+                        </service-component>
+                    -->
+                        <service-component name="AppServer">
+                            <properties>
+                                <property name="server.name" value="ThumbnailServer"/>
+
+                                <property name="http.port" value="${ts.http.port=8080}"/>
+                                <property name="https.port" value="${ts.https.port=8443}"/>
+                                <property name="shutdown.port" value="${ts.shutdown.port=8005}"/>
+                                <property name="jmx.port" value="${ts.jmx.port=8020}"/>
+                                <property name="ajp.port" value="${ts.ajp.port=8009}" />
+                                <property name="redirect.port" value="${ts.redirect.port=8443}" />
+                            </properties>
+                        </service-component>
+                    </service-components>
 
                 </service>
 
@@ -215,7 +242,7 @@
 		            <version><name>2.1</name></version>
 		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
 		            <qualifiers>
-            			<qualifier name="APP_SERVER_TYPE" value="TC_SERVER_SE"/>
+            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
             		</qualifiers>
 
                     <dependencies>
@@ -376,7 +403,7 @@
                         <service-component name="DaServer"/>
                     </service-components>
                 </service>
-<!--
+
                 <service name="CisService">
                     <vm-cluster nameref="cisVM"/>
                     
@@ -393,7 +420,7 @@
                         <service-component name="CIS"/>
                     </service-components>
                 </service>
--->
+
                 <service name="BpsService">
                     <vm-cluster nameref="bpsVM"/>
                     
@@ -432,15 +459,15 @@
 
                 <service name="XmsAgentService">
                     <!-- Specify the same VM as specified for AppHostService -->
-                    <vm-cluster nameref="appHostVM"/>
+                    <vm-cluster nameref="xmsVM"/>
                     
-		            <service-type nameref="XmsAgentServiceType"/>
-		            <version><name>1.2</name></version>
-		            <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
-		            <qualifiers>
-            			<qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
-            		</qualifiers>
-					
+                    <service-type nameref="XmsAgentServiceType"/>
+                    <version><name>1.1</name></version>
+                    <!-- Change APP_SERVER_TYPE from  TC_SERVER_SE to TOMCAT to use Tomcat as application Server-->
+                    <qualifiers>
+                        <qualifier name="APP_SERVER_TYPE" value="TOMCAT"/>
+                    </qualifiers>
+                    
                     <service-components>
                         <service-component name="AppServer">
                             <properties>
@@ -448,11 +475,11 @@
                                 <property name="install.dir" value="%installRoot%\xmsAgentServer"/>
 
                                 <property name="http.port" value="${xmsAgent.http.port=8080}"/>
-                                <property name="https.port" value="${xmsAgent.https.port=8443}"/>
+                                <property name="https.port" value="${xmsAgent.https.port=8043}"/>
                                 <property name="shutdown.port" value="${xmsAgent.shutdown.port=8005}"/>
                                 <property name="jmx.port" value="${xmsAgent.jmx.port=8020}"/>
                                 <property name="ajp.port" value="${xmsAgent.ajp.port=8009}" />
-								<property name="redirect.port" value="${xmsAgent.redirect.port=8443}" />
+                                <property name="redirect.port" value="${xmsAgent.redirect.port=8443}" />
                             </properties>
                         </service-component>
 

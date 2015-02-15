@@ -23,7 +23,7 @@ docker run -dP -p 7000:8080 --name xms -h xms --link broker:broker --link dctm-c
 # ISSUES
 
 ### DM_DOCBROKER_E_ID_ALREADY_REGISTERED  
-If you run a new dctm-cs container using a broker alread used (ie, a previously content server has already registered a repo to the connection broker), you will probably run into an issue. Prefer running again the broker too (and dbora):  
+If you run a new dctm-cs container using a broker already used (ie, a previously content server has already registered a repo to the connection broker), you will probably run into an issue. Prefer running again the broker too (and dbora):  
 ```bash
 docker stop dctm-cs broker dbora  
 docker rm dctm-cs broker dbora  

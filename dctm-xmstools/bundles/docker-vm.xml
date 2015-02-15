@@ -1,0 +1,20 @@
+<xms-configuration>
+	
+	<system-account name="DOCKER_TEMPLATE">
+		<system-account-type nameref="OS_TEMPLATE"/>
+		<credentials domain="" password="password" username="username"/>
+	</system-account>
+
+	<vm-template install-root="/opt" name="DOCKER">
+		<created-by>xMS</created-by>
+		<os-type architecture="x64" family="Linux"/>
+		<system-account-binding>
+			<system-account nameref="DOCKER_TEMPLATE"/>
+		</system-account-binding>
+		<protocol-configuration name="winrm">
+			<param name="schema" value="https"/>
+			<param name="port" value="5986"/>
+		</protocol-configuration>
+	</vm-template>
+
+</xms-configuration>

@@ -1,0 +1,7 @@
+configure-xms-agent
+import-configuration --file /bundles/docker-vm.xml
+import-configuration --file /bundles/docker-services.xml
+import-configuration --file /bundles/docker-template.xml
+dont-import-configuration --file /bundles/docker-profile.xml --ccannot create a environment with this template
+import-configuration --file /bundles/docker-full-template.xml
+exit

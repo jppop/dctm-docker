@@ -1,0 +1,3 @@
+configure-xms-agent
+import-connfiguration --file /bundles/xcp2.1-template.xml
+exit

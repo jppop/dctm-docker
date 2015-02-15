@@ -23,17 +23,13 @@
     -->
 
     <configuration-context>
-        <property name="xCPVM1.cpu" value="4"/>
-        <property name="xCPVM1.memory" value="4GB"/>
-        <property name="xCPVM2.cpu" value="4"/>
-        <property name="xCPVM2.memory" value="4GB"/>
-
+ 
         <!-- Repository service runtime properties  -->
         <property name="appserver.http.port" value="9080"/>
         <property name="appserver.base.port" value="9180"/>
         <property name="docbase.name" value="devbox"/>
         <property name="docbase.id" value="1873"/>
-        <property name="docbase.owner.name" value="mydocuser"/>
+        <property name="docbase.owner.name" value="devbox"/>
         <property name="common.server.licensing" value="true"/>
         <property name="tcs.license.key" value="VALIDKEY"/>
         <property name="install.dms.enable" value="false"/>
@@ -137,7 +133,7 @@
     -->
 
     <environment name="DevDctmEnv" description="Developer's docker containers" mode="Development" key="D2">
-        <virtual-data-center nameref="vdc1"/>
+        <!--virtual-data-center nameref="vdc1"/-->
         
         <external-endpoints>
 
@@ -156,21 +152,21 @@
                 </configuration>
             </endpoint>
              
-		    <!-- Uncomment if using External Global Repository --> 
-            <!-- <endpoint name="globalRepositoryConfig"> 
-                <endpoint-type nameref="GlobalRepositoryAccess"/> 
-                
+           <endpoint name="repositoryAccess">
+                <endpoint-type nameref="RepositoryAccess"/>
+            
                 <system-account-binding>
-                   <system-account nameref="GLOBAL_REPO_ADMIN_ACCESS"/>
-               	</system-account-binding>
-                
+                    <system-account nameref="REPO_ADMIN_ACCESS"/>
+                </system-account-binding>
+            
                 <configuration>
-	                <property name="global.repo.name" value="REPO_NAME"/>
-	                <property name="global.docbroker.host" value="GLOBAL_DOCBROKER_HOST"/>
-	                <property name="global.docbroker.port" value="GLOBAL_DOCBROKER_PORT"/>
+                    <property name="bof.registry.user.name" value="dm_bof_registry"/>
+                    <property name="connection.name" value="XE"/>
+                    <property name="connection.host" value="dbora"/>
+                    <property name="connection.port" value="1521"/>
                 </configuration>
-            </endpoint> -->
-
+            </endpoint>
+             
             <endpoint name="bamDbConfig">
    			    <endpoint-type nameref="BamDatabaseAccess"/>
 
@@ -183,7 +179,7 @@
 			        <property name="connection.name" value="XE" />
 			        <property name="connection.host" value="dbora" />
 			        <property name="connection.port" value="1521" />
-			        <property name="connection.jdbc.url" value="jdbc:oracle:thin:@127.0.0.1:1521:BAM_DATABASE" />
+			        <property name="connection.jdbc.url" value="jdbc:oracle:thin:@dbora:1521:XE" />
 		        </configuration>
             </endpoint>
 			
@@ -253,8 +249,8 @@
     -->
 
     <module>
-    	<environment nameref="DevDctmEnv" />
-    	<module-template nameref="DevDockerTemplate" />
+   	    <environment nameref="DevDctmEnv" />
+    	<module-template nameref="DevDockerTemplate2" />
 
 		<blueprint>
 			<services>
@@ -277,8 +273,6 @@
 					</endpoints>
 				</service>
 
-
-
 				<service name="SearchService">
 					<endpoints>
 						<endpoint name="xploreEndpoint">
@@ -289,7 +283,15 @@
 					</endpoints>
 				</service>
 
-            
+                <service name="ThumbnailService">
+                    <endpoints>
+                        <endpoint name="appHostEndpoint">
+                            <system-account-binding>
+                               <system-account nameref="APPHOST_ADMIN_ACCESS"/>
+                            </system-account-binding>
+                        </endpoint>
+                    </endpoints>
+                </service>
 
 			</services>
 		</blueprint>

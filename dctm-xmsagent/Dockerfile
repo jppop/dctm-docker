@@ -5,8 +5,12 @@ MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 VOLUME /var/log/tomcat
 ENV LOGDIR /var/log/tomcat
 
+#VOLUME /var/xms
+#ENV XMS_DATA_DIR /var/xms
+
 # copy xms-agent war
 COPY bundles/xms-agent-1.1-P13.zip ${CATALINA_HOME}/webapps/xms-agent.war
+#COPY bundles/xms-agent-1.2.zip ${CATALINA_HOME}/webapps/xms-agent.war
 
 # the entrypoint (wrap catalina script)
 COPY bundles/entrypoint.sh ${CATALINA_HOME}/docker-entrypoint.sh
@@ -14,7 +18,7 @@ COPY bundles/entrypoint.sh ${CATALINA_HOME}/docker-entrypoint.sh
 RUN chmod a+x ${CATALINA_HOME}/docker-entrypoint.sh
 
 # tomcat tuning
-ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -Xmx2048m -DMaxPermSize=128 -XX:+UseParallelOldGC" \
+ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -DMaxPermSize=128 -XX:+UseParallelOldGC" \
     CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties -Dcatalina.logdir=${LOGDIR} -Dlog4j.properties=${CATALINA_HOME}/conf/log4j.xml"
 ENV CUSTOM_CATALINA_OUT ${LOGDIR}/catalina.out
 

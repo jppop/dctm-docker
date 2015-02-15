@@ -1,10 +1,13 @@
 #!/bin/bash
 
-docker build -t base-centos6 base-centos6/
-docker build -t oracle-xe oracle-xe/
-docker build -t dctm-base dctm-base/
-docker build -t dctm-broker dctm-broker/
-docker build -t dctm-cs dctm-cs/
-docker build -t dctm-da dctm-da/
-docker build -t dctm-ts dctm-ts/
-docker build -t dctm-xplore dctm-xplore/
+LOG_DIR=~/Library/Logs
+LOG_FILE=${LOG_DIR}/docker-build.log
+
+touch ${LOG_FILE}
+
+for img in $(cat images.lst); do
+	echo "Building $img..."
+	[ -w ${LOG_FILE} ] && logger -s "Starting build. Image: $img..." 2>> ${LOG_FILE}
+	docker build -t $img $img/ 2>&1 | tee ${LOG_DIR}/docker-build-$img.log
+	[ -w ${LOG_FILE} ] && logger -s "Done. Image: $img..." 2>> ${LOG_FILE}
+done

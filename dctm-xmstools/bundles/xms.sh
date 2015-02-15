@@ -8,7 +8,13 @@ EOF
     exit 1
 }
 
-OPTS=`getopt -o u:p:f -l username:,password:,input-file: -- "$@"`
+die() {
+# display an error message ($1) and exit with a return code ($2)
+  echo `basename $0`: ERROR: $1 1>&2
+  exit $2
+}
+
+OPTS=`getopt -o u:p:f: -l username:,password:,input-file: -- "$@"`
 if [ $? != 0 ]
 then
     exit 1
@@ -34,7 +40,9 @@ pwdopt=
 fileopt=
 [ -z "$inputfile" ] || fileopt="-Dxms.input.file=${inputfile}"
 
-export XMS_OPTS='-Xmx512m -XX:MaxPermSize=128m'
+[ -z "$inputfile" -o -f "$inputfile" ] || die "Script file not found: $inputfile" 2
+
+export XMS_OPTS='-Xmx1024m -XX:MaxPermSize=128m'
 export XMS_TOOLS_HOME=${PWD%/*}
 LIB_PATH=$XMS_TOOLS_HOME/lib
 CONFIG_PATH=$XMS_TOOLS_HOME/config

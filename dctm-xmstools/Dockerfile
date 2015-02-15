@@ -7,7 +7,7 @@ ENV XMSTOOL_HOME /opt/xms-tools
 
 COPY ./bundles /bundles
 RUN mkdir ${XMSTOOL_HOME} \
- && unzip /bundles/xms-tools-1.2.zip -d ${XMSTOOL_HOME} \
+ && unzip -q /bundles/xms-tools-1.2.zip -d ${XMSTOOL_HOME} \
  && cp /bundles/xms.sh ${XMSTOOL_HOME}/bin/ \
  && chmod a+x ${XMSTOOL_HOME}/bin/xms.sh
 
