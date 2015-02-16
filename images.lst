@@ -2,10 +2,10 @@ oracle-xe
 base-centos6
 dctm-base
 dctm-broker
+dctm-cs
 dctm-bam
 dctm-bps
 #dctm-cis
-dctm-cs
 dctm-da
 dctm-ts
 dctm-xmsagent

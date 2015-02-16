@@ -2,15 +2,15 @@
 
 dockerUsage() {
     cat 2>&1 <<EOF
-This container must be linked with a content server (as 'dctm-cs') and a oracle (as dbora) server.
+This container must be linked with a content server (as 'dctm-cs') server.
 Something like:
-  docker run -dP --name ts -h ts --link dctm-cs:dctm-cs --link dbora:dbora dctm-ts
+  docker run -dP --name ts -h ts --link dctm-cs:dctm-cs dctm-ts
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${DCTM_CS_NAME}" -o -z "${DBORA_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" ] && dockerUsage
 
 repo=${REPOSITORY_NAME:-devbox}
 user=${REPOSITORY_USER:-dmadmin}
