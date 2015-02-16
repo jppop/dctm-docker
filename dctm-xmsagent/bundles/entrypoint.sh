@@ -2,15 +2,15 @@
 
 dockerUsage() {
     cat 2>&1 <<EOF
-This container must be linked with a broker (as 'broker') server.
+This container must be linked with a cs (as 'dctm-cs') server.
 Something like:
-  docker run -dP --name xms -h xms --link broker:broker dctm-xmsagent
+  docker run -dP --name xms -h xms --link dctm-cs:dctm-cs dctm-xmsagent
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${BROKER_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" ] && dockerUsage
 
 [ -z "$MEM_XMSX" ] && MEM_XMSX=2048m
 
@@ -28,8 +28,8 @@ cat << __EOF__ > ${CATALINA_HOME}/conf/dfc.properties
 dfc.name=xms-agent
 dfc.data.dir=${DFC_DATADIR}
 dfc.tokenstorage.enable=false
-dfc.docbroker.host[0]=${DOCBROKER_ADR:-$BROKER_PORT_1489_TCP_ADDR}
-dfc.docbroker.port[0]=${DOCBROKER_PORT:-$BROKER_PORT_1489_TCP_PORT}
+dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
+dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
 dfc.session.secure_connect_default=try_native_first
 dfc.globalregistry.repository=${REGISTRY_NAME:-devbox}
 dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}

@@ -9,14 +9,14 @@ Documentum running in containers
 
 ```bash
 docker run -dP --name dbora -h dbora oracle-xe  
-docker run -dP --name broker -h broker dctm-broker  
-docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora --link broker:broker dctm-cs  
-docker run -d --name jms --link broker:broker -h dctm-jms dctm-jms 
-docker run -dP -it --name xplore -h xplore --link broker:broker dctm-xplore    
-docker run --rm -it --name da -p 8888:8080 --link broker:broker --link dctm-cs:dctm-cs dctm-da  
-docker run -dP -p 8000:8080 --name bam -h bam --link broker:broker --link dbora:dbora dctm-bam  
-docker run -dP -p 8040:8080 --name bps -h bps --link broker:broker dctm-bps  
-docker run -dP -p 7000:8080 --name xms -h xms --link broker:broker --link dctm-cs:dctm-cs --link dbora:dbora --link bam:bam --link xplore:xplore dctm-xmsagent  
+docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs  
+docker run -d --name jms --link dctm-cs:dctm-cs -h dctm-jms dctm-jms 
+docker run -dP -it --name xplore -h xplore --link dctm-cs:dctm-cs dctm-xplore    
+docker run --rm -it --name da -p 7002:8080 --link dctm-cs:dctm-cs dctm-da  
+docker run -dP -p 8000:8080 --name bam -h bam --link dctm-cs:dctm-cs --link dbora:dbora dctm-bam  
+docker run -dP -p 8010:8080 --name apphost -h apphost --link dctm-cs:dctm-cs --link bam:bam dctm-apphost  
+docker run -dP -p 8040:8080 --name bps -h bps --link dctm-cs:dctm-cs dctm-bps  
+docker run -dP -p 7000:8080 --name xms -h xms --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent  
 
 ```
 

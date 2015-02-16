@@ -1,5 +1,17 @@
 #!/bin/bash
 
+dockerUsage() {
+    cat 2>&1 <<EOF
+This container must be linked with a content server (as 'dctm-cs') and a oracle (as dbora) server.
+Something like:
+  docker run -dP --name ts -h ts --link dctm-cs:dctm-cs --link dbora:dbora dctm-ts
+EOF
+  exit 2
+}
+
+# check container links
+[ -z "${DCTM_CS_NAME}" -o -z "${DBORA_NAME}" ] && dockerUsage
+
 repo=${REPOSITORY_NAME:-devbox}
 user=${REPOSITORY_USER:-dmadmin}
 passwd=${REPOSITORY_PWD:-dmadmin}
@@ -14,6 +26,8 @@ setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 # append the registry information to the dfc.properties
 if [ -z $(grep dfc.globalregistry.repository ${DOCUMENTUM_SHARED}/config/dfc.properties) ]; then
 	cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
+dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
+dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
 dfc.globalregistry.repository=${REGISTRY_NAME:-devbox}
 dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
 dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}

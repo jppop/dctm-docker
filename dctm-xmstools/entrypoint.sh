@@ -4,7 +4,7 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a xms-agent (as 'xms') server.
 Something like:
-  docker run -it --rm --name xms-tools -h xms-tools --link xms:xms [-e XMSINIT=true] xms-tools
+  docker run -it --rm --name xms-tools -h xms-tools --link xms:xms [-e XMSINIT=true] dctm-xmstools
 EOF
   exit 2
 }

@@ -40,7 +40,10 @@ RUN mv /bundles/isalive.sh ${DM_HOME}/bin/ \
  && chown dmadmin:dmadmin ${DM_HOME}/bin/isalive.sh \
  && chmod a+x ${DM_HOME}/bin/isalive.sh
 
-EXPOSE 49000 49001
+RUN mv /bundles/broker-install.properties $DM_HOME/install/broker-install.properties \
+ && chown dmadmin:dmadmin $DM_HOME/install/broker-install.properties
+
+EXPOSE 1489 49000 49001
 EXPOSE 9080
 
 USER dmadmin
@@ -53,6 +56,9 @@ ENV BAM_USER bamdbo
 ENV BAM_PWD bamdbo
 
 RUN mv $DM_HOME/install/startJms.sh ${JMS_HOME}/startJms.sh
+
+# install Connection Broker
+RUN $DM_HOME/install/dm_launch_server_config_program.sh -f $DM_HOME/install/broker-install.properties
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]
 CMD ["--repo-name=devbox"]

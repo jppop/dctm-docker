@@ -2,21 +2,24 @@ FROM tomcat:7
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
-# copy DA war
-COPY bundles/da.war ${CATALINA_HOME}/webapps/
+VOLUME /var/log/tomcat
+ENV LOGDIR /var/log/tomcat
+
+#VOLUME /var/xms
+#ENV XMS_DATA_DIR /var/xms
 
 # the entrypoint (wrap catalina script)
 COPY bundles/entrypoint.sh ${CATALINA_HOME}/docker-entrypoint.sh
 
 RUN chmod a+x ${CATALINA_HOME}/docker-entrypoint.sh
 
-# tomcat tuning for DA
-ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -Xmx1024m -DMaxPermSize=128 -XX:+UseParallelOldGC" \
-    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties"
-RUN echo "org.apache.jasper.compiler.Parser.STRICT_WHITESPACE=false" >> ${CATALINA_HOME}/conf/catalina.properties
+# tomcat tuning
+ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -DMaxPermSize=128 -XX:+UseParallelOldGC" \
+    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties -Dcatalina.logdir=${LOGDIR} -Dlog4j.properties=${CATALINA_HOME}/conf/log4j.xml"
+ENV CUSTOM_CATALINA_OUT ${LOGDIR}/catalina.out
 
-# ovveride web.xml (disable jsp pooling)
-COPY bundles/web.xml ${CATALINA_HOME}/conf/
+# ovveride some tomcat configuration web.xml
+COPY bundles/tomcat-conf/*.* ${CATALINA_HOME}/conf/
 
 ENV REPOSITORY_NAME devbox
 ENV REPOSITORY_USER dmadmin

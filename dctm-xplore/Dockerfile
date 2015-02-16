@@ -61,7 +61,7 @@ COPY entrypoint.sh /opt/xplore/docker-entrypoint.sh
 RUN chown xplore:xplore /opt/xplore/docker-entrypoint.sh \
  && chmod a+x /opt/xplore/docker-entrypoint.sh
 
-EXPOSE 9300 9200 9500 9530 9531 9521 9522 9600
+EXPOSE 9300 9200 9205 9500 9530 9531 9521 9522 9600
 
 USER xplore
 

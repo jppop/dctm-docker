@@ -10,9 +10,9 @@ EOF
 
 dockerUsage() {
     cat 2>&1 <<EOF
-This container must be linked with a broker (as 'broker') and a db (as 'dbora') server.
+This container must be linked with a db (as 'dbora') server.
 Something like:
-  docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora --link broker:broker dctm-cs [--repo-name REPOSITORY_NAME]
+  docker run -dP --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs [--repo-name REPOSITORY_NAME]
 EOF
   exit 2
 }
@@ -24,7 +24,7 @@ die() {
 }
 
 # check container links
-[ -z "${BROKER_NAME}" -o -z "${DBORA_NAME}" ] && dockerUsage
+[ -z "${DBORA_NAME}" ] && dockerUsage
 
 # Source the environment with the dm_set_server_env script
 [ -z "$ORACLE_HOME" ] && export ORACLE_HOME=/usr/lib/oracle/11.2/client64
@@ -91,6 +91,10 @@ __EOF__
   fi
 }
 
+echo "Starting the Connection broker"
+$DM_HOME/bin/dmdocbroker -port 1489 \
+     -init_file ${DOCUMENTUM}/dba/DctmBroker.ini $@ 2>&1 > ${DOCUMENTUM_LOG}/broker.out &
+
 if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
     echo "Installing the repository $REPOSITORY_NAME ($REPOSITORY_ID)"
     cd ${DM_HOME}/install
@@ -148,6 +152,7 @@ export REPOSITORY_NAME JMS_HOME
 function shutdown() {
   ${JMS_HOME}/stopMethodServer.sh
   $DOCUMENTUM/dba/dm_shutdown_$REPOSITORY_NAME
+  $DOCUMENTUM/dba/dm_stop_DctmBroker
 }
 trap shutdown SIGHUP SIGINT SIGTERM
 

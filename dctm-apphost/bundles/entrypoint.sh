@@ -2,17 +2,19 @@
 
 dockerUsage() {
     cat 2>&1 <<EOF
-This container must be linked with a content server (as 'dctm-cs') and a oracle (as dbora) server.
+This container must be linked with a cs (as 'dctm-cs') server.
 Something like:
-  docker run -dP --name bam -h bam --link dctm-cs:dctm-cs --link dbora:dbora bam
+  docker run -dP --name apphost -h xms --link dctm-cs:dctm-cs dctm-apphost
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${DCTM_CS_NAME}" -o -z "${DBORA_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" ] && dockerUsage
 
-CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} ${CATALINA_OPTS}"
+[ -z "$MEM_XMSX" ] && MEM_XMSX=2048m
+
+CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} -Xmx${MEM_XMSX} ${CATALINA_OPTS}"
 JAVA_OPTS="${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}"
 CATALINA_OUT="${CUSTOM_CATALINA_OUT}"
 
@@ -23,7 +25,7 @@ DFC_DATADIR=${CATALINA_HOME}/temp/dfc
 [ -d ${DFC_DATADIR} ] || mkdir -p ${DFC_DATADIR}
 
 cat << __EOF__ > ${CATALINA_HOME}/conf/dfc.properties
-dfc.name=bam
+dfc.name=apphost
 dfc.data.dir=${DFC_DATADIR}
 dfc.tokenstorage.enable=false
 dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
@@ -36,14 +38,6 @@ dfc.session.allow_trusted_login = false
 __EOF__
 
 echo "xcp.repository.name=${REPOSITORY_NAME}" > conf/deployment.properties
-
-cat << __EOF__ >> conf/bam.properties
-bam.jdbc.userName=${BAM_USER:-bamdbo}
-bam.jdbc.password=${BAM_PWD:-bamdbo}
-bam.dfc.session.repository=${REPOSITORY_NAME}
-bam.dfc.session.repositoryUserName=${REPOSITORY_USER}
-bam.dfc.session.repositoryPassword=${REPOSITORY_PWD}
-__EOF__
 
 echo "DFC Config file:"
 cat conf/dfc.properties
