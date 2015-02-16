@@ -4,7 +4,7 @@ dctm-base
 dctm-broker
 dctm-bam
 dctm-bps
-dctm-cis
+#dctm-cis
 dctm-cs
 dctm-da
 dctm-ts
