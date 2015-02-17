@@ -38,7 +38,7 @@ The first thing to do, it's to clone the GIT repository:
 ```
 # git clone https://github.com/jppop/dctm-docker.git && cd dctm-docker
 ```
-Then you need to add the software to the sources. See how to at the of this document.  
+Then you need to add the software to the sources. See how to at then of this document.  
 Then, build all the images:
 ```bash
 # ./build.sh
@@ -58,7 +58,7 @@ After several minutes, all the Docker images are built. You get ready to start t
 First, start Oracle and Content Server:  
 ```bash
 # docker run -dP --name dbora -h dbora oracle-xe  
-# docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --# link dbora:dbora dctm-cs [--repository-name aname]  
+# docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs [--repository-name aname]  
 ```
 The dctm-cs container install the Connection Broker (aka docbroker), the repository (name: devbox, unless you specify another name with the 'repository-name' option), and the JMS.  
 Wait for the end of the installation (about 45 minutes):  
@@ -137,6 +137,7 @@ So, log into XMS agent : [http://docker-box:7000/xms-agent](http://devbox:7000/x
 2. Complete the service definitions:
   - The default credentials are` admin/adminPass1`. Used in all components except for the repository : `dmadmin/dmadmin`.
   - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with the docker run command.
+  - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with then docker run command.
   - The port used for all Tomcat based application is 8080.
   - The SearchService use the default ports (9200 & 9300)
 3. Synchronize the environment once you finished to enter all the parameters. DO NOT VALIDATE the environnment (a bug in XMS). The synchronization may be long (5 mn). The environnment must be in the state Provisionned when the synchronization terminates.
