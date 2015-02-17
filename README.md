@@ -1,7 +1,7 @@
 dctm-docker - Documentum xCP running in containers
 ===========
 
-The goal to this project is to have Documentum xCP running in [Docker (https://www.docker.com/)](http://) Containers, manly for a development purpose.
+The goal of this project is to have Documentum xCP running in [Docker (https://www.docker.com/)](http://) Containers, manly for a development purpose.
 
 **Credits**  
 
