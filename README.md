@@ -58,9 +58,14 @@ After several minutes, all the Docker images are built. You get ready to start t
 First, start Oracle and Content Server:  
 ```bash
 # docker run -dP --name dbora -h dbora oracle-xe  
-# docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs [--repository-name aname]  
+# docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs [--repo-name aname]  
 ```
 The dctm-cs container install the Connection Broker (aka docbroker), the repository (name: devbox, unless you specify another name with the 'repository-name' option), and the JMS.  
+
+> If you change the default repository name, you must then pass it to all the containers when they are created (docker run).  
+
+For example: `docker run -dP -p 8010:8080 --name bps -h bps --link dctm-cs:dctm-cs`**`-e REPOSITORY_NAME=myrepo`** dctm-bps `
+
 Wait for the end of the installation (about 45 minutes):  
 ```bash
 # docker logs -f dctm-cs
