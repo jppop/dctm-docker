@@ -17,4 +17,7 @@ RUN chown dmadmin:dmadmin $DOCUMENTUM/entrypoint.sh \
 EXPOSE 1489
 
 USER dmadmin
+
+ENV REPOSITORY_NAME devbox
+
 ENTRYPOINT ["/opt/documentum/entrypoint.sh"]

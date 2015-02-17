@@ -32,7 +32,7 @@ dfc.globalregistry.repository=${REGISTRY_NAME:-devbox}
 dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
 dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
 dfc.session.allow_trusted_login = true
-dfc.name=jms
+dfc.name=ts
 __EOF__
 fi
 
