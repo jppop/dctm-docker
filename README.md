@@ -38,7 +38,7 @@ The first thing to do, it's to clone the GIT repository:
 ```
 # git clone https://github.com/jppop/dctm-docker.git && cd dctm-docker
 ```
-Then you need to add the software to the sources. See how to at then of this document.  
+Then you need to add the software to the sources. See how to at the end of this document.  
 Then, build all the images:
 ```bash
 # ./build.sh
@@ -85,7 +85,7 @@ So, we need a second docker to translate the private address into an 'outside' a
 It's done with:
 ```
 # docker run -d -p 1589:1489 --name extbroker -h extbroker \
-#   --link dctm-cs:dctm-cs -e HOST_IP=<the host ip addr> dctm-broker
+   --link dctm-cs:dctm-cs -e HOST_IP=<the host ip addr> dctm-broker
 ```
 The container installs a docbroker performing IP translations (from the IP of dctm-cs to the IP of the host). It configure dynamically the content server by adding a new projection target.
 
