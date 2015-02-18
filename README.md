@@ -147,6 +147,10 @@ So, log into XMS agent : [http://docker-box:7000/xms-agent](http://devbox:7000/x
   - The SearchService use the default ports (9200 & 9300)
 3. Synchronize the environment once you finished to enter all the parameters. DO NOT VALIDATE the environnment (a bug in XMS). The synchronization may be long (5 mn). The environnment must be in the state Provisionned when the synchronization terminates.
 
+You should have this environment:  
+
+![xms env](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/xms-env.png)
+
 Voilà! You, lucky dev. guy, you are ready to deploy your first application. Use xCP Designer or xms tools:
 ```
 # docker run -it --rm --name xms-tools -h xms-tools --link xms:xms -v /Users/jfrancon:/shared dctm-xmstools bash
