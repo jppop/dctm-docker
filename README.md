@@ -138,8 +138,8 @@ The container set the default password (admin/adminPass1) and load some configur
 ### Final touch
 You need now to create the environment and enter all the host name where the xCP components reside. Sorry, you have to do it manually. I swear, I've tried to script this, but I have failed. XMS Agent is too complicated for me.  
 So, log into XMS agent : [http://docker-box:7000/xms-agent](http://devbox:7000/xms-agent) (sign in with admin/adminPass1) and play with it.  
-1. Create a new environment based on the the template DockerFull-Template.
-2. Complete the service definitions:
+1. Create a new environment based on the the template DockerFull-Template.  
+2. Complete the service definitions:  
   - The default credentials are` admin/adminPass1`. Used in all components except for the repository : `dmadmin/dmadmin`.
   - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with the docker run command.
   - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with then docker run command.
