@@ -12,13 +12,12 @@ EOF
 # check container links
 [ -z "${DCTM_CS_NAME}" ] && dockerUsage
 
-[ -z "$MEM_XMSX" ] && MEM_XMSX=2048m
+[ -z "$MEM_XMSX" ] && MEM_XMSX=1024m
 
-CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} -Xmx${MEM_XMSX} ${CATALINA_OPTS}"
-JAVA_OPTS="${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}"
-CATALINA_OUT="${CUSTOM_CATALINA_OUT}"
-
-export CATALINA_OPTS JAVA_OPTS CATALINA_OUT
+echo CATALINA_OPTS=\"${CUSTOM_CATALINA_OPTS} -Xmx${MEM_XMSX} ${CATALINA_OPTS}\" > ${CATALINA_HOME}/bin/setenv.sh
+echo JAVA_OPTS=\"${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}\" >> ${CATALINA_HOME}/bin/setenv.sh
+echo CATALINA_OUT=\"${CUSTOM_CATALINA_OUT}\" >> ${CATALINA_HOME}/bin/setenv.sh
+cat ${CATALINA_HOME}/bin/setenv.sh
 
 # configure dfc
 DFC_DATADIR=${CATALINA_HOME}/temp/dfc

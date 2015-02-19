@@ -4,6 +4,8 @@ LOG_DIR=./logs
 LOG_FILE=${LOG_DIR}/docker-build.log
 
 [ -d "$LOG_DIR" ] || mkdir -p $LOG_DIR
+
+touch $LOG_DIR/build-start
 touch ${LOG_FILE}
 
 for img in $(cat images.lst); do
@@ -16,3 +18,5 @@ for img in $(cat images.lst); do
 	[ -w ${LOG_FILE} ] && logger -s "Done. Image: $img..." 2>> ${LOG_FILE}
   fi
 done
+
+touch $LOG_DIR/build-end
