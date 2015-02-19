@@ -4,13 +4,14 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with a cs (as 'dctm-cs') server.
 Something like:
-  docker run -dP --name xms -h xms --link dctm-cs:dctm-cs dctm-xmsagent
+  docker run -dP -p 7000:8080 --name xms -h xms --link dctm-cs:dctm-cs \
+      --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${DCTM_CS_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" -o -z "${APPHOST_NAME}" -o -z "${XPLORE_NAME}" -o -z "${BAM_NAME}" ] && dockerUsage
 
 [ -z "$MEM_XMSX" ] && MEM_XMSX=2048m
 
