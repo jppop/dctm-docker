@@ -104,10 +104,6 @@
         <level value="ERROR"/>
     </logger>
 
-    <logger name="">
-        <level value="WARN"/>
-    </logger>
-
 	<root>
 		<priority value="WARN" />
         <appender-ref ref="console" />

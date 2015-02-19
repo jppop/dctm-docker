@@ -2,6 +2,9 @@ FROM tomcat:7
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
+VOLUME /var/log/tomcat
+ENV LOGDIR /var/log/tomcat
+
 # copy DA war
 COPY bundles/da.war ${CATALINA_HOME}/webapps/
 
@@ -12,7 +15,7 @@ RUN chmod a+x ${CATALINA_HOME}/docker-entrypoint.sh
 
 # tomcat tuning for DA
 ENV CUSTOM_CATALINA_OPTS="-server -Xms512m -Xmx1024m -XX:MaxPermSize=256m -XX:+UseParallelOldGC" \
-    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties"
+    CUSTOM_JAVA_OPTS="-Ddfc.properties.file=${CATALINA_HOME}/conf/dfc.properties -Dcatalina.logdir=${LOGDIR} -Dlog4j.properties=${CATALINA_HOME}/conf/log4j.xml"
 RUN echo "org.apache.jasper.compiler.Parser.STRICT_WHITESPACE=false" >> ${CATALINA_HOME}/conf/catalina.properties
 
 # ovveride web.xml (disable jsp pooling)
