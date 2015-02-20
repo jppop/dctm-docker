@@ -205,6 +205,7 @@ Things I planned to do:
 - [ ] A xCP designer box (including maven, svn or git and xms tools) to automate the build.
 - [ ] CIS image.
 - [ ] CTS image (maybe)
+- [ ] Find a better way to distribute the Documentum software. May be a docker container serving the file through http (nginx).
 
 # ISSUES
 
