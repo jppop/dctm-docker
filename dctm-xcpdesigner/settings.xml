@@ -1,0 +1,26 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+<profiles>
+	<profile>
+ 		<id>xcp-designer</id>
+	  	<properties>
+			<designerPath>/opt/xCPDesigner</designerPath>
+			<workspace>/var/xcp-workspace</workspace>
+		</properties>
+	</profile>
+</profiles>
+
+<activeProfiles>
+	<activeProfile>xcp-designer</activeProfile>
+</activeProfiles>
+
+<mirrors>
+	<mirror>
+		<id>Builder-offline</id> 
+		<url>file:////opt/xCPDesigner/maven</url>
+		<mirrorOf>Builder</mirrorOf>
+	</mirror>
+</mirrors>
+ 
+ </settings>
