@@ -17,7 +17,12 @@ die() {
 	exit $2
 }
 
-OPTS=`getopt -o r:i -l repo-name:,host-ip: -- "$@"`
+os=$(uname -s)
+if [ "$os" = "Darwin" ]; then
+    OPTS=`getopt r:i: "$*"`
+else
+    OPTS=`getopt -o r:i: -l repo-name:,host-ip: -- "$@"`
+fi
 if [ $? != 0 ]
 then
     exit 1

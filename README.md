@@ -200,7 +200,7 @@ Enjoy!
 
 # Next
 
-Thing I planned to do:
+Things I planned to do:
 - [ ] Back up / restore script using a container (and the volume sharing of docker)
 - [ ] A xCP designer box (including maven, svn or git and xms tools) to automate the build.
 - [ ] CIS image.
