@@ -110,6 +110,17 @@ All remaining components are similary started:
 # docker run -dP -p 8040:8080 --name apphost -h apphost --link dctm-cs:dctm-cs dctm-apphost  
 # docker run -dP -p 7000:8080 --name xms -h xms --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent  
 ```
+Two scripts will help you. `run.sh`creates (and runs) dbora and dctm-cs. `run-other.sh`starts all other services:  
+```
+# cd dctm-docker
+# ./run.sh
+```
+Wait for the end of the installation of dctm-cs (about 45 minutes).
+Start the remaining services:
+```
+# ./run-other.sh
+```
+
 #### About Documentum Administrator.
 
 You can run DA as a server (alway running) or as a service on demand:
@@ -161,7 +172,11 @@ xmstools # exit
 See the XMS documention about how to deploy an application.
 
 # Starting, Stopping, Monitoring
-You are now in the Docker world. Starting a service is done with `docker start <container>`. Stopping it with `docker stop <container>`.
+You are now in the Docker world.
+
+Acces the services through the docker host. For example, http://docker-host:8040/myapp.
+
+Starting a service is done with `docker start <container>`. Stopping it with `docker stop <container>`.
 
 So, start the whole environment:
 ```
@@ -175,7 +190,11 @@ Stop them in the reverse order:
 ```
 I'sure you will find how to daemonize the containers.
 
-Use `docker logs` to access the log files. Open a shell: `docker exec -it <container> bash`.
+Use `docker logs` to access the log files.  
+Open a shell: `docker exec -it <container> bash`.
+
+## TD:LR
+Docker assign new IP addresses at each start. When you restart a container, you need to restart also the containers depending on it. For example, if you restart apphost, you need to restart xms too.
 
 Enjoy!
 

@@ -61,6 +61,6 @@ RUN mv $DM_HOME/install/startJms.sh ${JMS_HOME}/startJms.sh
 RUN $DM_HOME/install/dm_launch_server_config_program.sh -f $DM_HOME/install/broker-install.properties
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]
-CMD ["--repo-name=devbox"]
+#CMD ["--repo-name=devbox"]
 ##USER root
 ##CMD ["/usr/sbin/sshd", "-D"]
