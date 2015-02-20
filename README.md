@@ -11,7 +11,7 @@ Andrey Panfilov have done (may be as the first one) a [similar work](http://blog
 
 Do not use (yet) this in production.
 
-EMC, Documentum, the Documentum logos, Documentum and all other Documentum product and service names and logos are either service marks, trademarks, or registered trademarks of Documentum, a division of EMC Corporation.  
+EMC, Documentum, the Documentum logos, Documentum and all other Documentum products and service names and logos are either service marks, trademarks, or registered trademarks of Documentum, a division of EMC Corporation.  
 
 # Images
 My first intention was to to create an image per components: 1 for the connection broker, 1 for the Content Server, JMS, BAM, etc.. Well, it's not possible :
@@ -45,7 +45,7 @@ Then, build all the images:
 ```
 
 > You need to build all images only once. If you don't want each developer build himself the images, you could use docker export/import commands.  
-> I choose to build all images on a Virtual Machine. Once built, I clone the VM and use the clone as a template.
+> I choose to build all images on a Virtual Machine. Once built, I clone the VM and use the clone as a template. The developer only need to run the containers.
 
 
 # The run
@@ -60,7 +60,7 @@ First, start Oracle and Content Server:
 # docker run -dP --name dbora -h dbora oracle-xe  
 # docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --link dbora:dbora dctm-cs [--repo-name aname]  
 ```
-The dctm-cs container install the Connection Broker (aka docbroker), the repository (name: devbox, unless you specify another name with the 'repository-name' option), and the JMS.  
+The dctm-cs container install the Connection Broker (aka docbroker), the repository (name: devbox, unless you specify another name with the `repo-name` option), and the JMS.  
 
 > If you change the default repository name, you must then pass it to all the containers when they are created (docker run).  
 
@@ -79,19 +79,19 @@ dctm-cs# tail -f logs/install.log
 dctm-cs# exit
 ```
 ### Translator Broker
-Docker create a sub network and put all containers in this network. All containers are reachable through the host (Docker will redirect the request to the container, see Docker documentation for more information).  
-This will not work with the docbroker. When a client request the connection information of a repository, the docbroker send it back the private IP address it knows, which the remote client cannot reach (see an [old post](http://www.bluefishgroup.com/2002/network-address-translation-for-docbrokers/) about this).  
+Docker creates a sub network and puts all containers in this network. All containers are reachable through the host (Docker will redirect the request to the container, see Docker documentation for more information).  
+This will not work with the docbroker. When a client requests the connection information about a repository, the docbroker sends it back the private IP address it knows, which the remote client cannot reach (see an [old post](http://www.bluefishgroup.com/2002/network-address-translation-for-docbrokers/) about this).  
 So, we need a second docker to translate the private address into an 'outside' address (actually the host where Docker runs).  
 It's done with:
 ```
 # docker run -d -p 1589:1489 --name extbroker -h extbroker \
    --link dctm-cs:dctm-cs -e HOST_IP=<the host ip addr> dctm-broker
 ```
-The container installs a docbroker performing IP translations (from the IP of dctm-cs to the IP of the host). It configure dynamically the content server by adding a new projection target.
+The container installs a docbroker performing IP translations (from the IP of dctm-cs to the IP of the docker host). It will configure dynamically the content server by adding a new projection target.
 
 Now, you can configure all you client (ie, dqMan or a Java DFC client) with the second docbroker information (dfc.properties):
 ```
-dfc.docbroker.host[0]=<host ip>
+dfc.docbroker.host[0]=<docker host ip>
 dfc.docbroker.port[0]=1589
 dfc.globalregistry.repository=devbox
 dfc.globalregistry.username=dm_bof_registry
@@ -110,7 +110,7 @@ All remaining components are similary started:
 # docker run -dP -p 8040:8080 --name apphost -h apphost --link dctm-cs:dctm-cs dctm-apphost  
 # docker run -dP -p 7000:8080 --name xms -h xms --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent  
 ```
-Two scripts will help you. `run.sh`creates (and runs) dbora and dctm-cs. `run-other.sh`starts all other services:  
+Two scripts will help you. `run.sh`creates (and runs) the dbora and dctm-cs containers. `run-other.sh` starts all other services:  
 ```
 # cd dctm-docker
 # ./run.sh
@@ -139,24 +139,23 @@ Wait for the message "INFO: server started in 3 hours!". I'm kidding. Not 3 hour
 
 ### Initial configuration
 
-All the xCP services must be configured (so, you will get you xCP application deployed by the XMS agent).  
+All the xCP services must be configured (so, you will get your xCP application deployed by the XMS agent).  
 Launch:
 ```
 # docker run -it --rm --name xms-tools -h xms-tools --link xms:xms -e XMSINIT=true dctm-xmstools
 ```
-The container set the default password (admin/adminPass1) and load some configuration files. Especially, the environment template **DockerFull-Template**. It's the template, you will use to create an environment.
+The container sets the default password (admin/adminPass1) and loads some configuration files. Especially, the environment template **DockerFull-Template**. It's the template, you will use to create an environment.
 
 ### Final touch
 You need now to create the environment and enter all the host name where the xCP components reside. Sorry, you have to do it manually. I swear, I've tried to script this, but I have failed. XMS Agent is too complicated for me.  
 So, log into XMS agent : [http://docker-box:7000/xms-agent](http://devbox:7000/xms-agent) (sign in with admin/adminPass1) and play with it.  
-1. Create a new environment based on the the template DockerFull-Template.  
+1. Create a new environment based on the the template **DockerFull-Template**.  
 2. Complete the service definitions:  
   - The default credentials are` admin/adminPass1`. Used in all components except for the repository : `dmadmin/dmadmin`.
   - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with the docker run command.
-  - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with then docker run command.
-  - The port used for all Tomcat based application is 8080.
-  - The SearchService use the default ports (9200 & 9300)
-3. Synchronize the environment once you finished to enter all the parameters. DO NOT VALIDATE the environnment (a bug in XMS). The synchronization may be long (5 mn). The environnment must be in the state Provisionned when the synchronization terminates.
+  - The port used for all Tomcat based applications is 8080.
+  - The SearchService uses the default ports (9200 & 9300)
+3. Synchronize the environment once you finished to enter all the parameters. **DO NOT VALIDATE** the environnment (a bug in XMS). The synchronization may last a long time (5 mn). The environnment must be in the state **Provisionned** when the synchronization terminates.
 
 You should have this environment:  
 
@@ -169,12 +168,13 @@ xmstools # cd bin
 xmstools # ./xms -u admin -P adminPass1 -f /shared/my-deploy.script
 xmstools # exit
 ```
-See the XMS documention about how to deploy an application.
+See the XMS documention about how to deploy an application. And see Docker documentum about sharing disk between a host and a container (`-v` option). 
 
 # Starting, Stopping, Monitoring
-You are now in the Docker world.
 
-Acces the services through the docker host. For example, http://docker-host:8040/myapp.
+You are now in the **Docker world**.
+
+Access the services through the docker host. For example, http://docker-host:8040/myapp.
 
 Starting a service is done with `docker start <container>`. Stopping it with `docker stop <container>`.
 
@@ -194,7 +194,7 @@ Use `docker logs` to access the log files.
 Open a shell: `docker exec -it <container> bash`.
 
 ## TL;DR
-Docker assign new IP addresses at each start. When you restart a container, you need to restart also the containers depending on it. For example, if you restart apphost, you need to restart xms too.
+Docker assigns new IP addresses at each start. When you restart a container, you need to restart also the containers depending on it. For example, if you restart apphost, you need to restart xms too.
 
 Enjoy!
 
