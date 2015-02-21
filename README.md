@@ -15,7 +15,7 @@ EMC, Documentum, the Documentum logos, Documentum and all other Documentum produ
 
 # Images
 My first intention was to to create an image per components: 1 for the connection broker, 1 for the Content Server, JMS, BAM, etc.. Well, it's not possible :
-- If the broker does not run on the same server as the content server, XMS Agent will fail to deploy applications (trying to connect to the cs, on port 1489).
+- If the broker does not run on the same server as the content server, xMS Agent will fail to deploy applications (trying to connect to the cs, on port 1489).
 - JMS will fail to connect if it doesn't run close to the CS.
 
 So, I have created these images:
@@ -23,7 +23,7 @@ So, I have created these images:
 - dctm-base: a base image holding the content server software.
 - dctm-cs: the content server
 - dctm-broker: a connection broker used to translate IP addresses (see below)
-- dctm-xmsagent: the XMS Agent.
+- dctm-xmsagent: the xMS Agent.
 - dctm-xplore: the search server.
 - dctm-bam, dctm-bps, dctm-ts: BAM, BPS and Thumbnail servers
 - dctm-apphost: the application server.
@@ -128,9 +128,9 @@ You can run DA as a server (alway running) or as a service on demand:
 # docker run --rm -it --name da -p 7002:8080 --link dctm-cs:dctm-cs dctm-da  
 ```
 
-## XSM Agent
+## xMS Agent
 
-The hardest part of the job (at less, for me, I have spent several hours to get XMS running).  
+The hardest part of the job (at less, for me, I have spent several hours to get xMS running).  
 Check the server it's started:
 ```
 # docker logs -f xms
@@ -154,7 +154,7 @@ xmstools # cd bin
 xmstools # ./xms -u admin -P adminPass1 -f /shared/my-deploy.script
 xmstools # exit
 ```
-See the XMS documention about how to deploy an application. And see Docker documentum about sharing disk between a host and a container (`-v` option). 
+See the xMS documention about how to deploy an application. And see Docker documentum about sharing disk between a host and a container (`-v` option). 
 
 # Starting, Stopping, Monitoring
 
@@ -203,7 +203,7 @@ docker stop dctm-cs broker dbora
 docker rm dctm-cs broker dbora  
 # start new fresh containers...
 ```
-### XMS Agent and 'standalone' Docbroker
+### xMS Agent and 'standalone' Docbroker
 It seems that xms agent does not support a connection broker not running on the same server than the content server. Why ?
 
 # MISC.
