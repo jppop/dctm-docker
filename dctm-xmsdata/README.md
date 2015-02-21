@@ -1,7 +1,7 @@
 xMS data container
 ===========
 
-Each new environment need to be registered to xMS agent. It's done manually through the xMS admin console.  
+Each new environment needs to be registered to xMS agent. It's done manually through the xMS admin console.  
 I can't figure out how to script the enndpoints settings. So, I have started exploring a new way: build an xms agent image with a prepopulated database (xDB).
 
 It's there that Docker can help us. Drocker provides [Data Volume Container](https://docs.docker.com/userguide/dockervolumes/#creating-and-mounting-a-data-volume-container).

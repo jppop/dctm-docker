@@ -192,7 +192,7 @@ Things I planned to do:
 - [ ] CIS image.
 - [ ] CTS image (maybe)
 - [ ] Find a better way to distribute the Documentum software. May be a docker container serving the file through http (nginx).
-- [ ] Use a data volume container to store xMS xDB database (use the XMS_DATA_DIR to tell xMS where to store its data).
+- [x] Use a data volume container to store xMS xDB database (use the XMS_DATA_DIR to tell xMS where to store its data).
 
 # ISSUES
 
