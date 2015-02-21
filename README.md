@@ -62,7 +62,7 @@ First, start Oracle and Content Server:
 ```
 The dctm-cs container install the Connection Broker (aka docbroker), the repository (name: devbox, unless you specify another name with the `repo-name` option), and the JMS.  
 
-> If you change the default repository name, you must then pass it to all the containers when they are created (docker run).  
+> If you change the default repository name, you must then pass it to all  containers when they are created (docker run).  
 
 For example: `docker run -dP -p 8010:8080 --name bps -h bps --link dctm-cs:dctm-cs`**`-e REPOSITORY_NAME=myrepo`** dctm-bps `
 
@@ -139,23 +139,9 @@ Wait for the message "INFO: server started in 3 hours!". I'm kidding. Not 3 hour
 
 ### Initial configuration
 
-All the xCP services must be configured (so, you will get your xCP application deployed by the XMS agent).  
-Launch:
-```
-# docker run -it --rm --name xms-tools -h xms-tools --link xms:xms -e XMSINIT=true dctm-xmstools
-```
-The container sets the default password (admin/adminPass1) and loads some configuration files. Especially, the environment template **DockerFull-Template**. It's the template, you will use to create an environment.
+The xMS agent container comes with a prepopulated database (see [details](https://github.com/jppop/dctm-docker/tree/master/dctm-xmsdata)). So, if you have not changed the hostname (`-h` option of the `docker run`command), you are ready to deploy an application.
 
-### Final touch
-You need now to create the environment and enter all the host name where the xCP components reside. Sorry, you have to do it manually. I swear, I've tried to script this, but I have failed. XMS Agent is too complicated for me.  
-So, log into XMS agent : [http://docker-box:7000/xms-agent](http://devbox:7000/xms-agent) (sign in with admin/adminPass1) and play with it.  
-1. Create a new environment based on the the template **DockerFull-Template**.  
-2. Complete the service definitions:  
-  - The default credentials are` admin/adminPass1`. Used in all components except for the repository : `dmadmin/dmadmin`.
-  - use the containers DNS names (not the IP addresses). The DNS name is the one given with the '-h' option with the docker run command.
-  - The port used for all Tomcat based applications is 8080.
-  - The SearchService uses the default ports (9200 & 9300)
-3. Synchronize the environment once you finished to enter all the parameters. **DO NOT VALIDATE** the environnment (a bug in XMS). The synchronization may last a long time (5 mn). The environnment must be in the state **Provisionned** when the synchronization terminates.
+Except if you changed the repository name. You have then to update the xMS environment (edit the Repository service, then the repository endpoint).
 
 You should have this environment:  
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<server version="xDB 10.1" pagesize="4096" license="038*pOvo.uwxSOKByMJA6x1xyN#xTxQyXRyXQxSPQqZdRD52PRNBhE" passwd="ex7AkPD7GtzGIPszsw9bjsy3Aof5Gkl4EzRXe9OQ" id="c21f86d2-e088-4d85-b143-9c00e5077bff">
+    <node name="primary" host="127.0.0.1" port="1235">
+        <log path="log" id="1317386498332" keep-log-files="false"/>
+    </node>
+    <database name="xms">
+        <segment id="default" temp="false" version="1" state="read_write" usage="non_detachable" usable="true">
+            <file path="xms-default-0.XhiveDatabase.DB" id="0"/>
+            <binding-server name="primary"/>
+        </segment>
+        <segment id="temporary" temp="true" version="1" state="read_write" usage="non_detachable" usable="true">
+            <file path="xms-temporary-0.XhiveDatabase.DB" id="1"/>
+            <binding-server name="primary"/>
+        </segment>
+    </database>
+</server>

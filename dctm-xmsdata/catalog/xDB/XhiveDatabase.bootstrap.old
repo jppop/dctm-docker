@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<server id="c21f86d2-e088-4d85-b143-9c00e5077bff" passwd="ex7AkPD7GtzGIPszsw9bjsy3Aof5Gkl4EzRXe9OQ" license="038*pOvo.uwxSOKByMJA6x1xyN#xTxQyXRyXQxSPQqZdRD52PRNBhE" pagesize="4096" version="xDB 10.1">
+    <node port="1235" host="127.0.0.1" name="primary">
+        <log keep-log-files="false" id="1317386498332" path="log"/>
+    </node>
+</server>
