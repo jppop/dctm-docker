@@ -5,7 +5,7 @@ The goal of this project is to have Documentum xCP running in [Docker (https://w
 
 **Credits**  
 
-Andrey Panfilov have done (may be as the first one) a [similar work](http://blog.documentum.pro/2014/08/09/docker-and-documentum-part-ii/). His work helps me a lot. 
+Andrey Panfilov have done (may be as the first one) a [similar work](http://blog.documentum.pro/2014/08/09/docker-and-documentum-part-ii/). His work helps me a lot.
 
 **Disclaimers**  
 
@@ -38,7 +38,8 @@ The first thing to do, it's to clone the GIT repository:
 ```
 # git clone https://github.com/jppop/dctm-docker.git && cd dctm-docker
 ```
-Then you need to add the software to the sources. See how to at the end of this document.  
+Then you need to add the software to the sources. See the [catalog](https://github.com/jppop/dctm-docker/tree/master/dctm-catalog).
+
 Then, build all the images:
 ```bash
 # ./build.sh
@@ -135,7 +136,7 @@ Check the server it's started:
 ```
 # docker logs -f xms
 ```
-Wait for the message "INFO: server started in 3 hours!". I'm kidding. Not 3 hours, but on my laptop (a Macbook PRO, 16GB RAM, 500 GB SSD), the server starts in 10 minutes. On a VM hosted by an ESX Server, about 2-3 mn. So, don't use my laptop ;). 
+Wait for the message "INFO: server started in 3 hours!". I'm kidding. Not 3 hours, but on my laptop (a Macbook PRO, 16GB RAM, 500 GB SSD), the server starts in 10 minutes. On a VM hosted by an ESX Server, about 2-3 mn. So, don't use my laptop ;).
 
 ### Initial configuration
 
@@ -154,7 +155,7 @@ xmstools # cd bin
 xmstools # ./xms -u admin -P adminPass1 -f /shared/my-deploy.script
 xmstools # exit
 ```
-See the xMS documention about how to deploy an application. And see Docker documentum about sharing disk between a host and a container (`-v` option). 
+See the xMS documention about how to deploy an application. And see Docker documentum about sharing disk between a host and a container (`-v` option).
 
 # Starting, Stopping, Monitoring
 
@@ -191,7 +192,7 @@ Things I planned to do:
 - [ ] A xCP designer box (including maven, svn or git and xms tools) to automate the build.
 - [ ] CIS image.
 - [ ] CTS image (maybe)
-- [ ] Find a better way to distribute the Documentum software. May be a docker container serving the file through http (nginx).
+- [x] Find a better way to distribute the Documentum software. ==May be a docker container serving the file through http (nginx)== Bad idea. The images would be too dependant. Let the 'builders' to choose the best solution to distributes the software.
 - [x] Use a data volume container to store xMS xDB database (use the XMS_DATA_DIR to tell xMS where to store its data).
 
 # ISSUES
@@ -205,66 +206,3 @@ docker rm dctm-cs broker dbora
 ```
 ### xMS Agent and 'standalone' Docbroker
 It seems that xms agent does not support a connection broker not running on the same server than the content server. Why ?
-
-# MISC.
-### Documentum distribution software
-**./dctm-bam/bundles:**  
-```
-bam-server.war
-```
-**./dctm-base/bundles/patch:**  
-```
-CS_7.1.0090.0213_linux_ora.tar.gz
-patch.bin
-```
-**./dctm-base/bundles:**  
-```
-Content_Server_7.1_linux64_oracle.tar
-```
-**./dctm-base/bundles/dars:**  
-```
-BPM.dar
-CTSActivity.dar
-CTSAspects.dar
-CollaborationServices.dar
-DcsAttachment.dar
-Forms.dar
-ImageServices.dar
-Rich_Media_Services.dar
-TCMReferenceProject.dar
-Transformation.dar
-xCP_Viewer_Services.dar
-xcp.dar
-```
-**./dctm-bps/bundles:**  
-```
-bps.war
-```
-**./dctm-cs/bundles:**  
-```
-Process_Engine_linux.tar
-oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm
-oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm
-oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm
-```
-**./dctm-da/bundles:**  
-```
-da.war
-```
-**./dctm-ts/bundles:**  
-```
-Thumbnail_Server_7.1_linux.tar
-```
-**./dctm-xmsagent/bundles:**
-```
-xms-agent-1.1-P13.zip
-```
-**./dctm-xmstools/bundles:**  
-```
-xms-tools-1.2.zip
-```
-**./dctm-xplore/bundles:**  
-```
-xPlore_1.4_linux-x64.tar
-```
-
