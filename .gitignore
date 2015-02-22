@@ -6,6 +6,7 @@ dctm-distrib
 dctm.sublime-project
 dctm.sublime-workspace
 docker-test
+logs
 tmp
 *.zip
 *.tar
@@ -13,4 +14,3 @@ tmp
 *.gz
 *.bin
 *.dar
-build.log
