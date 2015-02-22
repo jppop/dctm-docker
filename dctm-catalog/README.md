@@ -5,10 +5,11 @@ When you build an image that need packages from Documentum or Oracle, the packag
 
 You may choose any solution to distribute the packages (shared network drive, fp, http file server, ...).
 
-I choose the simpliest: the packages are stored on my local disk and I have a script to copy them to the right place.
+I choose the simplest: the packages are stored on my local disk and I have a script to copy them to the right place.
 
-The catalog layout:
-![catalog 1](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part1.png)
+The catalog layout:  
+![catalog 1](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part1.png)  
+
 ![catalog 1](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part2.png)
 
 And the script `install.sh`:
