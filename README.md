@@ -150,7 +150,8 @@ You should have this environment:
 
 Voilà! You, lucky dev. guy, you are ready to deploy your first application. Use xCP Designer or xms tools:
 ```
-# docker run -it --rm --name xms-tools -h xms-tools --link xms:xms -v /Users/jfrancon:/shared dctm-xmstools bash
+# docker run -it --rm --name xms-tools -h xms-tools --link xms:xms \
+     -v /Users/jfrancon:/shared dctm-xmstools bash
 xmstools # cd bin
 xmstools # ./xms -u admin -P adminPass1 -f /shared/my-deploy.script
 xmstools # exit
@@ -168,11 +169,11 @@ Starting a service is done with `docker start <container>`. Stopping it with `do
 So, start the whole environment:
 ```
 # docker start dbora dctm-cs extbroker
-# docker start bam xplore xms bps da
+# docker start bam xplore apphost xms bps da
 ```
 Stop them in the reverse order:
 ```
-# docker stop bam xplore xms bps da
+# docker stop bam xplore apphost xms bps da
 # docker stop extbroker dctm-cs dbora
 ```
 I'sure you will find how to daemonize the containers.
@@ -192,7 +193,7 @@ Things I planned to do:
 - [ ] A xCP designer box (including maven, svn or git and xms tools) to automate the build.
 - [ ] CIS image.
 - [ ] CTS image (maybe)
-- [x] Find a better way to distribute the Documentum software. ==May be a docker container serving the file through http (nginx)== Bad idea. The images would be too dependant. Let the 'builders' to choose the best solution to distributes the software.
+- [x] Find a better way to distribute the Documentum software. ~~May be a docker container serving the file through http (nginx)~~ Bad idea. The images would be too dependant. Let the 'builders' choose the best solution to distributes the software.
 - [x] Use a data volume container to store xMS xDB database (use the XMS_DATA_DIR to tell xMS where to store its data).
 
 # ISSUES
