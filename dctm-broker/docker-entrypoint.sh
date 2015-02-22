@@ -46,6 +46,19 @@ fi
 		sleep 5
 		pid=$(ps -A -o pid,cmd|grep 'dmdocbroker -port' | grep -v grep | awk '{print $1}')
 	done
+
+	# wait for the repository
+	echo -n .
+	iapi -q ${repo} -U${user} -P${passwd}  2>&1 >/dev/null
+	status=$?
+	while [[ $status -ne 0 ]]; do
+		sleep 5
+		iapi -q ${repo} -U${user} -P${passwd} 2>&1 >/dev/null
+		status=$?
+		echo -n .
+	 done
+	echo .
+
 	iapi ${repo} -U${user} -P${passwd} -e << __EOF__
 fetch,c,serverconfig
 set,c,l,projection_targets
