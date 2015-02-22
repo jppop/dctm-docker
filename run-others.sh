@@ -59,7 +59,7 @@ echo "Run extborker"
 docker run -d -p 1589:1489 --name extbroker -h extbroker \
    --link dctm-cs:dctm-cs -e REPOSITORY_NAME=$repo -e HOST_IP=$HOST_IP dctm-broker
 echo "Run xplore"
-docker run -dP --name xplore -h xplore --link dctm-cs:dctm-cs dctm-xplore
+docker run -dP --name xplore -h xplore -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-xplore
 echo "Run da"
 docker run -dP -it --name da -p 7002:8080 -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-da
 echo "run bam"
