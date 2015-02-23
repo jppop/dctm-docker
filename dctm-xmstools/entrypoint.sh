@@ -9,12 +9,16 @@ EOF
   exit 2
 }
 
+# NEW: no more checked as the container can be used with any xMS Agent.
 # check container links
-[ -z "${XMS_NAME}" ] && dockerUsage
+#[ -z "${XMS_NAME}" ] && dockerUsage
+
+[ -z "${XMS_SERVER}" ] && XMS_SERVER=xms
+[ -z "${XMS_PORT}" ] && XMS_SERVER=8080
 
 cat << __EOF__ > ${XMSTOOL_HOME}/config/xms-server.properties
-xms-server-host = xms
-xms-server-port = 8080
+xms-server-host = ${XMS_SERVER}
+xms-server-port = ${XMS_PORT}
 xms-server-schema = http
 xms-server-context-path = xms-agent
 __EOF__
