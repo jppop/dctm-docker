@@ -207,3 +207,32 @@ docker rm dctm-cs broker dbora
 ```
 ### xMS Agent and 'standalone' Docbroker
 It seems that xms agent does not support a connection broker not running on the same server than the content server. Why ?
+
+### BAM fails to start
+Application deployments fail sometimes because xMS agent fails to connect to the BAM server. Actually, it's BAM failed to start (happened twice). I haven't investigate yet this issue.  
+As a quick workaround, you can try to restart BAM (and xMS):  
+```
+# docker stop xms bam
+# docker start bam xms
+```
+Check the logs (`docker logs -f bam`). If it doesn't solve the issue, delete the container and recreate it:  
+```
+# docker stop xms bam
+# docker rm bam
+# docker run -dP -p 8000:8080 --name bam -h bam \
+  [-e REPOSITORY_NAME=your-repo] --link dctm-cs:dctm-cs --link dbora:dbora \
+  dctm-bam
+# docker start bam xms
+```
+
+### xCP deployment/xplore: "no collections"
+We got once this issue: during an application deployment, xPlore complained that the collection argument is null (altough the previous lines in the log file show a value for the collection).  
+We applied the same workaround as for the BAM issue: we have deleted the xplore container.  
+
+```
+# docker stop xms xplore
+# docker rm xplore
+# docker run -dP --name xplore -h xplore -e REPOSITORY_NAME=your-repo\
+   --link dctm-cs:dctm-cs dctm-xplore
+# docker start xplore xms
+```
