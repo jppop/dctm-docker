@@ -115,7 +115,7 @@ if [ ! -d ${DOCUMENTUM}/dba/config/${REPOSITORY_NAME} ]; then
 
         echo "Installing xCP dars.."
         cd ${DM_HOME}/install
-        for dar in ImageServices.dar xCP_Viewer_Services.dar Rich_Media_Services.dar Transformation.dar CTSAspects.dar ; do
+        for dar in ImageServices.dar xCP_Viewer_Services.dar Rich_Media_Services.dar Transformation.dar CTSAspects.dar cis_artifacts.dar; do
             cp /bundles/dars/$dar ${DM_HOME}/install/DARsInternal/
             ${DM_HOME}/install/deploy-dar.sh -r ${REPOSITORY_NAME} -d ${DM_HOME}/install/DARsInternal/$dar
         done
