@@ -1,26 +1,36 @@
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-<profiles>
-	<profile>
- 		<id>xcp-designer</id>
-	  	<properties>
-			<designerPath>/opt/xCPDesigner</designerPath>
-			<workspace>/var/xcp-workspace</workspace>
-		</properties>
-	</profile>
-</profiles>
+  <mirrors>
+  	<mirror>
+  		<id>Builder-offline</id>
+  		<url>file:////opt/xCPDesigner/maven</url>
+  		<mirrorOf>Builder</mirrorOf>
+  	</mirror>
+  </mirrors>
 
-<activeProfiles>
-	<activeProfile>xcp-designer</activeProfile>
-</activeProfiles>
+  <profiles>
+    <profile>
+      <id>xcp-designer</id>
+      <properties>
+        <designerPath>/opt/xCPDesigner</designerPath>
+  			<workspace>/var/xcp-workspace</workspace>
+        <app.host>apphost</app.host>
+        <app.port>8080</app.port>
+      </properties>
+    </profile>
+  </profiles>
 
-<mirrors>
-	<mirror>
-		<id>Builder-offline</id> 
-		<url>file:////opt/xCPDesigner/maven</url>
-		<mirrorOf>Builder</mirrorOf>
-	</mirror>
-</mirrors>
- 
- </settings>
+  <activeProfiles>
+    <activeProfile>xcp-designer</activeProfile>
+  </activeProfiles>
+
+  <servers>
+    <server>
+      <id>apphost</id>
+      <username>admin</username>
+      <password>adminPass1</password>
+    </server>
+  </servers>
+
+</settings>
