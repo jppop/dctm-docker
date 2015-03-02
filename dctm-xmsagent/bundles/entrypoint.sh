@@ -46,8 +46,8 @@ echo "DFC Config file:"
 cat conf/dfc.properties
 
 # delete temp folder (xms store the deployed war here)
-rm ${CATALINA_HOME}/temp && mkdir ${CATALINA_HOME}/temp
-rm ${CATALINA_HOME}/work && mkdir ${CATALINA_HOME}/work
+rm -rf ${CATALINA_HOME}/temp && mkdir ${CATALINA_HOME}/temp
+rm -rf ${CATALINA_HOME}/work && mkdir ${CATALINA_HOME}/work
 
 
 echo "Using CATALINA_OPTS:   ${CATALINA_OPTS}"
