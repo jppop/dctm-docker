@@ -13,12 +13,12 @@ EOF
 # check container links
 #[ -z "${XMS_NAME}" ] && dockerUsage
 
-[ -z "${XMS_SERVER}" ] && XMS_SERVER=xms
-[ -z "${XMS_PORT}" ] && XMS_SERVER=8080
+[ -z "${USER_XMS_SERVER}" ] && USER_XMS_SERVER=xms
+[ -z "${USER_XMSAGENT_PORT}" ] && USER_XMSAGENT_PORT=8080
 
 cat << __EOF__ > ${XMSTOOL_HOME}/config/xms-server.properties
-xms-server-host = ${XMS_SERVER}
-xms-server-port = ${XMS_PORT}
+xms-server-host = ${USER_XMS_SERVER}
+xms-server-port = ${USER_XMSAGENT_PORT}
 xms-server-schema = http
 xms-server-context-path = xms-agent
 __EOF__
