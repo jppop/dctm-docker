@@ -37,7 +37,19 @@ __EOF__
 
 echo "xcp.repository.name=${REPOSITORY_NAME}" > conf/deployment.properties
 
-cat << __EOF__ >> conf/bam.properties
+cat << __EOF__ > conf/bam.properties
+bam.jdbc.dialect=oracle
+bam.jdbc.url=jdbc:oracle:thin:@dbora:1521:XE
+bam.jdbc.driver=oracle.jdbc.driver.OracleDriver
+bam.jdbc.preference.maxRows=10000
+bam.jdbc.preference.deployBatchSize=2500
+bam.jdbc.preference.dataFormatBatchSize=1000
+bam.jdbc.preference.initialSize=10
+bam.jdbc.preference.maxIdle=-1
+bam.jdbc.preference.maxActive=-1
+bam.cluster.ttl=1500
+bam.cluster.pulse=500
+bam.cluster.activateOnStartup=false
 bam.jdbc.userName=${BAM_USER:-bamdbo}
 bam.jdbc.password=${BAM_PWD:-bamdbo}
 bam.dfc.session.repository=${REPOSITORY_NAME}
