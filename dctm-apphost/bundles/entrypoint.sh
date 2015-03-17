@@ -2,15 +2,15 @@
 
 dockerUsage() {
     cat 2>&1 <<EOF
-This container must be linked with a cs (as 'dctm-cs') server.
+This container must be linked with the cs (as 'dctm-cs') and bam (as bam) servers.
 Something like:
-  docker run -dP --name apphost -h xms --link dctm-cs:dctm-cs dctm-apphost
+  docker run -dP --name apphost -h xms --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
 EOF
   exit 2
 }
 
 # check container links
-[ -z "${DCTM_CS_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" -o -z "${BAM_NAME}" ] && dockerUsage
 
 [ -z "$MEM_XMSX" ] && MEM_XMSX=1024m
 
