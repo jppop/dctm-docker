@@ -3,7 +3,7 @@
 usage() {
     echo `basename $0`: ERROR: $* 1>&2
     cat 2>&1 <<EOF
-usage: `basename $0` [--repo-name REPOSITORY_NAME] --repo-id host-ip
+usage: `basename $0` [--repo-name REPOSITORY_NAME] --host-id host-ip
 where
 repo-name the name of the repository. Default from the REPOSITORY_NAME variable.
 host-ip   is the ip address of the host
@@ -43,7 +43,7 @@ done
 [ -z "$repo" ]  && die "No repository name." 1
 [ -z "$HOST_IP" ]  && die "No host ip." 1
 
-container=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name=$repo")
+container=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name $repo")
 [ -z "$container" ]  && die "Container dctm-cs (with repo $repo) not found." 2
 
 DOCUMENTUM=/opt/documentum
