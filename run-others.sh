@@ -69,7 +69,7 @@ docker run -dP -p 8010:8080 --name bps -h bps -e REPOSITORY_NAME=$repo --link dc
 echo "run Thumnail Server"
 docker run -dP -p 8020:8080 --name ts -h ts -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-ts dctm-ts
 echo "run apphost"
-docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-apphost
+docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
 echo "run xms agent"
 docker run -dP -p 7000:8080 --name xms -h xms -e REPOSITORY_NAME=$repo --volumes-from dctm-xmsdata \
    --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent

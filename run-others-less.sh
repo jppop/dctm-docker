@@ -3,7 +3,7 @@
 usage() {
     echo `basename $0`: ERROR: $* 1>&2
     cat 2>&1 <<EOF
-usage: `basename $0` [--repo-name REPOSITORY_NAME] --repo-id host-ip
+usage: `basename $0` [--repo-name REPOSITORY_NAME] --host-id host-ip
 where
 repo-name the name of the repository. Default from the REPOSITORY_NAME variable.
 host-ip   is the ip address of the host
@@ -44,8 +44,8 @@ done
 [ -z "$repo" ]  && die "No repository name." 1
 [ -z "$HOST_IP" ]  && die "No host ip." 1
 
-container=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name=$repo")
-[ -z "$container" ]  && die "Container dctm-cs (with repo $repo) not found." 2
+#$container=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name $repo")
+#[ -z "$container" ]  && die "Container dctm-cs (with repo $repo) not found." 2
 
 DOCUMENTUM=/opt/documentum
 DOCUMENTUM_SHARED=${DOCUMENTUM}/shared
@@ -70,11 +70,11 @@ docker run -dP -p 8000:8080 --name bam -h bam -e REPOSITORY_NAME=$repo --link dc
 echo "run Thumnail Server"
 docker run -dP -p 8020:8080 --name ts -h ts -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-ts dctm-ts
 echo "run apphost"
-docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-apphost
+docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
 echo "run xms agent"
 docker run -dP -p 7000:8080 --name xms -h xms -e REPOSITORY_NAME=$repo --volumes-from dctm-xmsdata \
    --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent
 
 echo "All services started."
 echo "Wait for the end of xms start"
-docker logs -f xms
+#docker logs -f xms

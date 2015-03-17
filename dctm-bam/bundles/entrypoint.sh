@@ -37,6 +37,7 @@ __EOF__
 
 echo "xcp.repository.name=${REPOSITORY_NAME}" > conf/deployment.properties
 
+if [ ! -f conf/bam.properties ]; then
 cat << __EOF__ > conf/bam.properties
 bam.jdbc.dialect=oracle
 bam.jdbc.url=jdbc:oracle:thin:@dbora:1521:XE
@@ -56,6 +57,7 @@ bam.dfc.session.repository=${REPOSITORY_NAME}
 bam.dfc.session.repositoryUserName=${REPOSITORY_USER}
 bam.dfc.session.repositoryPassword=${REPOSITORY_PWD}
 __EOF__
+fi
 
 echo "DFC Config file:"
 cat conf/dfc.properties
