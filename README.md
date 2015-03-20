@@ -1,7 +1,7 @@
-dctm-docker - Documentum xCP running in containers
+dctm-docker - Documentum xCP running in Docker containers
 ===========
 
-The goal of this project is to have Documentum xCP running in [Docker (https://www.docker.com/)](http://) Containers, manly for a development purpose.
+The goal of this project is to have Documentum xCP running in [Docker (https://www.docker.com/)](http://) containers, manly for a development purpose.
 
 **Credits**  
 
@@ -193,8 +193,9 @@ Things I planned to do:
 - [ ] A xCP designer box (including maven, svn or git and xms tools) to automate the build.
 - [ ] CIS image.
 - [ ] CTS image (maybe)
-- [x] Find a better way to distribute the Documentum software. ~~May be a docker container serving the file through http (nginx)~~ Bad idea. The images would be too dependant. Let the 'builders' choose the best solution to distributes the software.
+- [x] Find a better way to distribute the Documentum software. ~~May be a docker container serving the file through http (nginx)~~ Bad idea. The images would be too dependant. Let the 'builders' choose the best solution to distribute the software.
 - [x] Use a data volume container to store xMS xDB database (use the XMS_DATA_DIR to tell xMS where to store its data).
+- [ ] Use a data container for xPlore. Could help to avoid the size of the container growing up.
 
 # ISSUES
 
@@ -209,7 +210,9 @@ docker rm dctm-cs broker dbora
 It seems that xms agent does not support a connection broker not running on the same server than the content server. Why ?
 
 ### BAM fails to start
-Application deployments fail sometimes because xMS agent fails to connect to the BAM server. Actually, it's BAM failed to start (happened twice). I haven't investigate yet this issue.  
+Application deployments fail sometimes because xMS agent fails to connect to the BAM server. Actually, it's BAM failed to start (happened twice). ~~I haven't investigate yet this issue~~.  
+The issue was due to the startup script: the file `bam-server.properties` was created at each start. As the bam server modifies this file (it encrypts passwords), it was a bit confused when it found a clear password...
+
 As a quick workaround, you can try to restart BAM (and xMS):  
 ```
 # docker stop xms bam
