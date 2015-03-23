@@ -1,7 +1,7 @@
 #!/bin/sh
 
 repo=${1:-devbox}
-export REPOSITORY_NAME $repo
+export REPOSITORY_NAME=$repo
 
 echo "export REPOSITORY_NAME=$repo" > ~/.repo_profile
 
