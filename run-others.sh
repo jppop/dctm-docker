@@ -51,7 +51,7 @@ DOCUMENTUM_SHARED=${DOCUMENTUM}/shared
 DM_HOME=${DOCUMENTUM}/product/7.1
 
 # try to check if dctm-xs finished the installation
-marker=$(docker exec -it dctm-cs ls -1 ${DM_HOME}/install/.stop-install)
+marker=$(docker exec -it dctm-cs ls -1 /opt/documentum/product/7.1/install/.stop-install)
 [ -z "$marker" ]  && die "Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs" 3
 
 # let's go
