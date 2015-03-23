@@ -3,7 +3,7 @@
 repo=${1:-devbox}
 export REPOSITORY_NAME $repo
 
-echo "export REPOSITORY_NAME $repo" >> ~/.bash_profile
+echo "export REPOSITORY_NAME=$repo" > ~/.repo_profile
 
 docker create --name dctm-xmsdata dctm-xmsdata
 docker run -dP --name dbora -h dbora oracle-xe
