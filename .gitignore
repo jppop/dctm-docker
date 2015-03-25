@@ -14,3 +14,4 @@ tmp
 *.gz
 *.bin
 *.dar
+dctm-data/

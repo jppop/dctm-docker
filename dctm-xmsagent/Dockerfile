@@ -31,7 +31,6 @@ RUN echo "com.rsa.cryptoj.fips140initialmode=NON_FIPS140_MODE" >> /etc/java-7-op
 ENV REPOSITORY_NAME devbox
 ENV REPOSITORY_USER dmadmin
 ENV REPOSITORY_PWD dmadmin
-ENV REGISTRY_NAME devbox
 ENV REGISTRY_USER dm_bof_registry
 ENV REGISTRY_CRYPTPWD AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv
 ENV REGISTRY_PWD dm_bof_registry

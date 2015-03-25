@@ -28,7 +28,7 @@ if [ -z $(grep dfc.globalregistry.repository ${DOCUMENTUM_SHARED}/config/dfc.pro
 	cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
 dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
 dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
-dfc.globalregistry.repository=${REGISTRY_NAME:-devbox}
+dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
 dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
 dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
 dfc.session.allow_trusted_login = true

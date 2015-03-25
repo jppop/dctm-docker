@@ -14,7 +14,7 @@ setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 # append the registry information to the dfc.properties
 if [ -z $(grep dfc.globalregistry.repository ${DOCUMENTUM_SHARED}/config/dfc.properties) ]; then
 	cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
-dfc.globalregistry.repository=${REGISTRY_NAME:-devbox}
+dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
 dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
 dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
 dfc.session.allow_trusted_login = true
