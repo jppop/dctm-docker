@@ -3,7 +3,7 @@
 usage() {
     echo `basename $0`: ERROR: $* 1>&2
     cat 2>&1 <<EOF
-usage: `basename $0` [--repo-name REPOSITORY_NAME] --host-id host-ip
+usage: `basename $0` [--repo-name REPOSITORY_NAME] --host-ip host-ip
 where
 repo-name the name of the repository. Default from the REPOSITORY_NAME variable.
 host-ip   is the ip address of the host
