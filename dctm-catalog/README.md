@@ -10,7 +10,9 @@ I choose the simplest: the packages are stored on my local disk and I have a scr
 The catalog layout:  
 ![catalog 1](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part1.png)  
 
-![catalog 1](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part2.png)
+![catalog 2](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part2.png)
+
+![catalog 3](https://raw.githubusercontent.com/jppop/dctm-docker/master/image/catalog-part3.png)
 
 And the script `install.sh`:
 ```bash
