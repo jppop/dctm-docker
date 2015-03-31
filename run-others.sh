@@ -107,4 +107,4 @@ done
 
 echo "All services started."
 echo "Wait for the end of xms start"
-docker logs -f xms
+echo "using: docker logs -f xms"
