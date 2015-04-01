@@ -41,7 +41,8 @@ RUN mv /bundles/isalive.sh ${DM_HOME}/bin/ \
  && chmod a+x ${DM_HOME}/bin/isalive.sh
 
 RUN mv /bundles/broker-install.properties $DM_HOME/install/broker-install.properties \
- && chown dmadmin:dmadmin $DM_HOME/install/broker-install.properties
+ && chown dmadmin:dmadmin $DM_HOME/install/broker-install.properties \
+ && chmod a+r -r /bundles
 
 EXPOSE 1489 49000 49001
 EXPOSE 9080
