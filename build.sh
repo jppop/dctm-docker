@@ -21,9 +21,9 @@ die() {
 
 os=$(uname -s)
 if [ "$os" = "Darwin" ]; then
-    OPTS=`getopt f: "$*"`
+    OPTS=`getopt nf: $*`
 else
-    OPTS=`getopt -o f: -l image-list: -- "$@"`
+    OPTS=`getopt -o nf: -l image-list:,no-cache -- "$@"`
 fi
 if [ $? != 0 ]
 then
@@ -33,10 +33,11 @@ fi
 eval set -- "$OPTS"
 
 # default values
-imagelist=images.lst
+imagelist=images.lst cache=
 while true ; do
     case "$1" in
         --image-list|-f) imagelist=$2; shift 2;;
+        --no-cache|-n) cache=--no-cache; shift 1;;
         --) shift; break;;
     esac
 done
@@ -53,7 +54,7 @@ for img in $(cat ${imagelist}); do
   else
 	echo "Building $img..."
 	[ -w ${LOG_FILE} ] && logger -s "Starting build. Image: $img..." 2>> ${LOG_FILE}
-	docker build -t $img $img/ 2>&1 | tee ${LOG_DIR}/docker-build-$img.log
+	docker build $cache -t $img $img/ 2>&1 | tee ${LOG_DIR}/docker-build-$img.log
 	[ -w ${LOG_FILE} ] && logger -s "Done. Image: $img..." 2>> ${LOG_FILE}
   fi
 done
