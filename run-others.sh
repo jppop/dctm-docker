@@ -30,6 +30,10 @@ fi
 
 eval set -- "$OPTS"
 
+if [ -f .dctm-docker.env ]; then
+    source .dctm-docker.env
+fi
+
 # default values
 repo=$REPOSITORY_NAME HOST_IP=
 containers=extbroker,xplore,da,bam,bps,ts,apphost,xms
