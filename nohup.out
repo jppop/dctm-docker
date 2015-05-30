@@ -1,0 +1,2502 @@
+time="2015-03-23T14:13:04-01:00" level="fatal" msg="Error response from daemon: Conflict. The name \"dctm-xmsdata\" is already in use by container 1e396f76e8a8. You have to delete (or rename) that container to be able to reuse that name." 
+ab1a5b9af0cec39f7cda9da168cfe7eeaab09e62288618629c69994fe038d9d1
+7139074d64926e17a86969eeab7041be0ab931b7e87a204e0685e33a09b9aa99
+Starting the Connection broker
+Installing the repository jcodevbox (    3658501)
+2015-03-23T16:13:07.556475 [DM_DOCBROKER_I_START]info:  "Docbroker has started.  Process id: 11"
+2015-03-23T16:13:07.744124 [DM_DOCBROKER_I_REGISTERED_PORT]info:  "The Docbroker registered using port (1489)."
+2015-03-23T16:13:07.744197 [DM_DOCBROKER_I_LISTENING]info:  "The Docbroker is listening on network address: (INET_ADDR: family: 2, port: 1489, host: dctm-cs (172.17.0.96, 600011ac))"
+Preparing to install...
+Extracting the installation resources from the installer archive...
+Configuring the installer for this system's environment...
+
+Launching installer...
+
+done
+Installing BPM application..
+appServer.jar
+bpm.ear
+dars.jar
+peSetup.bin
+serviceWrapperManager.jar
+16:33:41,683  INFO [main] com.documentum.install.pe.installanywhere.actions.PEInitializeSharedLibrary - Done InitializeSharedLibrary ...
+16:33:41,708  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - setJboss sharedDfcLibDir is:/opt/documentum/shared/dfc
+16:33:41,708  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - getFileFromResource for templates/appserver.properties
+16:33:41,894  WARN [main] com.documentum.install.pe.installanywhere.actions.DiWAPeInitialize - init-param tags found in Method Server webapp: 
+
+<init-param>
+      <param-name>docbase_install_owner_name</param-name>
+      <param-value>dmadmin</param-value>
+    </init-param>
+<init-param>
+      <param-name>docbase-jcodevbox</param-name>
+      <param-value>jcodevbox</param-value>
+    </init-param>
+16:33:48,368  INFO [main] com.documentum.install.pe.installanywhere.actions.DiPAPeInstallActions - starting DctmActions
+16:33:48,961  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - user name = 
+16:33:48,961  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - Server DctmServer_MethodServer already exists!
+16:33:48,962  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - Deploying to Group MethodServer... bpm (bpm.ear): does not exist!
+16:33:49,036  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - resolving /opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/deployments/bpm.ear/APP-INF/classes/dfc.properties
+16:33:49,036  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - resolving /opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/deployments/bpm.ear/APP-INF/classes/log4j.properties
+16:33:49,037  INFO [main] com.documentum.install.appserver.jboss.JbossApplicationServer - resolving /opt/documentum/shared/jboss7.1.1/server/DctmServer_MethodServer/deployments/bpm.ear/bpm.war/WEB-INF/web.xml
+16:33:49,038  INFO [main] com.documentum.install.pe.installanywhere.actions.DiPAPeInstallActions - Finished DctmActions.
+16:33:49,930  INFO [main] com.documentum.install.pe.installanywhere.actions.DiPAPeProcessDars - Start to deploy dars for docbase: jcodevbox
+16:41:12,212  INFO [main] com.documentum.install.pe.installanywhere.actions.DiPAPeProcessDars - End to deploy dars for repository: jcodevbox
+/opt/documentum/product/7.1/install
+Installing xCP dars..
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/ImageServices.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/ImageServices.dar
+[emc.installer] [INFO]  * Project name:   ImageServices
+[emc.installer] * Project name:   ImageServices
+[emc.installer] [INFO]  * Built by Composer: 6.7.1000.0023
+[emc.installer] * Built by Composer: 6.7.1000.0023
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:42:08 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:42:08 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:42:12 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:42:12 CET 2015
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Installing new object : 'anno_ax'(dm_format 2737d3058000029c)
+[emc.installer] Done Installing new object : 'anno_ax'(dm_format 2737d3058000029c)
+[emc.installer] [INFO]  Done Installing new object : 'anno_daeja'(dm_format 2737d3058000029d)
+[emc.installer] Done Installing new object : 'anno_daeja'(dm_format 2737d3058000029d)
+[emc.installer] [INFO]  Done Installing new object : 'igc_markup'(dm_format 2737d3058000029e)
+[emc.installer] Done Installing new object : 'igc_markup'(dm_format 2737d3058000029e)
+[emc.installer] [INFO]  Done Overwriting object : 'pdf'(dm_format 2737d3058000019f)
+[emc.installer] Done Overwriting object : 'pdf'(dm_format 2737d3058000019f)
+[emc.installer] [INFO]  Done Overwriting object : 'tiff'(dm_format 2737d305800001d9)
+[emc.installer] Done Overwriting object : 'tiff'(dm_format 2737d305800001d9)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_superusers_dynamic'(dm_group 1237d30580000102)
+[emc.installer] Done Overwriting object : 'dm_superusers_dynamic'(dm_group 1237d30580000102)
+[emc.installer] [INFO]  Done Overwriting object : 'DM_ANNOTATE'(dm_relation_type 3837d30580000100)
+[emc.installer] Done Overwriting object : 'DM_ANNOTATE'(dm_relation_type 3837d30580000100)
+[emc.installer] [INFO]  Done Installing new object : 'ImageServices'(dm_alias_set 6637d3058000011e)
+[emc.installer] Done Installing new object : 'ImageServices'(dm_alias_set 6637d3058000011e)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.imaging.pageaccess.IPageAccess'(dmc_module 0b37d305800018c7)
+[emc.installer] Done Installing new object : 'com.documentum.services.imaging.pageaccess.IPageAccess'(dmc_module 0b37d305800018c7)
+[emc.installer] [INFO]  Done Installing new object : 'ImagingServiceAnnotationPluginModules'(dm_folder 0b37d305800018c8)
+[emc.installer] Done Installing new object : 'ImagingServiceAnnotationPluginModules'(dm_folder 0b37d305800018c8)
+[emc.installer] [INFO]  Done Installing new object : 'AXViewerPluginModule'(dmc_module 0b37d305800018c9)
+[emc.installer] Done Installing new object : 'AXViewerPluginModule'(dmc_module 0b37d305800018c9)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018ca)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018ca)
+[emc.installer] [INFO]  Done Installing new object : 'BravaPluginModule'(dmc_module 0b37d305800018cb)
+[emc.installer] Done Installing new object : 'BravaPluginModule'(dmc_module 0b37d305800018cb)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018cc)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018cc)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.pageaware.pdf.IPdfPageHandlerService'(dmc_module 0b37d305800018cd)
+[emc.installer] Done Installing new object : 'com.documentum.pageaware.pdf.IPdfPageHandlerService'(dmc_module 0b37d305800018cd)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018ce)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018ce)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.pageaware.tiff.ITiffPageHandlerService'(dmc_module 0b37d305800018cf)
+[emc.installer] Done Installing new object : 'com.documentum.pageaware.tiff.ITiffPageHandlerService'(dmc_module 0b37d305800018cf)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d0)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d0)
+[emc.installer] [INFO]  Done Installing new object : 'ImagingServiceModules'(dm_folder 0b37d305800018d1)
+[emc.installer] Done Installing new object : 'ImagingServiceModules'(dm_folder 0b37d305800018d1)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.imaging.annotationservice.IAnnotationService'(dmc_module 0b37d305800018d2)
+[emc.installer] Done Installing new object : 'com.documentum.services.imaging.annotationservice.IAnnotationService'(dmc_module 0b37d305800018d2)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d3)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d3)
+[emc.installer] [INFO]  Done Installing new object : 'DaejaPluginModule'(dmc_module 0b37d305800018d4)
+[emc.installer] Done Installing new object : 'DaejaPluginModule'(dmc_module 0b37d305800018d4)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d5)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018d5)
+[emc.installer] [INFO]  Done Installing new object : 'ImageServices'(dm_folder 0b37d305800018d6)
+[emc.installer] Done Installing new object : 'ImageServices'(dm_folder 0b37d305800018d6)
+[emc.installer] [INFO]  Done Installing new object : 'PageModificationModule'(dmc_module 0b37d305800018d7)
+[emc.installer] Done Installing new object : 'PageModificationModule'(dmc_module 0b37d305800018d7)
+[emc.installer] [INFO]  Done Installing new object : 'DaejaInterface'(dmc_java_library 0b37d305800018d8)
+[emc.installer] Done Installing new object : 'DaejaInterface'(dmc_java_library 0b37d305800018d8)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800018d9)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800018d9)
+[emc.installer] [INFO]  Done Installing new object : 'TSxerces-impl'(dmc_java_library 0b37d305800018da)
+[emc.installer] Done Installing new object : 'TSxerces-impl'(dmc_java_library 0b37d305800018da)
+[emc.installer] [INFO]  Done Installing new object : 'imageservices-external-interface'(dmc_java_library 0b37d305800018db)
+[emc.installer] Done Installing new object : 'imageservices-external-interface'(dmc_java_library 0b37d305800018db)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018dc)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018dc)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018dd)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800018dd)
+[emc.installer] [INFO]  Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e5)
+[emc.installer] Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e5)
+[emc.installer] [INFO]  Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e6)
+[emc.installer] Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e6)
+[emc.installer] [INFO]  Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e7)
+[emc.installer] Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d305800018e7)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018ef)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018ef)
+[emc.installer] [INFO]  Done Installing new object : 'AnnotationService.jar'(dmc_jar 0937d305800018e8)
+[emc.installer] Done Installing new object : 'AnnotationService.jar'(dmc_jar 0937d305800018e8)
+[emc.installer] [INFO]  Done Installing new object : 'axviewerplugin.jar'(dmc_jar 0937d305800018e9)
+[emc.installer] Done Installing new object : 'axviewerplugin.jar'(dmc_jar 0937d305800018e9)
+[emc.installer] [INFO]  Done Installing new object : 'bravaplugin.jar'(dmc_jar 0937d305800018ea)
+[emc.installer] Done Installing new object : 'bravaplugin.jar'(dmc_jar 0937d305800018ea)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f0)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f0)
+[emc.installer] [INFO]  Done Installing new object : 'daejaplugin.jar'(dmc_jar 0937d305800018eb)
+[emc.installer] Done Installing new object : 'daejaplugin.jar'(dmc_jar 0937d305800018eb)
+[emc.installer] [INFO]  Done Installing new object : 'IAnnotationService.jar'(dmc_jar 0937d305800018ec)
+[emc.installer] Done Installing new object : 'IAnnotationService.jar'(dmc_jar 0937d305800018ec)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f1)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f1)
+[emc.installer] [INFO]  Done Installing new object : 'IAnnotationService.jar'(dmc_jar 0937d305800018ed)
+[emc.installer] Done Installing new object : 'IAnnotationService.jar'(dmc_jar 0937d305800018ed)
+[emc.installer] [INFO]  Done Installing new object : 'IPageAccessService.jar'(dmc_jar 0937d305800018ee)
+[emc.installer] Done Installing new object : 'IPageAccessService.jar'(dmc_jar 0937d305800018ee)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f2)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f2)
+[emc.installer] [INFO]  Done Installing new object : 'IPageModificationModule.jar'(dmc_jar 0937d305800018f9)
+[emc.installer] Done Installing new object : 'IPageModificationModule.jar'(dmc_jar 0937d305800018f9)
+[emc.installer] [INFO]  Done Installing new object : 'IPageModifier.jar'(dmc_jar 0937d305800018fa)
+[emc.installer] Done Installing new object : 'IPageModifier.jar'(dmc_jar 0937d305800018fa)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f3)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f3)
+[emc.installer] [INFO]  Done Installing new object : 'IPdfPlugin.jar'(dmc_jar 0937d305800018fb)
+[emc.installer] Done Installing new object : 'IPdfPlugin.jar'(dmc_jar 0937d305800018fb)
+[emc.installer] [INFO]  Done Installing new object : 'ITiffPlugin.jar'(dmc_jar 0937d305800018fc)
+[emc.installer] Done Installing new object : 'ITiffPlugin.jar'(dmc_jar 0937d305800018fc)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f4)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f4)
+[emc.installer] [INFO]  Done Installing new object : 'ji.jar'(dmc_jar 0937d305800018fd)
+[emc.installer] Done Installing new object : 'ji.jar'(dmc_jar 0937d305800018fd)
+[emc.installer] [INFO]  Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d305800018fe)
+[emc.installer] Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d305800018fe)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f5)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f5)
+[emc.installer] [INFO]  Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d305800018ff)
+[emc.installer] Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d305800018ff)
+[emc.installer] [INFO]  Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d30580001900)
+[emc.installer] Done Installing new object : 'page_serving_api.jar'(dmc_jar 0937d30580001900)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f6)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d305800018f6)
+[emc.installer] [INFO]  Done Installing new object : 'PageAccessService.jar'(dmc_jar 0937d30580001901)
+[emc.installer] Done Installing new object : 'PageAccessService.jar'(dmc_jar 0937d30580001901)
+[emc.installer] [INFO]  Done Installing new object : 'PostInstall'(dm_procedure 0837d305800018f7)
+[emc.installer] Done Installing new object : 'PostInstall'(dm_procedure 0837d305800018f7)
+[emc.installer] [INFO]  Done Installing new object : 'annotationconfig.xml'(dm_document 0937d30580001902)
+[emc.installer] Done Installing new object : 'annotationconfig.xml'(dm_document 0937d30580001902)
+[emc.installer] [INFO]  Done Installing new object : 'PageModificationModule.jar'(dmc_jar 0937d30580001903)
+[emc.installer] Done Installing new object : 'PageModificationModule.jar'(dmc_jar 0937d30580001903)
+[emc.installer] [INFO]  Done Installing new object : 'PdfPlugin.jar'(dmc_jar 0937d30580001904)
+[emc.installer] Done Installing new object : 'PdfPlugin.jar'(dmc_jar 0937d30580001904)
+[emc.installer] [INFO]  Done Installing new object : 'TiffPlugin.jar'(dmc_jar 0937d30580001905)
+[emc.installer] Done Installing new object : 'TiffPlugin.jar'(dmc_jar 0937d30580001905)
+[emc.installer] [INFO]  Done Installing new object : 'xercesImpl.jar'(dmc_jar 0937d30580001906)
+[emc.installer] Done Installing new object : 'xercesImpl.jar'(dmc_jar 0937d30580001906)
+[emc.installer] [INFO]  Done Installing new object : 'xml-apis.jar'(dmc_jar 0937d30580001907)
+[emc.installer] Done Installing new object : 'xml-apis.jar'(dmc_jar 0937d30580001907)
+[emc.installer] [INFO]  Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d30580001908)
+[emc.installer] Done Installing new object : 'annotationplugin-api.jar'(dmc_jar 0937d30580001908)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001aa)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001aa)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ab)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ab)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ac)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ac)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ad)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ad)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ae)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001ae)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001af)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001af)
+[emc.installer] [INFO]  Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001b0)
+[emc.installer] Done Installing new object : 'dm_bof_dependencies'(dm_relation 3737d305800001b0)
+[emc.installer] [INFO]  Done Installing new object : 'ImageServices'(dmc_dar 0837d305800018f8)
+[emc.installer] Done Installing new object : 'ImageServices'(dmc_dar 0837d305800018f8)
+[emc.installer] [WARN]  com.documentum.services.imaging.annotationplugin.AXViewerPlugin.getVersion() returns null or empty. Version label for 'AXViewerPluginModule' might not be set correctly.
+[emc.installer] com.documentum.services.imaging.annotationplugin.AXViewerPlugin.getVersion() returns null or empty. Version label for 'AXViewerPluginModule' might not be set correctly.
+[emc.installer] [WARN]  com.documentum.services.imaging.annotationplugin.BravaPlugin.getVersion() returns null or empty. Version label for 'BravaPluginModule' might not be set correctly.
+[emc.installer] com.documentum.services.imaging.annotationplugin.BravaPlugin.getVersion() returns null or empty. Version label for 'BravaPluginModule' might not be set correctly.
+[emc.installer] [WARN]  com.documentum.services.imaging.annotationplugin.DaejaPlugin.getVersion() returns null or empty. Version label for 'DaejaPluginModule' might not be set correctly.
+[emc.installer] com.documentum.services.imaging.annotationplugin.DaejaPlugin.getVersion() returns null or empty. Version label for 'DaejaPluginModule' might not be set correctly.
+[emc.installer] [WARN]  com.documentum.services.imaging.pagemodification.impl.PageModification.getVersion() returns null or empty. Version label for 'PageModificationModule' might not be set correctly.
+[emc.installer] com.documentum.services.imaging.pagemodification.impl.PageModification.getVersion() returns null or empty. Version label for 'PageModificationModule' might not be set correctly.
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:42:46 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:42:46 CET 2015
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Starting PostInstall configuration....
+[emc.installer] dmbasic.exe output : Starting PostInstall configuration....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************Document Image Services********************************
+[emc.installer] dmbasic.exe output : <BR>*****************Document Image Services********************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Connected to the docbase jcodevbox.....
+[emc.installer] dmbasic.exe output : Connected to the docbase jcodevbox.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Modify PDF and TIFF formats to enable Page Serving feature.....
+[emc.installer] dmbasic.exe output : Modify PDF and TIFF formats to enable Page Serving feature.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Alter a_page_plugin_name in pdf format to com.documentum.pageaware.pdf.IPdfPageHandlerService
+[emc.installer] dmbasic.exe output : <BR>Alter a_page_plugin_name in pdf format to com.documentum.pageaware.pdf.IPdfPageHandlerService
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Alter a_page_plugin_name in tiff format to com.documentum.pageaware.tiff.ITiffPageHandlerService
+[emc.installer] dmbasic.exe output : <BR>Alter a_page_plugin_name in tiff format to com.documentum.pageaware.tiff.ITiffPageHandlerService
+[emc.installer] [INFO]  dmbasic.exe output : <BR>DM_ANNOTATE relation type successfully updated
+[emc.installer] dmbasic.exe output : <BR>DM_ANNOTATE relation type successfully updated
+[emc.installer] [INFO]  dmbasic.exe output : <BR>dmc_module PageModificationModule successfully updated
+[emc.installer] dmbasic.exe output : <BR>dmc_module PageModificationModule successfully updated
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Add dm_world as a member of dm_superusers_dynamic
+[emc.installer] dmbasic.exe output : <BR>Add dm_world as a member of dm_superusers_dynamic
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>**********************************************************************************
+[emc.installer] dmbasic.exe output : <BR>**********************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************Documentum Image Services**********************************
+[emc.installer] dmbasic.exe output : <BR>*****************Documentum Image Services**********************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Finished PostInstall configuration....<BR>
+[emc.installer] dmbasic.exe output : Finished PostInstall configuration....<BR>
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:43:02 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:43:02 CET 2015
+[emc.installer] [INFO]  Project 'ImageServices' was successfully installed.
+[emc.installer] Project 'ImageServices' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 1 minute 31 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-ImageServices.dar-201503231641.log
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/xCP_Viewer_Services.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/xCP_Viewer_Services.dar
+[emc.installer] [INFO]  * Project name:   xCP_Viewer_Services
+[emc.installer] * Project name:   xCP_Viewer_Services
+[emc.installer] [INFO]  * Built by Composer: 7.1.0000.0186
+[emc.installer] * Built by Composer: 7.1.0000.0186
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:43:53 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:43:53 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:43:57 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:43:57 CET 2015
+[emc.installer] [INFO]  Done Installing new object : 'dmc_viewer_pagemod_aspect'(dmc_aspect_type 0b37d3058000197b)
+[emc.installer] Done Installing new object : 'dmc_viewer_pagemod_aspect'(dmc_aspect_type 0b37d3058000197b)
+[emc.installer] [INFO]  Done Installing new object : 'dmc_viewer_comment_aspect'(dmc_aspect_type 0b37d3058000197c)
+[emc.installer] Done Installing new object : 'dmc_viewer_comment_aspect'(dmc_aspect_type 0b37d3058000197c)
+[emc.installer] [INFO]  Done Installing new object : 'dmi_0337d3058000020b'(dm_type 0337d3058000020b)
+[emc.installer] Done Installing new object : 'dmi_0337d3058000020b'(dm_type 0337d3058000020b)
+[emc.installer] [INFO]  Done Installing new object : 'dmi_0337d3058000020c'(dm_type 0337d3058000020c)
+[emc.installer] Done Installing new object : 'dmi_0337d3058000020c'(dm_type 0337d3058000020c)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Installing new object : 'excel14book'(dm_format 2737d305800002a6)
+[emc.installer] Done Installing new object : 'excel14book'(dm_format 2737d305800002a6)
+[emc.installer] [INFO]  Done Installing new object : 'msw14'(dm_format 2737d305800002a7)
+[emc.installer] Done Installing new object : 'msw14'(dm_format 2737d305800002a7)
+[emc.installer] [INFO]  Done Installing new object : 'ppt14'(dm_format 2737d305800002a8)
+[emc.installer] Done Installing new object : 'ppt14'(dm_format 2737d305800002a8)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_superusers_dynamic'(dm_group 1237d30580000102)
+[emc.installer] Done Overwriting object : 'dm_superusers_dynamic'(dm_group 1237d30580000102)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d3058000197d)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d3058000197d)
+[emc.installer] [INFO]  Done Installing new object : 'ViewerCommentModification'(dmc_module 0b37d3058000197e)
+[emc.installer] Done Installing new object : 'ViewerCommentModification'(dmc_module 0b37d3058000197e)
+[emc.installer] [INFO]  Done Installing new object : 'collaboration'(dmc_java_library 0b37d3058000197f)
+[emc.installer] Done Installing new object : 'collaboration'(dmc_java_library 0b37d3058000197f)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001980)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001980)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001981)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001981)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001982)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001982)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001983)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001983)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001984)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001984)
+[emc.installer] [INFO]  Done Installing new object : 'xCP_Viewer_Services'(dm_folder 0b37d30580001989)
+[emc.installer] Done Installing new object : 'xCP_Viewer_Services'(dm_folder 0b37d30580001989)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001993)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001993)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001994)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001994)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001995)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001995)
+[emc.installer] [INFO]  Done Installing new object : 'collaboration'(dmc_jar 0937d3058000199d)
+[emc.installer] Done Installing new object : 'collaboration'(dmc_jar 0937d3058000199d)
+[emc.installer] [INFO]  Done Installing new object : 'viewerCommentAspect'(dmc_jar 0937d3058000199e)
+[emc.installer] Done Installing new object : 'viewerCommentAspect'(dmc_jar 0937d3058000199e)
+[emc.installer] [INFO]  Done Installing new object : 'postinstall'(dm_procedure 0837d30580001996)
+[emc.installer] Done Installing new object : 'postinstall'(dm_procedure 0837d30580001996)
+[emc.installer] [INFO]  Done Installing new object : 'viewerCommentAspectImpl'(dmc_jar 0937d3058000199f)
+[emc.installer] Done Installing new object : 'viewerCommentAspectImpl'(dmc_jar 0937d3058000199f)
+[emc.installer] [INFO]  Done Installing new object : 'viewerCommentModService'(dmc_jar 0937d305800019a0)
+[emc.installer] Done Installing new object : 'viewerCommentModService'(dmc_jar 0937d305800019a0)
+[emc.installer] [INFO]  Done Installing new object : 'viewerCommentModServiceImpl'(dmc_jar 0937d305800019a1)
+[emc.installer] Done Installing new object : 'viewerCommentModServiceImpl'(dmc_jar 0937d305800019a1)
+[emc.installer] [INFO]  Done Installing new object : 'viewerPageModAspect'(dmc_jar 0937d305800019a2)
+[emc.installer] Done Installing new object : 'viewerPageModAspect'(dmc_jar 0937d305800019a2)
+[emc.installer] [INFO]  Done Installing new object : 'viewerPageModAspectImpl'(dmc_jar 0937d305800019a3)
+[emc.installer] Done Installing new object : 'viewerPageModAspectImpl'(dmc_jar 0937d305800019a3)
+[emc.installer] [INFO]  Done Installing new object : 'xCP Viewer Comment Services'(dmc_dar 0837d30580001997)
+[emc.installer] Done Installing new object : 'xCP Viewer Comment Services'(dmc_dar 0837d30580001997)
+[emc.installer] [WARN]  com.emc.documentum.services.documentviewer.impl.ViewerCommentModification.getVersion() returns null or empty. Version label for 'ViewerCommentModification' might not be set correctly.
+[emc.installer] com.emc.documentum.services.documentviewer.impl.ViewerCommentModification.getVersion() returns null or empty. Version label for 'ViewerCommentModification' might not be set correctly.
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:44:17 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:44:17 CET 2015
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Starting PostInstall configuration....
+[emc.installer] dmbasic.exe output : Starting PostInstall configuration....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************xCP Default Viewer Services********************************
+[emc.installer] dmbasic.exe output : <BR>*****************xCP Default Viewer Services********************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Connected to the docbase jcodevbox.....
+[emc.installer] dmbasic.exe output : Connected to the docbase jcodevbox.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Append dm_superusers_dynamic to a_privilege_roles
+[emc.installer] dmbasic.exe output : <BR>Append dm_superusers_dynamic to a_privilege_roles
+[emc.installer] [INFO]  dmbasic.exe output : <BR>dmc_module ViewerCommentModification successfully updated
+[emc.installer] dmbasic.exe output : <BR>dmc_module ViewerCommentModification successfully updated
+[emc.installer] [INFO]  dmbasic.exe output : <BR>dm_world is already a member of dm_superusers_dynamic
+[emc.installer] dmbasic.exe output : <BR>dm_world is already a member of dm_superusers_dynamic
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format msw8 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format msw8 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw8.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw8.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format msw12 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format msw12 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw12.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw12.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format msw14 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format msw14 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw14.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msw14.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format excel8book if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format excel8book if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel8book.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel8book.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format excel12book if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format excel12book if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel12book.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel12book.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format excel14book if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format excel14book if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel14book.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of excel14book.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format msg if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format msg if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msg.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of msg.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format ppt8 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format ppt8 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt8.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt8.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format ppt12 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format ppt12 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt12.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt12.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Retrieving dm_format ppt14 if it exists....
+[emc.installer] dmbasic.exe output : <BR>Retrieving dm_format ppt14 if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt14.
+[emc.installer] dmbasic.exe output : <BR>Updated richmedia_enabled attribute of ppt14.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>**********************************************************************************
+[emc.installer] dmbasic.exe output : <BR>**********************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************xCP Default Viewer Services**********************************
+[emc.installer] dmbasic.exe output : <BR>*****************xCP Default Viewer Services**********************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Finished PostInstall configuration....<BR>
+[emc.installer] dmbasic.exe output : Finished PostInstall configuration....<BR>
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:44:30 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:44:30 CET 2015
+[emc.installer] [INFO]  Project 'xCP_Viewer_Services' was successfully installed.
+[emc.installer] Project 'xCP_Viewer_Services' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 1 minute 13 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-xCP_Viewer_Services.dar-201503231643.log
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/Rich_Media_Services.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/Rich_Media_Services.dar
+[emc.installer] [INFO]  * Project name:   Rich_Media_Services
+[emc.installer] * Project name:   Rich_Media_Services
+[emc.installer] [INFO]  * Built by Composer: 7.1.0000.0186
+[emc.installer] * Built by Composer: 7.1.0000.0186
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:45:32 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:45:32 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Starting PreInstall configuration....
+[emc.installer] dmbasic.exe output : Starting PreInstall configuration....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>******************Content Transformation Services 7.1 ***********************
+[emc.installer] dmbasic.exe output : <BR>******************Content Transformation Services 7.1 ***********************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Confidential Property of EMC, Corp.
+[emc.installer] dmbasic.exe output : <BR>* Confidential Property of EMC, Corp.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* (c) Copyright EMC, Corp. 2012.
+[emc.installer] dmbasic.exe output : <BR>* (c) Copyright EMC, Corp. 2012.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* All Rights reserved.
+[emc.installer] dmbasic.exe output : <BR>* All Rights reserved.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Signed by a EMC corporate officer.
+[emc.installer] dmbasic.exe output : <BR>* Signed by a EMC corporate officer.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Version = 7.1.0000.0116
+[emc.installer] dmbasic.exe output : <BR>* Version = 7.1.0000.0116
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************************************************************************
+[emc.installer] dmbasic.exe output : <BR>*****************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : locale extracted - en
+[emc.installer] dmbasic.exe output : locale extracted - en
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Connected to docbase jcodevbox.....
+[emc.installer] dmbasic.exe output : Connected to docbase jcodevbox.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Content Server Version 7.1.0090.0213  Linux64.Oracle
+[emc.installer] dmbasic.exe output : Content Server Version 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Rich Media Services DocApp has not been previously installed.
+[emc.installer] dmbasic.exe output : Rich Media Services DocApp has not been previously installed.
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Checking User Privileges.....
+[emc.installer] dmbasic.exe output : Checking User Privileges.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : User dmadmin has full privileges. Proceeding...
+[emc.installer] dmbasic.exe output : User dmadmin has full privileges. Proceeding...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Checking Roles.....
+[emc.installer] dmbasic.exe output : Checking Roles.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dmc_content_collection type...
+[emc.installer] dmbasic.exe output : Checking dmc_content_collection type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_content_collection type...
+[emc.installer] dmbasic.exe output : Creating dmc_content_collection type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Modifying Label of dmc_content_collection type...
+[emc.installer] dmbasic.exe output : Modifying Label of dmc_content_collection type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dmc_temp_collection type...
+[emc.installer] dmbasic.exe output : Checking dmc_temp_collection type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_temp_collection type...
+[emc.installer] dmbasic.exe output : Creating dmc_temp_collection type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dmc_coll_relation type...
+[emc.installer] dmbasic.exe output : Checking dmc_coll_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_coll_relation type...
+[emc.installer] dmbasic.exe output : Creating dmc_coll_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : full_format exists
+[emc.installer] dmbasic.exe output : full_format exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : page_modifier exists
+[emc.installer] dmbasic.exe output : page_modifier exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : page exists
+[emc.installer] dmbasic.exe output : page exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : src_full_format exists
+[emc.installer] dmbasic.exe output : src_full_format exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : src_page_modifier exists
+[emc.installer] dmbasic.exe output : src_page_modifier exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : src_page exists
+[emc.installer] dmbasic.exe output : src_page exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Status exists
+[emc.installer] dmbasic.exe output : Status exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : is_temporary exists
+[emc.installer] dmbasic.exe output : is_temporary exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dmc_fav_col_relation type...
+[emc.installer] dmbasic.exe output : Checking dmc_fav_col_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_fav_col_relation type...
+[emc.installer] dmbasic.exe output : Creating dmc_fav_col_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting dmc_coll_relation relation object ...
+[emc.installer] dmbasic.exe output : Setting dmc_coll_relation relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting dmc_fav_col_relation relation object ...
+[emc.installer] dmbasic.exe output : Setting dmc_fav_col_relation relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : updating dm_format OBJECTS...
+[emc.installer] dmbasic.exe output : updating dm_format OBJECTS...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : getting the first store with media_type = 1
+[emc.installer] dmbasic.exe output : getting the first store with media_type = 1
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : selected store id is: 2837d30580000101
+[emc.installer] dmbasic.exe output : selected store id is: 2837d30580000101
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dmc_video_bin type...
+[emc.installer] dmbasic.exe output : Checking dmc_video_bin type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_video_bin type...
+[emc.installer] dmbasic.exe output : Creating dmc_video_bin type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Modifying Label of dmc_video_bin type...
+[emc.installer] dmbasic.exe output : Modifying Label of dmc_video_bin type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dm_timebased_info type...
+[emc.installer] dmbasic.exe output : Checking dm_timebased_info type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_timebased_info type...
+[emc.installer] dmbasic.exe output : Creating dm_timebased_info type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : msec_in exists
+[emc.installer] dmbasic.exe output : msec_in exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : msec_out exists
+[emc.installer] dmbasic.exe output : msec_out exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : tc_in exists
+[emc.installer] dmbasic.exe output : tc_in exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : tc_out exists
+[emc.installer] dmbasic.exe output : tc_out exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : media_rate exists
+[emc.installer] dmbasic.exe output : media_rate exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : media_standard exists
+[emc.installer] dmbasic.exe output : media_standard exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dm_timebased_element type...
+[emc.installer] dmbasic.exe output : Checking dm_timebased_element type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_timebased_element type...
+[emc.installer] dmbasic.exe output : Creating dm_timebased_element type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : doc_id exists
+[emc.installer] dmbasic.exe output : doc_id exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : msec_in exists
+[emc.installer] dmbasic.exe output : msec_in exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : msec_out exists
+[emc.installer] dmbasic.exe output : msec_out exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : tc_in exists
+[emc.installer] dmbasic.exe output : tc_in exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : tc_out exists
+[emc.installer] dmbasic.exe output : tc_out exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : text_value exists
+[emc.installer] dmbasic.exe output : text_value exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : text_confidence exists
+[emc.installer] dmbasic.exe output : text_confidence exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : text_category exists
+[emc.installer] dmbasic.exe output : text_category exists
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Modifying dm_timebased_element OBJECT...
+[emc.installer] dmbasic.exe output : Modifying dm_timebased_element OBJECT...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Checking dm_timebased_relation type...
+[emc.installer] dmbasic.exe output : Checking dm_timebased_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_timebased_relation type...
+[emc.installer] dmbasic.exe output : Creating dm_timebased_relation type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting tb_source relation object ...
+[emc.installer] dmbasic.exe output : Setting tb_source relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting tb_use relation object ...
+[emc.installer] dmbasic.exe output : Setting tb_use relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting tb_copy relation object ...
+[emc.installer] dmbasic.exe output : Setting tb_copy relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting tb_extended_info relation object ...
+[emc.installer] dmbasic.exe output : Setting tb_extended_info relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting ppt_template relation object ...
+[emc.installer] dmbasic.exe output : Setting ppt_template relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting ppt_indexed relation object ...
+[emc.installer] dmbasic.exe output : Setting ppt_indexed relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting potential_derivation relation object ...
+[emc.installer] dmbasic.exe output : Setting potential_derivation relation object ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Retrieving dm_format ppt12_slide if it exists....
+[emc.installer] dmbasic.exe output : Retrieving dm_format ppt12_slide if it exists....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_format ppt12_slide....
+[emc.installer] dmbasic.exe output : Creating dm_format ppt12_slide....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Create /System/Applications folder...
+[emc.installer] dmbasic.exe output : Create /System/Applications folder...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Create /System/Applications/PPT_Assembly/users folder...
+[emc.installer] dmbasic.exe output : Create /System/Applications/PPT_Assembly/users folder...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Create /System/Applications/PPT_Assembly/templates folder...
+[emc.installer] dmbasic.exe output : Create /System/Applications/PPT_Assembly/templates folder...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : UPDATE PPT USERS FOLDER PERMISSION ...
+[emc.installer] dmbasic.exe output : UPDATE PPT USERS FOLDER PERMISSION ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Create PPT ASSEMBLY OBJECT TYPE ...
+[emc.installer] dmbasic.exe output : Create PPT ASSEMBLY OBJECT TYPE ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : creating dam_ppt_assembly .. 
+[emc.installer] dmbasic.exe output : creating dam_ppt_assembly .. 
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update powerpoint PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update powerpoint PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : updating powerpoint format_class.. 
+[emc.installer] dmbasic.exe output : updating powerpoint format_class.. 
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt_mac3 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt_mac3 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt_mac4  PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt_mac4  PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt_win3 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt_win3 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt_win4 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt_win4 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt_win7 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt_win7 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt8 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt8 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt8_slide PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt8_slide PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt12 PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt12 PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update ppt12_slide PPT format_class stuff...
+[emc.installer] dmbasic.exe output : Update ppt12_slide PPT format_class stuff...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update mac access protocol...
+[emc.installer] dmbasic.exe output : Update mac access protocol...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update mac access protocol...
+[emc.installer] dmbasic.exe output : Update mac access protocol...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Update tb_source dm_relation...
+[emc.installer] dmbasic.exe output : Update tb_source dm_relation...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dam_default rendition TYPE ...
+[emc.installer] dmbasic.exe output : Creating dam_default rendition TYPE ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Create /System/Applications folder...
+[emc.installer] dmbasic.exe output : Create /System/Applications folder...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : UPDATE PROXY THUMBNAIL FOLDER PERMISSION ...
+[emc.installer] dmbasic.exe output : UPDATE PROXY THUMBNAIL FOLDER PERMISSION ...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>****************************************************************************
+[emc.installer] dmbasic.exe output : <BR>****************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************Content Transformation Services**********************
+[emc.installer] dmbasic.exe output : <BR>*****************Content Transformation Services**********************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Finished preinstall configuration....<BR>
+[emc.installer] dmbasic.exe output : Finished preinstall configuration....<BR>
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:46:13 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:46:13 CET 2015
+[emc.installer] [INFO]  Done Overwriting object : 'dm_timebased_element'(dm_type 0337d30580000213)
+[emc.installer] Done Overwriting object : 'dm_timebased_element'(dm_type 0337d30580000213)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_timebased_info'(dm_type 0337d30580000212)
+[emc.installer] Done Overwriting object : 'dm_timebased_info'(dm_type 0337d30580000212)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_timebased_relation'(dm_type 0337d30580000214)
+[emc.installer] Done Overwriting object : 'dm_timebased_relation'(dm_type 0337d30580000214)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_coll_relation'(dm_type 0337d3058000020f)
+[emc.installer] Done Overwriting object : 'dmc_coll_relation'(dm_type 0337d3058000020f)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_content_collection'(dm_type 0337d3058000020d)
+[emc.installer] Done Overwriting object : 'dmc_content_collection'(dm_type 0337d3058000020d)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_fav_col_relation'(dm_type 0337d30580000210)
+[emc.installer] Done Overwriting object : 'dmc_fav_col_relation'(dm_type 0337d30580000210)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_temp_collection'(dm_type 0337d3058000020e)
+[emc.installer] Done Overwriting object : 'dmc_temp_collection'(dm_type 0337d3058000020e)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_video_bin'(dm_type 0337d30580000211)
+[emc.installer] Done Overwriting object : 'dmc_video_bin'(dm_type 0337d30580000211)
+[emc.installer] [INFO]  Done Overwriting object : 'jpeg_lres'(dm_format 2737d30580000217)
+[emc.installer] Done Overwriting object : 'jpeg_lres'(dm_format 2737d30580000217)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_coll_relation'(dm_relation_type 3837d305800002dd)
+[emc.installer] Done Overwriting object : 'dmc_coll_relation'(dm_relation_type 3837d305800002dd)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_fav_col_relation'(dm_relation_type 3837d305800002de)
+[emc.installer] Done Overwriting object : 'dmc_fav_col_relation'(dm_relation_type 3837d305800002de)
+[emc.installer] [INFO]  Done Overwriting object : 'potential_derivation'(dm_relation_type 3837d305800002e6)
+[emc.installer] Done Overwriting object : 'potential_derivation'(dm_relation_type 3837d305800002e6)
+[emc.installer] [INFO]  Done Overwriting object : 'ppt_indexed'(dm_relation_type 3837d305800002e5)
+[emc.installer] Done Overwriting object : 'ppt_indexed'(dm_relation_type 3837d305800002e5)
+[emc.installer] [INFO]  Done Overwriting object : 'ppt_template'(dm_relation_type 3837d305800002e4)
+[emc.installer] Done Overwriting object : 'ppt_template'(dm_relation_type 3837d305800002e4)
+[emc.installer] [INFO]  Done Overwriting object : 'tb_copy'(dm_relation_type 3837d305800002e2)
+[emc.installer] Done Overwriting object : 'tb_copy'(dm_relation_type 3837d305800002e2)
+[emc.installer] [INFO]  Done Overwriting object : 'tb_extended_info'(dm_relation_type 3837d305800002e3)
+[emc.installer] Done Overwriting object : 'tb_extended_info'(dm_relation_type 3837d305800002e3)
+[emc.installer] [INFO]  Done Overwriting object : 'tb_source'(dm_relation_type 3837d305800002e0)
+[emc.installer] Done Overwriting object : 'tb_source'(dm_relation_type 3837d305800002e0)
+[emc.installer] [INFO]  Done Overwriting object : 'tb_use'(dm_relation_type 3837d305800002e1)
+[emc.installer] Done Overwriting object : 'tb_use'(dm_relation_type 3837d305800002e1)
+[emc.installer] [INFO]  Done Installing new object : 'Rich_Media_Services'(dm_alias_set 6637d30580000128)
+[emc.installer] Done Installing new object : 'Rich_Media_Services'(dm_alias_set 6637d30580000128)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.collection.IDmCollectionService'(dmc_module 0b37d305800019db)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.collection.IDmCollectionService'(dmc_module 0b37d305800019db)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019dc)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019dc)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019dd)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019dd)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.IPowerPointService'(dmc_module 0b37d305800019de)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.IPowerPointService'(dmc_module 0b37d305800019de)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019df)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019df)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e0)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e0)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.IStoryboardService'(dmc_module 0b37d305800019e1)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.IStoryboardService'(dmc_module 0b37d305800019e1)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e2)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e2)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e3)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e3)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.ITimeBasedService'(dmc_module 0b37d305800019e4)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.ITimeBasedService'(dmc_module 0b37d305800019e4)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e5)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e5)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e6)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e6)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.rendition.IRenditionService'(dmc_module 0b37d305800019e7)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.rendition.IRenditionService'(dmc_module 0b37d305800019e7)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e8)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019e8)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e9)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019e9)
+[emc.installer] [INFO]  Done Installing new object : 'dm_timebased_element'(dmc_module 0b37d305800019ea)
+[emc.installer] Done Installing new object : 'dm_timebased_element'(dmc_module 0b37d305800019ea)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019eb)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019eb)
+[emc.installer] [INFO]  Done Installing new object : 'dm_timebased_info'(dmc_module 0b37d305800019ec)
+[emc.installer] Done Installing new object : 'dm_timebased_info'(dmc_module 0b37d305800019ec)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019ed)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019ed)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019ee)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019ee)
+[emc.installer] [INFO]  Done Installing new object : 'dm_timebased_relation'(dmc_module 0b37d305800019ef)
+[emc.installer] Done Installing new object : 'dm_timebased_relation'(dmc_module 0b37d305800019ef)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f0)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f0)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f1)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f1)
+[emc.installer] [INFO]  Done Installing new object : 'dmc_coll_relation'(dmc_module 0b37d305800019f2)
+[emc.installer] Done Installing new object : 'dmc_coll_relation'(dmc_module 0b37d305800019f2)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f3)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f3)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f4)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f4)
+[emc.installer] [INFO]  Done Installing new object : 'dmc_content_collection'(dmc_module 0b37d305800019f5)
+[emc.installer] Done Installing new object : 'dmc_content_collection'(dmc_module 0b37d305800019f5)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f6)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019f6)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f7)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d305800019f7)
+[emc.installer] [INFO]  Done Installing new object : 'Rich_Media_Services'(dm_folder 0b37d305800019f8)
+[emc.installer] Done Installing new object : 'Rich_Media_Services'(dm_folder 0b37d305800019f8)
+[emc.installer] [INFO]  Done Installing new object : 'dam_servicesImpl'(dmc_java_library 0b37d305800019f9)
+[emc.installer] Done Installing new object : 'dam_servicesImpl'(dmc_java_library 0b37d305800019f9)
+[emc.installer] [INFO]  Done Installing new object : 'dam_services'(dmc_java_library 0b37d305800019fa)
+[emc.installer] Done Installing new object : 'dam_services'(dmc_java_library 0b37d305800019fa)
+[emc.installer] [INFO]  Done Installing new object : 'icm'(dmc_java_library 0b37d305800019fb)
+[emc.installer] Done Installing new object : 'icm'(dmc_java_library 0b37d305800019fb)
+[emc.installer] [INFO]  Done Installing new object : 'tar'(dmc_java_library 0b37d305800019fc)
+[emc.installer] Done Installing new object : 'tar'(dmc_java_library 0b37d305800019fc)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019fd)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d305800019fd)
+[emc.installer] [INFO]  Done Installing new object : 'tar'(dmc_jar 0937d30580001a03)
+[emc.installer] Done Installing new object : 'tar'(dmc_jar 0937d30580001a03)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0d)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0d)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0e)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0e)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0f)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a0f)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a10)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a10)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a11)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a11)
+[emc.installer] [INFO]  Done Installing new object : 'dam_services.jar'(dmc_jar 0937d30580001a04)
+[emc.installer] Done Installing new object : 'dam_services.jar'(dmc_jar 0937d30580001a04)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a12)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a12)
+[emc.installer] [INFO]  Done Installing new object : 'PreInstall'(dm_procedure 0837d30580001a13)
+[emc.installer] Done Installing new object : 'PreInstall'(dm_procedure 0837d30580001a13)
+[emc.installer] [INFO]  Done Installing new object : 'ICMLocaleMappings'(dm_document 0937d30580001a05)
+[emc.installer] Done Installing new object : 'ICMLocaleMappings'(dm_document 0937d30580001a05)
+[emc.installer] [INFO]  Done Installing new object : 'rmlocalemappings.xml'(dm_document 0937d30580001a06)
+[emc.installer] Done Installing new object : 'rmlocalemappings.xml'(dm_document 0937d30580001a06)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a14)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a14)
+[emc.installer] [INFO]  Done Installing new object : 'dam_servicesImpl.jar'(dmc_jar 0937d30580001a07)
+[emc.installer] Done Installing new object : 'dam_servicesImpl.jar'(dmc_jar 0937d30580001a07)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a15)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a15)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a16)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a16)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a17)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001a17)
+[emc.installer] [INFO]  Done Installing new object : 'icm.jar'(dmc_jar 0937d30580001a08)
+[emc.installer] Done Installing new object : 'icm.jar'(dmc_jar 0937d30580001a08)
+[emc.installer] [INFO]  Done Installing new object : 'Rich_Media_Services'(dmc_dar 0837d30580001a18)
+[emc.installer] Done Installing new object : 'Rich_Media_Services'(dmc_dar 0837d30580001a18)
+[emc.installer] [WARN]  com.documentum.services.dam.impl.TimeBasedRelation.getVersion() returns null or empty. Version label for 'dm_timebased_relation' might not be set correctly.
+[emc.installer] com.documentum.services.dam.impl.TimeBasedRelation.getVersion() returns null or empty. Version label for 'dm_timebased_relation' might not be set correctly.
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:46:42 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:46:42 CET 2015
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:46:44 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:46:44 CET 2015
+[emc.installer] [INFO]  Project 'Rich_Media_Services' was successfully installed.
+[emc.installer] Project 'Rich_Media_Services' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 1 minute 57 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-Rich_Media_Services.dar-201503231644.log
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/Transformation.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/Transformation.dar
+[emc.installer] [INFO]  * Project name:   Transformation
+[emc.installer] * Project name:   Transformation
+[emc.installer] [INFO]  * Built by Composer: 7.1.0000.0186
+[emc.installer] * Built by Composer: 7.1.0000.0186
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:47:39 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:47:39 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Starting PreInstall configuration....
+[emc.installer] dmbasic.exe output : Starting PreInstall configuration....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>******************Content Transformation Services 7.1 ***********************
+[emc.installer] dmbasic.exe output : <BR>******************Content Transformation Services 7.1 ***********************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Confidential Property of EMC, Corp.
+[emc.installer] dmbasic.exe output : <BR>* Confidential Property of EMC, Corp.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* (c) Copyright EMC, Corp. 2012.
+[emc.installer] dmbasic.exe output : <BR>* (c) Copyright EMC, Corp. 2012.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* All Rights reserved.
+[emc.installer] dmbasic.exe output : <BR>* All Rights reserved.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Signed by a EMC corporate officer.
+[emc.installer] dmbasic.exe output : <BR>* Signed by a EMC corporate officer.
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* Version = 7.1.0000.0116
+[emc.installer] dmbasic.exe output : <BR>* Version = 7.1.0000.0116
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************************************************************************
+[emc.installer] dmbasic.exe output : <BR>*****************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : locale extracted - en
+[emc.installer] dmbasic.exe output : locale extracted - en
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Connected to docbase jcodevbox.....
+[emc.installer] dmbasic.exe output : Connected to docbase jcodevbox.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Content Server Version 7.1.0090.0213  Linux64.Oracle
+[emc.installer] dmbasic.exe output : Content Server Version 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Content Transformation Services DocApp has not been previously installed.
+[emc.installer] dmbasic.exe output : Content Transformation Services DocApp has not been previously installed.
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Checking User Privileges.....
+[emc.installer] dmbasic.exe output : Checking User Privileges.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : User dmadmin has full privileges. Proceeding...
+[emc.installer] dmbasic.exe output : User dmadmin has full privileges. Proceeding...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Checking Roles.....
+[emc.installer] dmbasic.exe output : Checking Roles.....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_cts_reporting_config type...
+[emc.installer] dmbasic.exe output : Creating dmc_cts_reporting_config type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_media_profile type exists - ignoring
+[emc.installer] dmbasic.exe output : dm_media_profile type exists - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_transform_request type...
+[emc.installer] dmbasic.exe output : Creating dm_transform_request type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_cts_response type...
+[emc.installer] dmbasic.exe output : Creating dm_cts_response type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting dmc_cts_reporting_config default values
+[emc.installer] dmbasic.exe output : Setting dmc_cts_reporting_config default values
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Setting cts_transform_request relation type....
+[emc.installer] dmbasic.exe output : Setting cts_transform_request relation type....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dmc_cts_request_archiving type...
+[emc.installer] dmbasic.exe output : Creating dmc_cts_request_archiving type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating cts_instance_info type...
+[emc.installer] dmbasic.exe output : Creating cts_instance_info type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : websrv_url exists in cts_instance_info
+[emc.installer] dmbasic.exe output : websrv_url exists in cts_instance_info
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : inst_type exists in cts_instance_info
+[emc.installer] dmbasic.exe output : inst_type exists in cts_instance_info
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : successfully created cleanup_role attribute in cts_instance_info
+[emc.installer] dmbasic.exe output : successfully created cleanup_role attribute in cts_instance_info
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_format javahelp....
+[emc.installer] dmbasic.exe output : Creating dm_format javahelp....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_format eclipsehelp....
+[emc.installer] dmbasic.exe output : Creating dm_format eclipsehelp....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format jpeg_preview already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format jpeg_preview already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : updating dm_format jpeg_preview OBJECTS...
+[emc.installer] dmbasic.exe output : updating dm_format jpeg_preview OBJECTS...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : getting the file store with media_type = 1
+[emc.installer] dmbasic.exe output : getting the file store with media_type = 1
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : selected store id is: 2837d30580000101
+[emc.installer] dmbasic.exe output : selected store id is: 2837d30580000101
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format rle already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format rle already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format dv already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format dv already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format gxf already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format gxf already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format lxf already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format lxf already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format mss already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format mss already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_format excelTextReport....
+[emc.installer] dmbasic.exe output : Creating dm_format excelTextReport....
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : Creating cts_queue_manager_data type...
+[emc.installer] dmbasic.exe output : Creating cts_queue_manager_data type...
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format msw12me already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format msw12me already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format msw12metemplate already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format msw12metemplate already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format excel12mebook already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format excel12mebook already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format excel12metemplate already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format excel12metemplate already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format excel12bbook already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format excel12bbook already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format ppt12metemplate already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format ppt12metemplate already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] dmbasic.exe output : <BR><FONT color=blue>
+[emc.installer] [INFO]  dmbasic.exe output : dm_format ppt12me already exist - ignoring
+[emc.installer] dmbasic.exe output : dm_format ppt12me already exist - ignoring
+[emc.installer] [INFO]  dmbasic.exe output : </FONT>
+[emc.installer] dmbasic.exe output : </FONT>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR>****************************************************************************
+[emc.installer] dmbasic.exe output : <BR>****************************************************************************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] dmbasic.exe output : <BR>* SCRIPT PERFORMED THE OPERATIONS ON YOUR DOCBASE
+[emc.installer] [INFO]  dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] dmbasic.exe output : <BR>* MAKE SURE THERE IS NO ERROR REPORTED IN THE LOG
+[emc.installer] [INFO]  dmbasic.exe output : <BR>*****************Content Transformation Services**********************
+[emc.installer] dmbasic.exe output : <BR>*****************Content Transformation Services**********************
+[emc.installer] [INFO]  dmbasic.exe output : <BR>
+[emc.installer] dmbasic.exe output : <BR>
+[emc.installer] [INFO]  dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] dmbasic.exe output : <BR><B><FONT size=3>
+[emc.installer] [INFO]  dmbasic.exe output : Finished preinstall configuration....<BR>
+[emc.installer] dmbasic.exe output : Finished preinstall configuration....<BR>
+[emc.installer] [INFO]  dmbasic.exe output : </FONT></B>
+[emc.installer] dmbasic.exe output : </FONT></B>
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:48:24 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:48:24 CET 2015
+[emc.installer] [INFO]  Done Installing new object : 'cts_mime_type_config'(dm_type 0337d3058000021d)
+[emc.installer] Done Installing new object : 'cts_mime_type_config'(dm_type 0337d3058000021d)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_cts_response'(dm_type 0337d30580000219)
+[emc.installer] Done Overwriting object : 'dm_cts_response'(dm_type 0337d30580000219)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_media_profile'(dm_type 0337d30580000179)
+[emc.installer] Done Overwriting object : 'dm_media_profile'(dm_type 0337d30580000179)
+[emc.installer] [INFO]  Done Overwriting object : 'dm_transform_request'(dm_type 0337d30580000218)
+[emc.installer] Done Overwriting object : 'dm_transform_request'(dm_type 0337d30580000218)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_cts_reporting_config'(dm_type 0337d30580000217)
+[emc.installer] Done Overwriting object : 'dmc_cts_reporting_config'(dm_type 0337d30580000217)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_cts_request_archiving'(dm_type 0337d3058000021a)
+[emc.installer] Done Overwriting object : 'dmc_cts_request_archiving'(dm_type 0337d3058000021a)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Overwriting object : 'eclipsehelp'(dm_format 2737d305800002b2)
+[emc.installer] Done Overwriting object : 'eclipsehelp'(dm_format 2737d305800002b2)
+[emc.installer] [INFO]  Done Overwriting object : 'javahelp'(dm_format 2737d305800002b1)
+[emc.installer] Done Overwriting object : 'javahelp'(dm_format 2737d305800002b1)
+[emc.installer] [INFO]  Done Overwriting object : 'jpeg_preview'(dm_format 2737d3058000028f)
+[emc.installer] Done Overwriting object : 'jpeg_preview'(dm_format 2737d3058000028f)
+[emc.installer] [INFO]  Done Overwriting object : 'rle'(dm_format 2737d30580000265)
+[emc.installer] Done Overwriting object : 'rle'(dm_format 2737d30580000265)
+[emc.installer] [INFO]  Done Overwriting object : 'cts_transform_request'(dm_relation_type 3837d305800002e9)
+[emc.installer] Done Overwriting object : 'cts_transform_request'(dm_relation_type 3837d305800002e9)
+[emc.installer] [INFO]  Done Installing new object : 'Related Media'(dm_relation_type 3837d305800002ea)
+[emc.installer] Done Installing new object : 'Related Media'(dm_relation_type 3837d305800002ea)
+[emc.installer] [INFO]  Done Installing new object : 'Transformation'(dm_alias_set 6637d30580000132)
+[emc.installer] Done Installing new object : 'Transformation'(dm_alias_set 6637d30580000132)
+[emc.installer] [INFO]  Done Installing new object : 'Transformation'(dm_folder 0b37d30580001a89)
+[emc.installer] Done Installing new object : 'Transformation'(dm_folder 0b37d30580001a89)
+[emc.installer] [INFO]  Done Installing new object : 'ctsTransform'(dmc_java_library 0b37d30580001a8a)
+[emc.installer] Done Installing new object : 'ctsTransform'(dmc_java_library 0b37d30580001a8a)
+[emc.installer] [INFO]  Done Installing new object : 'ctstransformImpl'(dmc_java_library 0b37d30580001a8b)
+[emc.installer] Done Installing new object : 'ctstransformImpl'(dmc_java_library 0b37d30580001a8b)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.profile.ICTSProfileService'(dmc_module 0b37d30580001a8c)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.profile.ICTSProfileService'(dmc_module 0b37d30580001a8c)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a8d)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a8d)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a8e)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a8e)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.reporting.ICTSReportingConfigService'(dmc_module 0b37d30580001a8f)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.reporting.ICTSReportingConfigService'(dmc_module 0b37d30580001a8f)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a90)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a90)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a91)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a91)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.reporting.ICTSReportingService'(dmc_module 0b37d30580001a92)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.reporting.ICTSReportingService'(dmc_module 0b37d30580001a92)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a93)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a93)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a94)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a94)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSAddJobService'(dmc_module 0b37d30580001a95)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSAddJobService'(dmc_module 0b37d30580001a95)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a96)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a96)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a97)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a97)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSDeleteJobService'(dmc_module 0b37d30580001a98)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSDeleteJobService'(dmc_module 0b37d30580001a98)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a99)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a99)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a9a)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a9a)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSEditJobService'(dmc_module 0b37d30580001a9b)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSEditJobService'(dmc_module 0b37d30580001a9b)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a9c)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a9c)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a9d)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001a9d)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSGetJobService'(dmc_module 0b37d30580001a9e)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSGetJobService'(dmc_module 0b37d30580001a9e)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a9f)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001a9f)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa0)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa0)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSTransformService'(dmc_module 0b37d30580001aa1)
+[emc.installer] Done Installing new object : 'com.documentum.services.cts.df.transform.ICTSTransformService'(dmc_module 0b37d30580001aa1)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa2)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa2)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa3)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa3)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.transform.ICTSService'(dmc_module 0b37d30580001aa4)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.transform.ICTSService'(dmc_module 0b37d30580001aa4)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa5)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa5)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa6)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa6)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.dam.df.transform.IProfileService'(dmc_module 0b37d30580001aa7)
+[emc.installer] Done Installing new object : 'com.documentum.services.dam.df.transform.IProfileService'(dmc_module 0b37d30580001aa7)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa8)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aa8)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa9)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aa9)
+[emc.installer] [INFO]  Done Installing new object : 'cts_cleanup'(dmc_module 0b37d30580001aaa)
+[emc.installer] Done Installing new object : 'cts_cleanup'(dmc_module 0b37d30580001aaa)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aab)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001aab)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aac)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aac)
+[emc.installer] [INFO]  Done Installing new object : 'dm_cts_response'(dmc_module 0b37d30580001aad)
+[emc.installer] Done Installing new object : 'dm_cts_response'(dmc_module 0b37d30580001aad)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aae)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aae)
+[emc.installer] [INFO]  Done Installing new object : 'dm_media_profile'(dmc_module 0b37d30580001aaf)
+[emc.installer] Done Installing new object : 'dm_media_profile'(dmc_module 0b37d30580001aaf)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab0)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab0)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab1)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab1)
+[emc.installer] [INFO]  Done Installing new object : 'dm_transform_request'(dmc_module 0b37d30580001ab2)
+[emc.installer] Done Installing new object : 'dm_transform_request'(dmc_module 0b37d30580001ab2)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab3)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab3)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab4)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab4)
+[emc.installer] [INFO]  Done Installing new object : 'dmc_cts_reporting_config'(dmc_module 0b37d30580001ab5)
+[emc.installer] Done Installing new object : 'dmc_cts_reporting_config'(dmc_module 0b37d30580001ab5)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab6)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab6)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab7)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ab7)
+[emc.installer] [INFO]  Done Installing new object : 'dmc_cts_request_archiving'(dmc_module 0b37d30580001ab8)
+[emc.installer] Done Installing new object : 'dmc_cts_request_archiving'(dmc_module 0b37d30580001ab8)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab9)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ab9)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aba)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001aba)
+[emc.installer] [INFO]  Done Installing new object : 'CTSResponse'(dm_xml_application 0b37d30580001abb)
+[emc.installer] Done Installing new object : 'CTSResponse'(dm_xml_application 0b37d30580001abb)
+[emc.installer] [INFO]  Done Installing new object : 'CTSTransformRequest'(dm_xml_application 0b37d30580001abc)
+[emc.installer] Done Installing new object : 'CTSTransformRequest'(dm_xml_application 0b37d30580001abc)
+[emc.installer] [INFO]  Done Installing new object : 'MediaProfile'(dm_xml_application 0b37d30580001abd)
+[emc.installer] Done Installing new object : 'MediaProfile'(dm_xml_application 0b37d30580001abd)
+[emc.installer] [INFO]  Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001abe)
+[emc.installer] Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001abe)
+[emc.installer] [INFO]  Done Installing new object : 'RealTime'(dmc_java_library 0b37d30580001abf)
+[emc.installer] Done Installing new object : 'RealTime'(dmc_java_library 0b37d30580001abf)
+[emc.installer] [INFO]  Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001ac0)
+[emc.installer] Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001ac0)
+[emc.installer] [INFO]  Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001ac1)
+[emc.installer] Done Installing new object : 'Application Support Documents'(dm_folder 0b37d30580001ac1)
+[emc.installer] [INFO]  Done Installing new object : 'log4j'(dmc_java_library 0b37d30580001ac2)
+[emc.installer] Done Installing new object : 'log4j'(dmc_java_library 0b37d30580001ac2)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ac3)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ac3)
+[emc.installer] [INFO]  Done Installing new object : 'commons-codec-1.3.jar'(dmc_jar 0937d30580001ac5)
+[emc.installer] Done Installing new object : 'commons-codec-1.3.jar'(dmc_jar 0937d30580001ac5)
+[emc.installer] [INFO]  Done Installing new object : 'commons-fileupload-1.0.jar'(dmc_jar 0937d30580001ac6)
+[emc.installer] Done Installing new object : 'commons-fileupload-1.0.jar'(dmc_jar 0937d30580001ac6)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001acf)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001acf)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad0)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad0)
+[emc.installer] [INFO]  Done Installing new object : 'commons-httpclient-3.0.jar'(dmc_jar 0937d30580001ac7)
+[emc.installer] Done Installing new object : 'commons-httpclient-3.0.jar'(dmc_jar 0937d30580001ac7)
+[emc.installer] [INFO]  Done Installing new object : 'cts_cleanup'(dm_job 0837d30580001ad1)
+[emc.installer] Done Installing new object : 'cts_cleanup'(dm_job 0837d30580001ad1)
+[emc.installer] [INFO]  Done Installing new object : 'cts_cleanup'(dm_method 1037d30580001ad9)
+[emc.installer] Done Installing new object : 'cts_cleanup'(dm_method 1037d30580001ad9)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad2)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad2)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad3)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad3)
+[emc.installer] [INFO]  Done Installing new object : 'commons-io-1.2.jar'(dmc_jar 0937d30580001ac8)
+[emc.installer] Done Installing new object : 'commons-io-1.2.jar'(dmc_jar 0937d30580001ac8)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad4)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad4)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad5)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad5)
+[emc.installer] [INFO]  Done Installing new object : 'commons-jxpath-1.2.jar'(dmc_jar 0937d30580001ac9)
+[emc.installer] Done Installing new object : 'commons-jxpath-1.2.jar'(dmc_jar 0937d30580001ac9)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad6)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad6)
+[emc.installer] [INFO]  Done Installing new object : 'commons-lang-2.4.jar'(dmc_jar 0937d30580001aca)
+[emc.installer] Done Installing new object : 'commons-lang-2.4.jar'(dmc_jar 0937d30580001aca)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad7)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad7)
+[emc.installer] [INFO]  Done Installing new object : 'commons-logging.jar'(dmc_jar 0937d30580001acb)
+[emc.installer] Done Installing new object : 'commons-logging.jar'(dmc_jar 0937d30580001acb)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad8)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ad8)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae3)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae3)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae4)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae4)
+[emc.installer] [INFO]  Done Installing new object : 'cts_jobs.jar'(dmc_jar 0937d30580001acc)
+[emc.installer] Done Installing new object : 'cts_jobs.jar'(dmc_jar 0937d30580001acc)
+[emc.installer] [INFO]  Done Installing new object : 'ctsTransform.jar'(dmc_jar 0937d30580001acd)
+[emc.installer] Done Installing new object : 'ctsTransform.jar'(dmc_jar 0937d30580001acd)
+[emc.installer] [INFO]  Done Installing new object : 'ctsPreConfigureScript'(dm_procedure 0837d30580001ae5)
+[emc.installer] Done Installing new object : 'ctsPreConfigureScript'(dm_procedure 0837d30580001ae5)
+[emc.installer] [INFO]  Done Installing new object : 'ctsFormatDetectionConfig.xml'(dm_document 0937d30580001ace)
+[emc.installer] Done Installing new object : 'ctsFormatDetectionConfig.xml'(dm_document 0937d30580001ace)
+[emc.installer] [INFO]  Done Installing new object : 'ctsjobs.xml'(dm_document 0937d30580001aed)
+[emc.installer] Done Installing new object : 'ctsjobs.xml'(dm_document 0937d30580001aed)
+[emc.installer] [INFO]  Done Installing new object : 'ctsresponse.dtd'(dm_document 0937d30580001aee)
+[emc.installer] Done Installing new object : 'ctsresponse.dtd'(dm_document 0937d30580001aee)
+[emc.installer] [INFO]  Done Installing new object : 'ctsresponse_template.xml'(dm_document 0937d30580001aef)
+[emc.installer] Done Installing new object : 'ctsresponse_template.xml'(dm_document 0937d30580001aef)
+[emc.installer] [INFO]  Done Installing new object : 'ProfileSchema.dtd'(dm_document 0937d30580001af0)
+[emc.installer] Done Installing new object : 'ProfileSchema.dtd'(dm_document 0937d30580001af0)
+[emc.installer] [INFO]  Done Installing new object : 'ProfileSubmission.dtd'(dm_document 0937d30580001af1)
+[emc.installer] Done Installing new object : 'ProfileSubmission.dtd'(dm_document 0937d30580001af1)
+[emc.installer] [INFO]  Done Installing new object : 'submission_template.xml'(dm_sysobject 0837d30580001ae6)
+[emc.installer] Done Installing new object : 'submission_template.xml'(dm_sysobject 0837d30580001ae6)
+[emc.installer] [INFO]  Done Installing new object : 'ctsTransformImpl.jar'(dmc_jar 0937d30580001af2)
+[emc.installer] Done Installing new object : 'ctsTransformImpl.jar'(dmc_jar 0937d30580001af2)
+[emc.installer] [INFO]  Done Installing new object : 'CTSResponse'(dm_xml_config 0937d30580001af3)
+[emc.installer] Done Installing new object : 'CTSResponse'(dm_xml_config 0937d30580001af3)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae7)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae7)
+[emc.installer] [INFO]  Done Installing new object : 'CTSTransformRequest'(dm_xml_config 0937d30580001af4)
+[emc.installer] Done Installing new object : 'CTSTransformRequest'(dm_xml_config 0937d30580001af4)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae8)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae8)
+[emc.installer] [INFO]  Done Installing new object : 'MediaProfile'(dm_xml_config 0937d30580001af5)
+[emc.installer] Done Installing new object : 'MediaProfile'(dm_xml_config 0937d30580001af5)
+[emc.installer] [INFO]  Done Installing new object : 'loadbalancer.jar'(dmc_jar 0937d30580001af6)
+[emc.installer] Done Installing new object : 'loadbalancer.jar'(dmc_jar 0937d30580001af6)
+[emc.installer] [INFO]  Done Installing new object : 'log4j.jar'(dmc_jar 0937d30580001af7)
+[emc.installer] Done Installing new object : 'log4j.jar'(dmc_jar 0937d30580001af7)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae9)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001ae9)
+[emc.installer] [INFO]  Done Installing new object : 'realtime.jar'(dmc_jar 0937d30580001af8)
+[emc.installer] Done Installing new object : 'realtime.jar'(dmc_jar 0937d30580001af8)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001aea)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001aea)
+[emc.installer] [INFO]  Done Installing new object : 'commons-cli-1.0.jar'(dmc_jar 0937d30580001af9)
+[emc.installer] Done Installing new object : 'commons-cli-1.0.jar'(dmc_jar 0937d30580001af9)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001aeb)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001aeb)
+[emc.installer] [INFO]  Done Installing new object : 'Transformation'(dmc_dar 0837d30580001aec)
+[emc.installer] Done Installing new object : 'Transformation'(dmc_dar 0837d30580001aec)
+[emc.installer] [WARN]  com.emc.documentum.cts.job.methods.DefaultCleanUpMethod.getVersion() returns null or empty. Version label for 'cts_cleanup' might not be set correctly.
+[emc.installer] com.emc.documentum.cts.job.methods.DefaultCleanUpMethod.getVersion() returns null or empty. Version label for 'cts_cleanup' might not be set correctly.
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:49:13 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:49:13 CET 2015
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:49:15 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:49:15 CET 2015
+[emc.installer] [INFO]  Project 'Transformation' was successfully installed.
+[emc.installer] Project 'Transformation' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 2 minutes 22 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-Transformation.dar-201503231646.log
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/CTSAspects.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/CTSAspects.dar
+[emc.installer] [INFO]  * Project name:   CTSAspects
+[emc.installer] * Project name:   CTSAspects
+[emc.installer] [INFO]  * Built by Composer: 7.1.0000.0186
+[emc.installer] * Built by Composer: 7.1.0000.0186
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:49:59 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:49:59 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:50:03 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:50:03 CET 2015
+[emc.installer] [INFO]  Done Installing new object : 'dmc_slide_aspect'(dmc_aspect_type 0b37d30580001ba5)
+[emc.installer] Done Installing new object : 'dmc_slide_aspect'(dmc_aspect_type 0b37d30580001ba5)
+[emc.installer] [INFO]  Done Installing new object : 'dmi_0337d3058000021e'(dm_type 0337d3058000021e)
+[emc.installer] Done Installing new object : 'dmi_0337d3058000021e'(dm_type 0337d3058000021e)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Installing new object : 'slideAcl'(dm_acl 4537d3058000026b)
+[emc.installer] Done Installing new object : 'slideAcl'(dm_acl 4537d3058000026b)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ba6)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001ba6)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ba7)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001ba7)
+[emc.installer] [INFO]  Done Installing new object : 'ctsAspectsImpl.jar'(dmc_jar 0937d30580001bb1)
+[emc.installer] Done Installing new object : 'ctsAspectsImpl.jar'(dmc_jar 0937d30580001bb1)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001bbb)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001bbb)
+[emc.installer] [INFO]  Done Installing new object : 'ctsAspects.jar'(dmc_jar 0937d30580001bb2)
+[emc.installer] Done Installing new object : 'ctsAspects.jar'(dmc_jar 0937d30580001bb2)
+[emc.installer] [INFO]  Done Installing new object : 'CTSAspects'(dmc_dar 0837d30580001bbc)
+[emc.installer] Done Installing new object : 'CTSAspects'(dmc_dar 0837d30580001bbc)
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:50:15 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:50:15 CET 2015
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:50:15 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:50:15 CET 2015
+[emc.installer] [INFO]  Project 'CTSAspects' was successfully installed.
+[emc.installer] Project 'CTSAspects' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 51 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-CTSAspects.dar-201503231649.log
+Buildfile: /opt/documentum/product/7.1/install/deploy.xml
+
+deploy:
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  * Headless Composer
+[emc.installer] * Headless Composer
+[emc.installer] [INFO]  * Version:        7.1.0000.0186
+[emc.installer] * Version:        7.1.0000.0186
+[emc.installer] [INFO]  * Java version:   1.7.0_17
+[emc.installer] * Java version:   1.7.0_17
+[emc.installer] [INFO]  * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] * Java home:      /opt/documentum/shared/java64/1.7.0_17/jre
+[emc.installer] [INFO]  * Set storage type: false
+[emc.installer] * Set storage type: false
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/cis_artifacts.dar
+[emc.installer] * DAR file:       /opt/documentum/product/7.1/install/DARsInternal/cis_artifacts.dar
+[emc.installer] [INFO]  * Project name:   cis_artifacts
+[emc.installer] * Project name:   cis_artifacts
+[emc.installer] [INFO]  * Built by Composer: 6.7.0000.0231
+[emc.installer] * Built by Composer: 6.7.0000.0231
+[emc.installer] [INFO]  *
+[emc.installer] *
+[emc.installer] [INFO]  * Repository:     jcodevbox
+[emc.installer] * Repository:     jcodevbox
+[emc.installer] [INFO]  * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] * Server version: 7.1.0090.0213  Linux64.Oracle
+[emc.installer] [INFO]  * User name:      dmadmin
+[emc.installer] * User name:      dmadmin
+[emc.installer] [INFO]  ******************************************************
+[emc.installer] ******************************************************
+[emc.installer] [INFO]  Install started...  Mon Mar 23 16:51:20 CET 2015
+[emc.installer] Install started...  Mon Mar 23 16:51:20 CET 2015
+[emc.installer] [INFO]  Executing pre-install script
+[emc.installer] Executing pre-install script
+[emc.installer] [INFO]  dmbasic.exe output : Session OK
+[emc.installer] dmbasic.exe output : Session OK
+[emc.installer] [INFO]  dmbasic.exe output : Old annotation mapping not found, no upgrade required
+[emc.installer] dmbasic.exe output : Old annotation mapping not found, no upgrade required
+[emc.installer] [INFO]  dmbasic.exe output : Creating ci_taxonomy_manager_role
+[emc.installer] dmbasic.exe output : Creating ci_taxonomy_manager_role
+[emc.installer] [INFO]  dmbasic.exe output : Creating ci_category_owner_role
+[emc.installer] dmbasic.exe output : Creating ci_category_owner_role
+[emc.installer] [INFO]  dmbasic.exe output : Adding user dmadmin into role ci_taxonomy_manager_role
+[emc.installer] dmbasic.exe output : Adding user dmadmin into role ci_taxonomy_manager_role
+[emc.installer] [INFO]  dmbasic.exe output : Adding group ci_taxonomy_manager_role into role ci_category_owner_role
+[emc.installer] dmbasic.exe output : Adding group ci_taxonomy_manager_role into role ci_category_owner_role
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_annotation
+[emc.installer] dmbasic.exe output : Creating dm_annotation
+[emc.installer] [INFO]  dmbasic.exe output : Creating index
+[emc.installer] dmbasic.exe output : Creating index
+[emc.installer] [INFO]  dmbasic.exe output : Registering table
+[emc.installer] dmbasic.exe output : Registering table
+[emc.installer] [INFO]  dmbasic.exe output : Setting permissions
+[emc.installer] dmbasic.exe output : Setting permissions
+[emc.installer] [INFO]  dmbasic.exe output : Creating dm_object_annotations
+[emc.installer] dmbasic.exe output : Creating dm_object_annotations
+[emc.installer] [INFO]  dmbasic.exe output : Creating index
+[emc.installer] dmbasic.exe output : Creating index
+[emc.installer] [INFO]  dmbasic.exe output : Registering table
+[emc.installer] dmbasic.exe output : Registering table
+[emc.installer] [INFO]  dmbasic.exe output : Setting permissions
+[emc.installer] dmbasic.exe output : Setting permissions
+[emc.installer] [INFO]  dmbasic.exe output : Session closed
+[emc.installer] dmbasic.exe output : Session closed
+[emc.installer] [INFO]  Pre-install script executed successfully Mon Mar 23 16:51:37 CET 2015
+[emc.installer] Pre-install script executed successfully Mon Mar 23 16:51:37 CET 2015
+[emc.installer] [INFO]  Done Installing new object : 'cis_annotation_aspect'(dmc_aspect_type 0b37d30580001bd2)
+[emc.installer] Done Installing new object : 'cis_annotation_aspect'(dmc_aspect_type 0b37d30580001bd2)
+[emc.installer] [INFO]  Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] Done Overwriting object : 'dmc_dar'(dm_type 0337d305800001dd)
+[emc.installer] [INFO]  Done Installing new object : 'CI Default ACL'(dm_acl 4537d30580000277)
+[emc.installer] Done Installing new object : 'CI Default ACL'(dm_acl 4537d30580000277)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.cis.annotation.RepositoryAnnotationAccess'(dmc_module 0b37d30580001bd3)
+[emc.installer] Done Installing new object : 'com.documentum.cis.annotation.RepositoryAnnotationAccess'(dmc_module 0b37d30580001bd3)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.cis.bam.Aggregator'(dmc_module 0b37d30580001bd4)
+[emc.installer] Done Installing new object : 'com.documentum.cis.bam.Aggregator'(dmc_module 0b37d30580001bd4)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bd5)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bd5)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bd6)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bd6)
+[emc.installer] [INFO]  Done Installing new object : 'dm_category_assign'(dmc_module 0b37d30580001bd7)
+[emc.installer] Done Installing new object : 'dm_category_assign'(dmc_module 0b37d30580001bd7)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bd8)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bd8)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bd9)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bd9)
+[emc.installer] [INFO]  Done Installing new object : 'dm_category_class'(dmc_module 0b37d30580001bda)
+[emc.installer] Done Installing new object : 'dm_category_class'(dmc_module 0b37d30580001bda)
+[emc.installer] [INFO]  Done Installing new object : 'dm_category'(dmc_module 0b37d30580001bdb)
+[emc.installer] Done Installing new object : 'dm_category'(dmc_module 0b37d30580001bdb)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bdd)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bdd)
+[emc.installer] [INFO]  Done Installing new object : 'dm_ci_config'(dmc_module 0b37d30580001bde)
+[emc.installer] Done Installing new object : 'dm_ci_config'(dmc_module 0b37d30580001bde)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bdf)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bdf)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be0)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be0)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.ci.ICiManager'(dmc_module 0b37d30580001be1)
+[emc.installer] Done Installing new object : 'com.documentum.ci.ICiManager'(dmc_module 0b37d30580001be1)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be2)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be2)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be3)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be3)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be4)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be4)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be5)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be5)
+[emc.installer] [INFO]  Done Installing new object : 'dm_docset'(dmc_module 0b37d30580001be6)
+[emc.installer] Done Installing new object : 'dm_docset'(dmc_module 0b37d30580001be6)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be7)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001be7)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be8)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001be8)
+[emc.installer] [INFO]  Done Installing new object : 'dm_docset_run'(dmc_module 0b37d30580001be9)
+[emc.installer] Done Installing new object : 'dm_docset_run'(dmc_module 0b37d30580001be9)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.ci.ICiService'(dmc_module 0b37d30580001bea)
+[emc.installer] Done Installing new object : 'com.documentum.ci.ICiService'(dmc_module 0b37d30580001bea)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001beb)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001beb)
+[emc.installer] [INFO]  Done Installing new object : 'com.documentum.services.classification.IDocStatusManager'(dmc_module 0b37d30580001bec)
+[emc.installer] Done Installing new object : 'com.documentum.services.classification.IDocStatusManager'(dmc_module 0b37d30580001bec)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bed)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bed)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bee)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bee)
+[emc.installer] [INFO]  Done Installing new object : 'dm_taxonomy'(dmc_module 0b37d30580001bef)
+[emc.installer] Done Installing new object : 'dm_taxonomy'(dmc_module 0b37d30580001bef)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf0)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf0)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf1)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf1)
+[emc.installer] [INFO]  Done Installing new object : 'ci_api_library'(dmc_java_library 0b37d30580001bf2)
+[emc.installer] Done Installing new object : 'ci_api_library'(dmc_java_library 0b37d30580001bf2)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf3)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf3)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf4)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf4)
+[emc.installer] [INFO]  Done Installing new object : 'ci_library'(dmc_java_library 0b37d30580001bf5)
+[emc.installer] Done Installing new object : 'ci_library'(dmc_java_library 0b37d30580001bf5)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf6)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf6)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf7)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf7)
+[emc.installer] [INFO]  Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf8)
+[emc.installer] Done Installing new object : 'External Interfaces'(dm_folder 0b37d30580001bf8)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf9)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bf9)
+[emc.installer] [INFO]  Done Installing new object : 'cis_artifacts'(dm_folder 0b37d30580001bfa)
+[emc.installer] Done Installing new object : 'cis_artifacts'(dm_folder 0b37d30580001bfa)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bfb)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bfb)
+[emc.installer] [INFO]  Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bfc)
+[emc.installer] Done Installing new object : 'Miscellaneous'(dm_folder 0b37d30580001bfc)
+[emc.installer] [INFO]  Done Installing new object : 'Search'(dm_folder 0b37d30580001bfd)
+[emc.installer] Done Installing new object : 'Search'(dm_folder 0b37d30580001bfd)
+[emc.installer] [INFO]  Done Installing new object : 'EOS'(dm_folder 0b37d30580001bfe)
+[emc.installer] Done Installing new object : 'EOS'(dm_folder 0b37d30580001bfe)
+[emc.installer] [INFO]  Done Installing new object : 'Procedures'(dm_folder 0b37d30580001bff)
+[emc.installer] Done Installing new object : 'Procedures'(dm_folder 0b37d30580001bff)
+[emc.installer] [INFO]  Done Installing new object : 'CI'(dm_folder 0b37d30580001c00)
+[emc.installer] Done Installing new object : 'CI'(dm_folder 0b37d30580001c00)
+[emc.installer] [INFO]  Done Installing new object : 'AttributeProcessing'(dm_folder 0b37d30580001c01)
+[emc.installer] Done Installing new object : 'AttributeProcessing'(dm_folder 0b37d30580001c01)
+[emc.installer] [INFO]  Done Installing new object : 'XMLTaxonomies'(dm_folder 0b37d30580001c02)
+[emc.installer] Done Installing new object : 'XMLTaxonomies'(dm_folder 0b37d30580001c02)
+[emc.installer] [INFO]  Done Installing new object : 'DocsetConfiguration'(dm_folder 0b37d30580001c03)
+[emc.installer] Done Installing new object : 'DocsetConfiguration'(dm_folder 0b37d30580001c03)
+[emc.installer] [INFO]  Done Installing new object : 'MetadataExtractionRules'(dm_folder 0b37d30580001c04)
+[emc.installer] Done Installing new object : 'MetadataExtractionRules'(dm_folder 0b37d30580001c04)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c05)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c05)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c06)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c06)
+[emc.installer] [INFO]  Done Installing new object : 'create_annotation_table'(dm_procedure 0837d30580001c07)
+[emc.installer] Done Installing new object : 'create_annotation_table'(dm_procedure 0837d30580001c07)
+[emc.installer] [INFO]  Done Installing new object : 'attribute-processing-default-sample.properties'(dm_document 0937d30580001c0f)
+[emc.installer] Done Installing new object : 'attribute-processing-default-sample.properties'(dm_document 0937d30580001c0f)
+[emc.installer] [INFO]  Done Installing new object : 'set_repo_MyDocsetSample.properties'(dm_document 0937d30580001c10)
+[emc.installer] Done Installing new object : 'set_repo_MyDocsetSample.properties'(dm_document 0937d30580001c10)
+[emc.installer] [INFO]  Done Installing new object : 'Business Terms US.xml'(dm_document 0937d30580001c11)
+[emc.installer] Done Installing new object : 'Business Terms US.xml'(dm_document 0937d30580001c11)
+[emc.installer] [INFO]  Done Installing new object : 'com.emc.documentum.cis.annotations.mapping.xml'(dm_document 0937d30580001c12)
+[emc.installer] Done Installing new object : 'com.emc.documentum.cis.annotations.mapping.xml'(dm_document 0937d30580001c12)
+[emc.installer] [INFO]  Done Installing new object : 'default.xml'(dm_document 0937d30580001c13)
+[emc.installer] Done Installing new object : 'default.xml'(dm_document 0937d30580001c13)
+[emc.installer] [INFO]  Done Installing new object : 'docset-sample.xml'(dm_document 0937d30580001c14)
+[emc.installer] Done Installing new object : 'docset-sample.xml'(dm_document 0937d30580001c14)
+[emc.installer] [INFO]  Done Installing new object : 'email.xml'(dm_document 0937d30580001c15)
+[emc.installer] Done Installing new object : 'email.xml'(dm_document 0937d30580001c15)
+[emc.installer] [INFO]  Done Installing new object : 'email_extended.xml'(dm_document 0937d30580001c16)
+[emc.installer] Done Installing new object : 'email_extended.xml'(dm_document 0937d30580001c16)
+[emc.installer] [INFO]  Done Installing new object : 'Science and Engineering.xml'(dm_document 0937d30580001c17)
+[emc.installer] Done Installing new object : 'Science and Engineering.xml'(dm_document 0937d30580001c17)
+[emc.installer] [INFO]  Done Installing new object : 'ssn.xml'(dm_document 0937d30580001c18)
+[emc.installer] Done Installing new object : 'ssn.xml'(dm_document 0937d30580001c18)
+[emc.installer] [INFO]  Done Installing new object : 'url.xml'(dm_document 0937d30580001c19)
+[emc.installer] Done Installing new object : 'url.xml'(dm_document 0937d30580001c19)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c08)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c08)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c09)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c09)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0a)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0a)
+[emc.installer] [INFO]  Done Installing new object : 'ci_api'(dmc_jar 0937d30580001c1a)
+[emc.installer] Done Installing new object : 'ci_api'(dmc_jar 0937d30580001c1a)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0b)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0b)
+[emc.installer] [INFO]  Done Installing new object : 'ci_impl'(dmc_jar 0937d30580001c1b)
+[emc.installer] Done Installing new object : 'ci_impl'(dmc_jar 0937d30580001c1b)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0c)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0c)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0d)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0d)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0e)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c0e)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c23)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c23)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c24)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c24)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c25)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c25)
+[emc.installer] [INFO]  Done Installing new object : 'annAspect'(dmc_jar 0937d30580001c1c)
+[emc.installer] Done Installing new object : 'annAspect'(dmc_jar 0937d30580001c1c)
+[emc.installer] [INFO]  Done Installing new object : 'AnnAspectImpl'(dmc_jar 0937d30580001c1d)
+[emc.installer] Done Installing new object : 'AnnAspectImpl'(dmc_jar 0937d30580001c1d)
+[emc.installer] [INFO]  Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c26)
+[emc.installer] Done Installing new object : 'RuntimeEnvironment.xml'(dm_sysobject 0837d30580001c26)
+[emc.installer] [INFO]  Done Installing new object : 'cis_artifacts'(dmc_dar 0837d30580001c27)
+[emc.installer] Done Installing new object : 'cis_artifacts'(dmc_dar 0837d30580001c27)
+[emc.installer] [WARN]  com.documentum.cis.bam.AggregatorImpl.getVersion() returns null or empty. Version label for 'com.documentum.cis.bam.Aggregator' might not be set correctly.
+[emc.installer] com.documentum.cis.bam.AggregatorImpl.getVersion() returns null or empty. Version label for 'com.documentum.cis.bam.Aggregator' might not be set correctly.
+[emc.installer] [INFO]  Finished executing post-install actions Mon Mar 23 16:51:49 CET 2015
+[emc.installer] Finished executing post-install actions Mon Mar 23 16:51:49 CET 2015
+[emc.installer] [INFO]  Finished executing post-install script Mon Mar 23 16:51:50 CET 2015
+[emc.installer] Finished executing post-install script Mon Mar 23 16:51:50 CET 2015
+[emc.installer] [INFO]  Project 'cis_artifacts' was successfully installed.
+[emc.installer] Project 'cis_artifacts' was successfully installed.
+BUILD SUCCESSFUL
+
+BUILD SUCCESSFUL
+Total time: 1 minute 25 seconds
+Done. Please check logfile: /opt/documentum/product/7.1/install/install-cis_artifacts.dar-201503231650.log
+Create BAM database owner..
+
+User created.
+
+
+Grant succeeded.
+
+Stopping the repository
+Stopping Documentum server for repository: [jcodevbox]
+
+
+
+	EMC Documentum iapi - Interactive API interface
+	(c) Copyright EMC Corp., 1992 - 2013
+	All rights reserved.
+	Client Library Release 7.1.0090.0146
+
+
+Connecting to Server using docbase jcodevbox
+[DM_SESSION_I_SESSION_START]info:  "Session 0137d30580000194 started for user dmadmin."
+
+
+Connected to Documentum Server running Release 7.1.0090.0213  Linux64.Oracle
+Session id is s0
+API> shutdown,c,T,T
+...
+OK
+API> exit
+Bye
+Waiting for 90 seconds for server pid, 252, to disappear.
+
+Mon Mar 23 16:52:10 CET 2015: Waiting for shutdown of repository: [jcodevbox]
+Mon Mar 23 16:52:10 CET 2015: checking for pid: 252
+
+Mon Mar 23 16:52:20 CET 2015: Waiting for shutdown of repository: [jcodevbox]
+Mon Mar 23 16:52:20 CET 2015: checking for pid: 252
+
+repository: [jcodevbox] has been shutdown
+checking that all children (335 349 350 363 377 387 505 534 3785) have shutdown
+Starting the repository jcodevbox..
++ starting jms in background..
+Mon Mar 23 16:52:31 2015[DM_STARTUP_W_DOCBASE_OWNER_NOT_FOUND] *** warning *** : The database user, jcodevbox as specified by your server.ini is not a valid user as determined using the system password check api.   This will likely severly impair the operation of your docbase.
+
+
+    EMC Documentum Content Server (version 7.1.0090.0213  Linux64.Oracle)
+    (c) Copyright EMC Corp., 1991 - 2013
+    All rights reserved.
+
+2015-03-23T16:52:31.491032	3902[3902]	0000000000000000	[DM_SERVER_I_START_SERVER]info:  "Docbase jcodevbox attempting to open"
+
+2015-03-23T16:52:31.491116	3902[3902]	0000000000000000	[DM_SERVER_I_START_KEY_STORAGE_MODE]info:  "Docbase jcodevbox is using database for cryptographic key storage"
+
+2015-03-23T16:52:31.491138	3902[3902]	0000000000000000	[DM_SERVER_I_START_SERVER]info:  "Docbase jcodevbox process identity: user(dmadmin)"
+
+2015-03-23T16:52:36.290417	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Post Upgrade Processing."
+
+2015-03-23T16:52:36.291501	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Base Types."
+
+2015-03-23T16:52:36.293087	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmRecovery."
+
+2015-03-23T16:52:36.300743	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmACL."
+
+2015-03-23T16:52:36.311603	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDocbaseIdMap."
+
+2015-03-23T16:52:36.319752	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Error log streams."
+
+2015-03-23T16:52:36.320108	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmUser."
+
+2015-03-23T16:52:36.332380	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmGroup."
+
+2015-03-23T16:52:36.343012	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmSysObject."
+
+2015-03-23T16:52:36.373857	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmExprCode."
+
+2015-03-23T16:52:36.384533	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmKey."
+
+2015-03-23T16:52:36.393314	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmValueAssist."
+
+2015-03-23T16:52:36.400718	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmValueList."
+
+2015-03-23T16:52:36.411222	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmValueQuery."
+
+2015-03-23T16:52:36.421661	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmValueFunc."
+
+2015-03-23T16:52:36.428838	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmExpression."
+
+2015-03-23T16:52:36.436978	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmLiteralExpr."
+
+2015-03-23T16:52:36.444703	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmBuiltinExpr."
+
+2015-03-23T16:52:36.453302	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmFuncExpr."
+
+2015-03-23T16:52:36.464310	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmCondExpr."
+
+2015-03-23T16:52:36.474925	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmCondIDExpr."
+
+2015-03-23T16:52:36.485984	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDDInfo."
+
+2015-03-23T16:52:36.495674	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmScopeConfig."
+
+2015-03-23T16:52:36.506209	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDisplayConfig."
+
+2015-03-23T16:52:36.516689	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmNLSDDInfo."
+
+2015-03-23T16:52:36.526137	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDomain."
+
+2015-03-23T16:52:36.535125	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmAggrDomain."
+
+2015-03-23T16:52:36.545322	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmMountPoint."
+
+2015-03-23T16:52:36.556384	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmLocation."
+
+2015-03-23T16:52:36.568132	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Server Configuration."
+
+2015-03-23T16:52:36.601218	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmPolicy."
+
+2015-03-23T16:52:36.616657	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDDCommonInfo."
+
+2015-03-23T16:52:36.627933	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDDAttrInfo."
+
+2015-03-23T16:52:36.642211	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDDTypeInfo."
+
+2015-03-23T16:52:36.654122	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmRelation."
+
+2015-03-23T16:52:36.675263	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmForeignKey."
+
+2015-03-23T16:52:36.684200	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmEvent."
+
+2015-03-23T16:52:36.696312	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize DQL."
+
+2015-03-23T16:52:36.697323	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmFolder."
+
+2015-03-23T16:52:36.715321	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmDocument."
+
+2015-03-23T16:52:36.735467	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Plugin Type."
+
+2015-03-23T16:52:36.748280	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmNote."
+
+2015-03-23T16:52:36.759121	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmComposite."
+
+2015-03-23T16:52:36.759804	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmStorage."
+
+2015-03-23T16:52:36.769263	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Common area."
+
+2015-03-23T16:52:36.824673	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize File Store."
+
+2015-03-23T16:52:36.836773	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Optical Store."
+
+2015-03-23T16:52:36.846562	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Linked Stores."
+
+2015-03-23T16:52:36.868491	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed Stores."
+
+2015-03-23T16:52:36.902506	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Blob Stores."
+
+2015-03-23T16:52:36.912353	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize External Store."
+
+2015-03-23T16:52:36.924027	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize External File Store."
+
+2015-03-23T16:52:36.935382	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize External URL."
+
+2015-03-23T16:52:36.945063	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize External Free."
+
+2015-03-23T16:52:36.954620	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmContent."
+
+2015-03-23T16:52:36.966292	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmiSubContent."
+
+2015-03-23T16:52:36.983645	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmOutputDevice."
+
+2015-03-23T16:52:36.996781	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmMethod."
+
+2015-03-23T16:52:37.008170	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmRouter."
+
+2015-03-23T16:52:37.024105	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmFederation."
+
+2015-03-23T16:52:37.037239	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmAliasSet."
+
+2015-03-23T16:52:37.046155	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Content Addressable Storage."
+
+2015-03-23T16:52:37.057642	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Formats."
+
+2015-03-23T16:52:37.075040	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Convert."
+
+2015-03-23T16:52:37.077208	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Indices."
+
+2015-03-23T16:52:37.084694	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Dump Files."
+
+2015-03-23T16:52:37.102776	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Load Files."
+
+2015-03-23T16:52:37.120995	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize In Box."
+
+2015-03-23T16:52:37.166083	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed References."
+
+2015-03-23T16:52:37.174900	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Client Registrations."
+
+2015-03-23T16:52:37.185648	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Client Rights."
+
+2015-03-23T16:52:37.197429	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Client Rights Domain."
+
+2015-03-23T16:52:37.207970	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Business Activities."
+
+2015-03-23T16:52:37.224970	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Business Processes."
+
+2015-03-23T16:52:37.239610	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Packages."
+
+2015-03-23T16:52:37.250791	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Workitems."
+
+2015-03-23T16:52:37.263375	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Workflows."
+
+2015-03-23T16:52:37.275512	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Audit Trail."
+
+2015-03-23T16:52:37.290222	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Clean Old Links."
+
+2015-03-23T16:52:37.295623	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Compute Internal Type Tag Cache."
+
+2015-03-23T16:52:37.311981	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize LastActionProcs."
+
+2015-03-23T16:52:37.312447	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize User Types."
+
+2015-03-23T16:52:37.312773	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Start Up - Phase 1."
+
+#    Total shared memory size used: 8091560 bytes
+#    Making /System cabinet.
+#    /System cabinet exists.
+#    Making /Temp cabinet.
+#    /Temp cabinet exists.
+#    Making /System/Methods folder.
+#    /System/Methods folder exists.
+#    Making /System/FileSystem folder.
+#    /System/FileSystem folder exists.
+#    Making /System/DataDictionary folder.
+#    /System/DataDictionary folder exists.
+#    Making /System/Procedures folder.
+#    /System/Procedures folder exists.
+#    Making /System/Procedures/Actions folder.
+#    /System/Procedures/Actions folder exists.
+#    Making /System/Cryptographic folder.
+#    /System/Cryptographic folder exists.
+#    Making /System/Cryptographic/Keys folder.
+#    /System/Cryptographic/Keys folder exists.
+#    Making /System/AcsConfig folder.
+#    /System/AcsConfig folder exists.
+#    Making /System/NetworkLocation folder.
+#    /System/NetworkLocation folder exists.
+#    Making /System/JmsConfig folder.
+#    /System/JmsConfig folder exists.
+#    Making /System/Distributed References folder.
+#    /System/Distributed References folder exists.
+#    Making /System/Distributed References/Links folder.
+#    /System/Distributed References/Links folder exists.
+#    Making /System/Distributed References/Checkout folder.
+#    /System/Distributed References/Checkout folder exists.
+#    Making /System/Distributed References/Assemblies folder.
+#    /System/Distributed References/Assemblies folder exists.
+#    Making /System/Distributed References/Workflow folder.
+#    /System/Distributed References/Workflow folder exists.
+#    Making /System/Distributed References/VDM folder.
+#    /System/Distributed References/VDM folder exists.
+#    Making /Temp/BPM folder.
+#    /Temp/BPM folder exists.
+#    Making /Temp/BPM/Method Exec Results folder.
+#    /Temp/BPM/Method Exec Results folder exists.
+#    Making /Temp/BPM/Method Exceptions folder.
+#    /Temp/BPM/Method Exceptions folder exists.
+2015-03-23T16:52:37.666323	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Start Up - Phase 2."
+
+#    Making docbase config object.
+#    Making server config object.
+#    Creation/Updating of jcodevbox server config completed.
+2015-03-23T16:52:37.760495	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Crypto Objects."
+
+2015-03-23T16:52:37.760939	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Queue Views."
+
+2015-03-23T16:52:37.761933	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Port Info Views."
+
+2015-03-23T16:52:37.762905	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Global Cache Finalization."
+
+2015-03-23T16:52:37.890751	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize National Language Character Translation."
+
+2015-03-23T16:52:37.892821	3902[3902]	0000000000000000	[DM_CHARTRANS_I_TRANSLATOR_OPENED]info:  "Translator in directory (/opt/documentum/product/7.1/install/external_apps/nls_chartrans) was added succesfully initialized.  Translator specifics: (Chararacter Translator: , Client Locale: (Windows :(4099), Version: 4.0), CharSet: ISO_8859-1, Language: English_US, UTC Offset: 3600, Date Format:%2.2d/%2.2d/%2.2d %2.2d:%2.2d:%2.2d, Java Locale:en, Server Locale: (Linux :(8201), Version: 2.4), CharSet: UTF-8, Language: English_US, UTC Offset: 3600, Date Format:%2.2d/%2.2d/%2.2d %2.2d:%2.2d:%2.2d, Java Locale:en, Shared Library: /opt/documentum/product/7.1/install/external_apps/nls_chartrans/unitrans.so)"
+
+2015-03-23T16:52:37.893387	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize LDAP setup."
+
+2015-03-23T16:52:37.895042	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed change-checking."
+
+2015-03-23T16:52:37.908794	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Fulltext Plugin and Configuration."
+
+2015-03-23T16:52:37.923129	3902[3902]	0000000000000000	[DM_FULLTEXT_T_QUERY_PLUGIN_VERSION]info:  "Loaded FT Query Plugin: /opt/documentum/product/7.1/bin/libDsearchQueryPlugin.so, API Interface version: 1.0, Build number: HEAD; Sep 15 2014 01:23:46, FT Engine version: xPlore version Unknown"
+
+2015-03-23T16:52:37.923692	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed Content."
+
+2015-03-23T16:52:37.925513	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed Content Map."
+
+2015-03-23T16:52:37.925868	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Distributed Content Digital Signatures."
+
+2015-03-23T16:52:38.003472	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Acs Config List."
+
+2015-03-23T16:52:38.003945	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmLiteSysObject."
+
+2015-03-23T16:52:38.004988	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize dmBatchManager."
+
+2015-03-23T16:52:38.007050	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Partition Scheme."
+
+2015-03-23T16:52:38.009910	3902[3902]	0000000000000000	[DM_SESSION_I_INIT_BEGIN]info:  "Initialize Authentication Plugins."
+
+2015-03-23T16:52:38.012558	3902[3902]	0000000000000000	[DM_SESSION_I_AUTH_PLUGIN_LOADED]info:  "Loaded Authentication Plugin with code 'dm_krb' (/opt/documentum/dba/auth/libkerberos.so)."
+
+2015-03-23T16:52:38.012761	3902[3902]	0000000000000000	[DM_SESSION_I_AUTH_PLUGIN_LOAD_INIT]info:  "Authentication plugin ( 'dm_krb' ) was disabled. This is expected if no keytab file(s) at location (/opt/documentum/dba/auth/kerberos).Please refer the content server installation guide."
+
+2015-03-23T16:52:38.019828	3902[3902]	0000000000000000	[DM_SERVER_I_START_SERVER]info:  "Docbase jcodevbox opened"
+
+2015-03-23T16:52:38.019963	3902[3902]	0000000000000000	[DM_SERVER_I_SERVER]info:  "Setting exception handlers to catch all interrupts"
+
+2015-03-23T16:52:38.019992	3902[3902]	0000000000000000	[DM_SERVER_I_START]info:  "Starting server using service name:  dctm"
+
+2015-03-23T16:52:38.056245	3902[3902]	0000000000000000	[DM_SERVER_I_LAUNCH_MTHDSVR]info:  "Launching Method Server succeeded."
+
+2015-03-23T16:52:38.120376	3902[3902]	0000000000000000	[DM_SERVER_I_LISTENING]info:  "The server is listening on network address (Service Name: dctm, Host Name: dctm-cs :V4 IP)"
+
+2015-03-23T16:52:38.123761	3902[3902]	0000000000000000	[DM_SERVER_I_IPV6_DISABLED]info:  "The server can not listen on IPv6 address because an IPv4 address is specified in the server.ini (host property) file or not able to resolve the IPV6 address for the host(dctm-cs)"
+
+2015-03-23T16:52:39.143986	3902[3902]	0000000000000000	[DM_WORKFLOW_I_AGENT_START]info:  "Workflow agent master (pid : 3937, session 0137d30580000007) is started sucessfully."
+IsProcessAlive: Process ID 0 is not > 0
+2015-03-23T16:52:39.144511	3902[3902]	0000000000000000	[DM_WORKFLOW_I_AGENT_START]info:  "Workflow agent worker (pid : 3938, session 0137d3058000000a) is started sucessfully."
+IsProcessAlive: Process ID 0 is not > 0
+2015-03-23T16:52:40.151916	3902[3902]	0000000000000000	[DM_WORKFLOW_I_AGENT_START]info:  "Workflow agent worker (pid : 3948, session 0137d3058000000b) is started sucessfully."
+IsProcessAlive: Process ID 0 is not > 0
+2015-03-23T16:52:41.159806	3902[3902]	0000000000000000	[DM_WORKFLOW_I_AGENT_START]info:  "Workflow agent worker (pid : 3955, session 0137d3058000000c) is started sucessfully."
+2015-03-23T16:52:42.163241	3902[3902]	0000000000000000	[DM_SERVER_I_START]info:  "Sending Initial Docbroker check-point "
+
+2015-03-23T16:52:42.172820	3902[3902]	0000000000000000	[DM_MQ_I_DAEMON_START]info:  "Message queue daemon (pid : 3970, session 0137d30580000456) is started sucessfully."
+2015-03-23T16:52:42.271894	3969[3969]	0137d30580000003	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+Mon Mar 23 16:53:45 2015 [INFORMATION] [AGENTEXEC 4157] Detected during program initialization: Version: 7.1.0000.0151  Linux64
+Mon Mar 23 16:53:53 2015 [INFORMATION] [AGENTEXEC 4157] Detected during program initialization: Agent Exec connected to server jcodevbox:  [DM_SESSION_I_SESSION_START]info:  "Session 0137d30580000505 started for user dmadmin."
+
+
+run-others.sh: ERROR: No host ip.
+time="2015-03-23T16:37:04-01:00" level="fatal" msg="cannot enable tty mode on non tty input" 
+run-others.sh: ERROR: Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs
+time="2015-03-23T16:43:08-01:00" level="fatal" msg="cannot enable tty mode on non tty input" 
+run-others.sh: ERROR: Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs
+time="2015-03-23T16:44:12-01:00" level="fatal" msg="cannot enable tty mode on non tty input" 
+run-others.sh: ERROR: Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs
+2015-03-23T18:47:18.185969	6860[6860]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:30.274786	6874[6874]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:30.291032	6874[6874]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:34.198820	6876[6876]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:34.205043	6876[6876]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:45.025095	6883[6883]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:45.044181	6883[6883]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:47.839961	6884[6884]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:47.852043	6884[6884]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:57.272048	3902[3902]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:47:57.296298	3902[3902]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:48:10.488592	6884[6884]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:48:10.505022	6884[6884]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:52.025628	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:52.027010	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:55.451753	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:55.453398	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:56.294556	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (dctm-cs) with port (1489).  Information: (Config(jcodevbox), Proximity(1), Status(Open), Dormancy Status(Active))."
+
+2015-03-23T18:53:56.295595	7032[7032]	0000000000000000	[DM_DOCBROKER_I_PROJECTING]info:  "Sending information to Docbroker located on host (172.17.0.97) with port (1489).  Information: (Config(jcodevbox), Proximity(10), Status(Open), Dormancy Status(Active))."
+
