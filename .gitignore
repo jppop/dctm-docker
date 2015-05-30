@@ -15,3 +15,4 @@ tmp
 *.bin
 *.dar
 dctm-data/
+.dctm-docker.env

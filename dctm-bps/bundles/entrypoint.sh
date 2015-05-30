@@ -10,7 +10,7 @@ EOF
 }
 
 # check container links
- -z "${DCTM_CS_NAME}" ] && dockerUsage
+[ -z "${DCTM_CS_NAME}" ] && dockerUsage
 
 CATALINA_OPTS="${CUSTOM_CATALINA_OPTS} ${CATALINA_OPTS}"
 JAVA_OPTS="${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}"

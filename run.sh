@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 usage() {
     echo `basename $0`: ERROR: $* 1>&2
@@ -17,6 +17,11 @@ die() {
 	exit $2
 }
 
+# load environnment variables
+if [ -f .dctm-docker.env ]; then
+    source .dctm-docker.env
+fi
+
 os=$(uname -s)
 if [ "$os" = "Darwin" ]; then
     OPTS=`getopt r: "$*"`
@@ -29,11 +34,6 @@ then
 fi
 
 eval set -- "$OPTS"
-
-# load environnment variables
-if [ -f .dctm-docker.env ]; then
-    source .dctm-docker.env
-fi
 
 # default values
 repo=$REPOSITORY_NAME
@@ -49,11 +49,11 @@ export REPOSITORY_NAME=$repo
 
 
 [ -n "$CTS_HOST" -a -n "$CTS_IP" ] && ctsOpt="--add-host $CTS_HOST:$CTS_IP" || ctsOpt=
-[ -n "$xPRESSION_HOST" -a -n "$xPRESSION_IP" ] && xPressOpt="--add-host $xPRESSIONHOST:$xPRESSION_IP" || xPressOpt=
+[ -n "$xPRESSION_HOST" -a -n "$xPRESSION_IP" ] && xPressOpt="--add-host $xPRESSION_HOST:$xPRESSION_IP" || xPressOpt=
 
 docker create --name dctm-xmsdata dctm-xmsdata
-docker run -dP --name dbora -h dbora oracle-xe
+docker run -dP -p 1521:1521 --name dbora -h dbora oracle-xe
 #docker run -dP --name broker -h broker dctm-broker
-docker run -dP -p 1489:1489 -p 49000:49000 --name dctm-cs -h dctm-cs --link dbora:dbora \
+docker run -dP -p 1489:1489 -p 49000:49000 -p 9080:9080 --name dctm-cs -h dctm-cs --link dbora:dbora \
 	$ctsOpt $xPressOpt dctm-cs --repo-name $repo
 docker logs -f dctm-cs
