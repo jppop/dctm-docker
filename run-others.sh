@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 usage() {
     echo `basename $0`: ERROR: $* 1>&2
@@ -35,7 +35,7 @@ if [ -f .dctm-docker.env ]; then
 fi
 
 # default values
-repo=$REPOSITORY_NAME HOST_IP=
+repo=$REPOSITORY_NAME
 containers=extbroker,xplore,da,bam,bps,ts,apphost,xms
 while true ; do
     case "$1" in
