@@ -38,6 +38,8 @@ __EOF__
 
 echo "xcp.repository.name=${REPOSITORY_NAME}" > conf/deployment.properties
 
+# Have a CTS ? Copy config files to a shared location allowing to adapt configuration
+[ -d /ctsws-config ] && cp -r ${CATALINA_HOME}/conf/ctsws-config/* /ctsws-config/
 echo "DFC Config file:"
 cat conf/dfc.properties
 

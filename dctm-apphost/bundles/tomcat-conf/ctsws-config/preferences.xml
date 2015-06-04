@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceConfiguration ID="CTS Web Services">
+  <PropertyList>
+    <ServerProperty Description="The Temporary Cache Directory" Key="Cache" Value="/ctsws-config/cache"/>
+    <ServerProperty Description="Allow Direct File Transfer From CTS Server to Client. Set it to false if there is a firewall restriction" Key="AllowDirectTransfer" Value="true"/>
+    <ServerProperty Description="Interval (in seconds) used to specify how frequent the LB should ping its CTS instances for heart rate." Key="CTSWSPingInterval" Value="30"/>
+    <ServerProperty Description="Allow a number of retries if a request fails while waiting on the HTTP response from CTS" Key="FailoverRetries" Value="1"/>
+    <ServerProperty Description="Wait between failover retries" Key="FailoverWait" Value="1"/>
+    <ServerProperty Description="Specify an implementation class for instance selection" Key="InstanceSelector" Value="com.emc.documentum.cts.lb.workers.OccupancyBasedSelector"/>
+    <ServerProperty Description="Specify occupancy polling interval in seconds" Key="CTSOccupancyPollingInterval" Value="7"/>
+    <ServerProperty Description="Specify connection retries (in case Repositories section is not configured )" Key="ConnectionRetries" Value="10"/>
+    <ServerProperty Description="Number of retries when CTS instances are not available" Key="AvailabilityRetries" Value="2"/>
+    <ServerProperty Description="Number of seconds to wait for rechecking availability" Key="AvailabilityWait" Value="4"/>
+    <!-- if local load balancer is used, no need of CTS-WebServices -->
+    <LoadBalancer URL="" sendMode="" type="local"/>
+    <!-- Otherwise, a remote CTS-WebServices can be used as Load Balancer,
+      for ex: -->
+    <!-- <LoadBalancer type="remote" URL="http://192.0.2.0:8080/services/
+       transformation/LoadBalancer" sendMode="remote"/>-->
+    <Repositories>
+      <AekFilePath>/ctsws-config/aek.key</AekFilePath>
+      <LoginContext DocbaseName="lrx64">
+        <ServerProperty Key="domain" Value=""/>
+        <ServerProperty Key="userName" Value="Administrator"/>
+        <ServerProperty Key="passwordFile" Value="/ctsws-config/pfile/mspassword.txt"/>
+        <ServerProperty Key="maxConnectionRetries" Value="10"/>
+      </LoginContext>
+    </Repositories>
+  </PropertyList>
+</ServiceConfiguration>
