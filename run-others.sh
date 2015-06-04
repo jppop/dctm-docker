@@ -51,8 +51,11 @@ done
 [ -z "$HOST_IP" ]  && die "No host ip." 1
 [ -z "$containers" ]  && die "No containers." 1
 
-dctm_cs=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name $repo")
-[ -z "$dctm_cs" ]  && die "Container dctm-cs (with repo $repo) not found." 2
+dctm_cs=$(docker inspect --format '{{ .Config.Env }}' dctm-cs | grep "REPOSITORY_NAME=$repo")
+[ -z "$dctm_cs" ] && die "Container dctm-cs (with repo $repo) not found." 2
+# try to check if dctm-xs finished the installation
+marker=$(docker exec -it dctm-cs ls -a1 ${DM_HOME}/install/.stop-install)
+[ -z "$marker" ]  && die "Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs" 3
 
 DOCUMENTUM=/opt/documentum
 DOCUMENTUM_SHARED=${DOCUMENTUM}/shared
