@@ -105,6 +105,10 @@ function run() {
             docker run -dP -p 7000:8080 --name xms -h xms -e REPOSITORY_NAME=$repo --volumes-from dctm-xmsdata \
                --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent
             ;;
+        xpress)
+            echo "run xPression"
+            docker run -dP -p 9070:8080 -p 9072:9990 --name xpress -h xpress -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-xpression
+            ;;
     esac
 }
 # let's go
