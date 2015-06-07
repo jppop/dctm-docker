@@ -33,3 +33,14 @@ cp $SOURCE/documentum/xms-agent/1.1.13/xms-agent-1.1-P13.zip $TARGET/dctm-xmsage
 
 echo "Copying xMS tools bundle"
 cp $SOURCE/documentum/xms-tools/1.2/xms-tools-1.2.zip $TARGET/dctm-xmstools/bundles/
+
+if [  -d $TARGET/dctm-xpression ]; then
+	echo "Copying xPression bundle"
+	cp cp $SOURCE/oracle/11.2/*.* $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/documentum/content-server/7.1/dfc-jars.7.1.tar $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/documentum/xPression/4.5SP1/XP45SP1_B13_xPression_Server_Installer.zip $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/documentum/xPression/4.5SP1/XP45SP1_P10_xPression_Server_Patch_Installer_64_Linux.zip $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/documentum/xPression/4.5SP1/xPRS_EE4.5.1_P10.ear $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/documentum/xPression/4.5SP1/XP45SP1_B13_cr_scripts.zip $TARGET/dctm-xpression/bundles/
+	cp -r $SOURCE/documentum/xPression/4.5SP1/CRUpgrade $TARGET/dctm-xpression/bundles/
+fi
