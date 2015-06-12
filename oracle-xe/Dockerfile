@@ -1,5 +1,7 @@
 FROM alexeiled/docker-oracle-xe-11g
 
+EXPOSE 1521
+
 COPY ./enable-remote-accesss.sh /tmp/enable-remote-accesss.sh
 RUN chmod a+x /tmp/enable-remote-accesss.sh
 

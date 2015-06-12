@@ -43,7 +43,7 @@ RUN cd /tmp \
  && curl -LO 'http://wwwftp.ciril.fr/pub/apache/ant/binaries/apache-ant-1.9.4-bin.tar.gz' \
  && tar -xf apache-ant-1.9.4-bin.tar.gz \
  && mv ./apache-ant-1.9.4 ./xplore-install/ant \
- && curl -LO http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.gz \
+ && curl -LO 'http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.gz' \
  && tar -xzvf ant-contrib-1.0b3-bin.tar.gz -C ./xplore-install/ant/lib/ --strip 1 ant-contrib/ant-contrib-1.0b3.jar \
  && echo "done"
 

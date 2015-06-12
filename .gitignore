@@ -14,4 +14,7 @@ tmp
 *.gz
 *.bin
 *.dar
+*.ear
 dctm-data/
+.dctm-docker.env
+dctm-xpression/bundles/CRUpgrade

@@ -51,15 +51,13 @@ done
 [ -z "$HOST_IP" ]  && die "No host ip." 1
 [ -z "$containers" ]  && die "No containers." 1
 
-dctm_cs=$(docker ps --no-trunc -a --filter status=running | grep "dctm-cs:.*repo-name $repo")
-[ -z "$dctm_cs" ]  && die "Container dctm-cs (with repo $repo) not found." 2
-
 DOCUMENTUM=/opt/documentum
 DOCUMENTUM_SHARED=${DOCUMENTUM}/shared
 DM_HOME=${DOCUMENTUM}/product/7.1
 
-# try to check if dctm-cs finished the installation
-#marker=$(docker exec -it dctm-cs ls -a1 /opt/documentum/product/7.1/install/.stop-install)
+dctm_cs=$(docker inspect --format '{{ .Config.Env }}' dctm-cs | grep "REPOSITORY_NAME=$repo")
+[ -z "$dctm_cs" ] && die "Container dctm-cs (with repo $repo) not found." 2
+# try to check if dctm-xs finished the installation
 marker=$(docker exec -it dctm-cs ls -a1 ${DM_HOME}/install/.stop-install)
 [ -z "$marker" ]  && die "Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs" 3
 
@@ -93,12 +91,18 @@ function run() {
             ;;
         apphost)
             echo "run apphost"
-            docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
+            [ -d $HOME/ctsws-config ] && ctsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctsOpt=
+            docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
+             $ctsOpt --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
             ;;
         xms)
             echo "run xms agent"
             docker run -dP -p 7000:8080 --name xms -h xms -e REPOSITORY_NAME=$repo --volumes-from dctm-xmsdata \
                --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent
+            ;;
+        xpress)
+            echo "run xPression"
+            docker run -dP -p 9070:8080 -p 9072:9990 --name xpress -h xpress -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-xpression
             ;;
     esac
 }
