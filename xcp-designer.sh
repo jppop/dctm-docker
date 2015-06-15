@@ -44,5 +44,7 @@ done
 #docker run -it --rm --name designer -h designer ${linkOpt} -v ${basedir}:/shared \
 #	-e XMS_SERVER=${xms_server} -e XMS_PORT=${xms_port} dctm-xcpdesigner bash
 
-docker run -it --rm --name designer -h designer ${linkOpt} -v ${basedir}:/shared \
+docker run -it --name designer -h designer ${linkOpt} -v ${basedir}:/shared \
     -e XMS_SERVER=${xms_server} -e XMS_PORT=${xms_port} dctm-xcpdesigner /shared/build-xcpapp.sh
+docker logs designer > tmp/build-$$.log
+docker rm designer 2>&1 >/dev/null

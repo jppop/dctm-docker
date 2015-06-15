@@ -9,6 +9,7 @@ EOF
 set -e
 
 SOURCE_URL=https://use.steria.com/gitroot/backoffpi/xcp-project.git
+#BRANCH=rc-beta-1
 BRANCH=develop
 
 BUILD_HOME=${XCPDESIGNER_WORKSPACE}/build
@@ -19,6 +20,7 @@ cd ${BUILD_HOME}
 echo "** Getting sources from ${SOURCE_URL}"
 git clone ${SOURCE_URL} -b ${BRANCH}
 cd xcp-project
+git status
 
 for p in BO_CORE BODM
 do
