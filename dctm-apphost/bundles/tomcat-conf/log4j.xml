@@ -23,7 +23,7 @@
     </logger>
 
 	<root>
-		<priority value="WARN" />
+		<priority value="${LOG_LEVEL}" />
         <appender-ref ref="console" />
         <appender-ref ref="main" />
 	</root>

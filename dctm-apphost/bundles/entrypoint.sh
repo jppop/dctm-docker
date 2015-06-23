@@ -12,9 +12,10 @@ EOF
 # check container links
 [ -z "${DCTM_CS_NAME}" -o -z "${BAM_NAME}" ] && dockerUsage
 
-[ -z "$MEM_XMSX" ] && MEM_XMSX=1024m
+[ -z "$MEM_XMSX" ] && MEM_XMSX=2048m
+[ -z "$LOG_LEVEL" ] && LOG_LEVEL=info
 
-echo CATALINA_OPTS=\"${CUSTOM_CATALINA_OPTS} -Xmx${MEM_XMSX} ${CATALINA_OPTS}\" > ${CATALINA_HOME}/bin/setenv.sh
+echo CATALINA_OPTS=\"${CUSTOM_CATALINA_OPTS} -DLOG_LEVEL=${LOG_LEVEL} -Xmx${MEM_XMSX} ${CATALINA_OPTS}\" > ${CATALINA_HOME}/bin/setenv.sh
 echo JAVA_OPTS=\"${CUSTOM_JAVA_OPTS} ${JAVA_OPTS}\" >> ${CATALINA_HOME}/bin/setenv.sh
 echo CATALINA_OUT=\"${CUSTOM_CATALINA_OUT}\" >> ${CATALINA_HOME}/bin/setenv.sh
 cat ${CATALINA_HOME}/bin/setenv.sh

@@ -19,9 +19,9 @@ die() {
 
 os=$(uname -s)
 if [ "$os" = "Darwin" ]; then
-    OPTS=`getopt r:i:c:l "$*"`
+    OPTS=`getopt r:i:c:b "$*"`
 else
-    OPTS=`getopt -o r:i:c:l: -l repo-name:,host-ip:containers:less-containers -- "$@"`
+    OPTS=`getopt -o r:i:c:bl: -l repo-name:,host-ip:containers:less-containers,log-level: -- "$@"`
 fi
 if [ $? != 0 ]
 then
@@ -37,12 +37,14 @@ fi
 # default values
 repo=$REPOSITORY_NAME
 containers=extbroker,xplore,da,bam,bps,ts,apphost,xms
+loglevel=info
 while true ; do
     case "$1" in
         --repo-name|-r) repo=$2; shift 2;;
         --host-ip|-i) HOST_IP=$2; shift 2;;
         --containers|-c) containers=$2; shift 2;;
-        --less-containers|-l) containers=extbroker,xplore,bam,ts,apphost,xms; shift 1;;
+        --less-containers|-b) containers=extbroker,xplore,bam,ts,apphost,xms; shift 1;;
+        --log-level|-l) loglevel=$2; shift 2;;
         --) shift; break;;
     esac
 done
@@ -93,7 +95,7 @@ function run() {
             echo "run apphost"
             [ -d $HOME/ctsws-config ] && ctsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctsOpt=
             docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
-             $ctsOpt --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
+             -e LOG_LEVEL:${loglevel} $ctsOpt --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
             ;;
         xms)
             echo "run xms agent"
