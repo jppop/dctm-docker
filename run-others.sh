@@ -94,7 +94,8 @@ function run() {
             echo "run apphost"
             [ -d $HOME/ctsws-config ] && ctswsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctswsOpt=
             docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
-             $ctsOpt $xPressOpt --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
+             $ctsOpt $xPressOpt --link dctm-cs:dctm-cs --link bam:bam \
+             -v $(pwd):/shared dctm-apphost
             ;;
         xms)
             echo "run xms agent"
