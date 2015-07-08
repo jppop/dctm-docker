@@ -34,6 +34,9 @@ if [ -f .dctm-docker.env ]; then
     source .dctm-docker.env
 fi
 
+[ -n "$CTS_HOST" -a -n "$CTS_IP" ] && ctsOpt="--add-host $CTS_HOST:$CTS_IP" || ctsOpt=
+[ -n "$xPRESSION_HOST" -a -n "$xPRESSION_IP" ] && xPressOpt="--add-host $xPRESSION_HOST:$xPRESSION_IP" || xPressOpt=
+
 # default values
 repo=$REPOSITORY_NAME
 containers=extbroker,xplore,da,bam,bps,ts,apphost,xms
@@ -55,8 +58,6 @@ DOCUMENTUM=/opt/documentum
 DOCUMENTUM_SHARED=${DOCUMENTUM}/shared
 DM_HOME=${DOCUMENTUM}/product/7.1
 
-dctm_cs=$(docker inspect --format '{{ .Config.Env }}' dctm-cs | grep "REPOSITORY_NAME=$repo")
-[ -z "$dctm_cs" ] && die "Container dctm-cs (with repo $repo) not found." 2
 # try to check if dctm-xs finished the installation
 marker=$(docker exec -it dctm-cs ls -a1 ${DM_HOME}/install/.stop-install)
 [ -z "$marker" ]  && die "Seems dctm-cs installation not finished yet. Check the logs: docker logs -f dctm-cs" 3
@@ -91,9 +92,10 @@ function run() {
             ;;
         apphost)
             echo "run apphost"
-            [ -d $HOME/ctsws-config ] && ctsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctsOpt=
+            [ -d $HOME/ctsws-config ] && ctswsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctswsOpt=
             docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
-             $ctsOpt --link dctm-cs:dctm-cs --link bam:bam dctm-apphost
+             $ctsOpt $xPressOpt --link dctm-cs:dctm-cs --link bam:bam \
+             -v $(pwd):/shared dctm-apphost
             ;;
         xms)
             echo "run xms agent"
@@ -102,7 +104,7 @@ function run() {
             ;;
         xpress)
             echo "run xPression"
-            docker run -dP -p 9070:8080 -p 9072:9990 --name xpress -h xpress -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-xpression
+            docker run -dP -p 9070:8080 -p 9072:9990 -p 5678:5678 --name xpress -h xpress -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-xpression
             ;;
     esac
 }
