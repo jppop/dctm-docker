@@ -3,7 +3,7 @@ FROM base-centos6
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
 # JBoss app and console ports
-EXPOSE 8080 9990
+EXPOSE 8080 9990 5678
 
 RUN echo 'root:root' | chpasswd
 
@@ -18,6 +18,9 @@ RUN mv /etc/localtime /etc/localtime.old; ln -s /usr/share/zoneinfo/Europe/Paris
 # add our user and group first
 RUN groupadd xpress && useradd -g xpress xpress
 RUN echo xpress | passwd --stdin xpress
+# add an user to be used by developpers
+RUN useradd -r xpression
+RUN echo xpresson | passwd --stdin xpression
 
 RUN echo "xpress ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
  && echo "Defaults:xpress !requiretty" >> /etc/sudoers
