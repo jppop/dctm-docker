@@ -3,7 +3,7 @@
 cat <<EOF > ~/.netrc
 machine use.steria.com
 login jfrancon
-password Sopra34=JP2
+password Sopra34=JP3
 EOF
 
 set -e
