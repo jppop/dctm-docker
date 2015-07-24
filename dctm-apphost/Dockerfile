@@ -1,4 +1,4 @@
-FROM tomcat:7
+FROM andrefernandes/docker-tomcat7
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
@@ -34,5 +34,5 @@ ENV REGISTRY_PWD dm_bof_registry
 
 WORKDIR ${CATALINA_HOME}
 # FIXME: can't use variable in ENTRYPOINT directive
-ENTRYPOINT [ "./docker-entrypoint.sh", "catalina.sh", "run" ]
-CMD ["catalina.sh", "run"]
+ENTRYPOINT [ "./docker-entrypoint.sh", "bin/catalina.sh", "run" ]
+CMD ["bin/catalina.sh", "run"]
