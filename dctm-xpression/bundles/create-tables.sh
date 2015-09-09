@@ -22,6 +22,10 @@ dboPwd=${XPRESS_DBOPWD:-xpressdbo}
 
 sqlplus -s system/oracle@xe <<EOF
 
+DROP USER ${dboName} CASCADE;
+ALTER TABLESPACE xpression OFFLINE;
+DROP TABLESPACE xpression INCLUDING CONTENTS AND DATAFILES;
+
 CREATE TABLESPACE xpression
 DATAFILE
 '${dbfpath}/xpression.dbf'
