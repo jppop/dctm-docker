@@ -6,6 +6,10 @@ die() {
 	exit $2
 }
 
+echo "Copying DFC.."
+mkdir -p ${XPRESS_HOME}/documentum
+tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/documentum
+
 echo "Getting installer and ear..."
 mkdir ${XPRESS_HOME}/setup
 pushd ${XPRESS_HOME}/setup
@@ -69,7 +73,7 @@ EMAIL_SERVERNAME=localhost
 SEC_TYPE=Local
 SetDocumentumClient_ROOT=true
 DocumentumConf_ROOT=${XPRESS_HOME}/dfc-config
-DocumentumClient_ROOT=${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main
+DocumentumClient_ROOT=${XPRESS_HOME}/documentum
 COMMUNICATION_MODE=Local
 CLUSTER_NAME=xPressionGroups
 CURRENT_NODE_NAME=Node1
@@ -88,7 +92,8 @@ sudo chown root:root ${XPRESS_HOME}/Drivers/LinuxAuthUser
 sudo chmod 4655      ${XPRESS_HOME}/Drivers/LinuxAuthUser
 
 # add dfc jars
-tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main
+#tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main
+cp ${XPRESS_HOME}/documentum/*.jar ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/
 
 # copy jdbc driver (seems the installer does not copy it)
 cp /usr/lib/oracle/11.2/client64/lib/ojdbc6.jar ${XPRESS_HOME}/jboss-7.1/modules/com/oracle/ojdbc6/main
