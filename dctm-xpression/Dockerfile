@@ -75,5 +75,7 @@ ENV JAVA_HOME /usr/java/jdk1.7.0_79
 ENV XPRESS_DBOUSER xpressdbo
 ENV XPRESS_DBOPWD xpressdbo
 
+ENV DOCUMENTUM_SHARED /opt/documentum
+
 RUN chmod a+x ${XPRESS_HOME}/entrypoint.sh
 ENTRYPOINT ["/opt/xpression/entrypoint.sh" ]
