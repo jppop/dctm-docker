@@ -7,8 +7,32 @@ die() {
 }
 
 echo "Copying DFC.."
-mkdir -p ${XPRESS_HOME}/documentum
-tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/documentum
+sudo mkdir -p ${DOCUMENTUM_SHARED}
+sudo chown xpress:xpress ${DOCUMENTUM_SHARED}
+tar -xf /bundles/dfc-jars.7.1.tar -C ${DOCUMENTUM_SHARED}
+DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
+DFC_CONFIG_DIR=${DOCUMENTUM_SHARED}/config
+mkdir ${DFC_CONFIG_DIR} ${DFC_DATA_DIR}
+
+cat > ${DFC_CONFIG_DIR}/dfc.properties << __EOF__
+dfc.name=xpression
+dfc.data.dir=${DFC_DATA_DIR}
+dfc.tokenstorage.enable=false
+dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
+dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
+dfc.session.secure_connect_default=try_native_first
+dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
+dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
+dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
+dfc.session.allow_trusted_login = false
+__EOF__
+
+# Workaraound: XPRS failed to create the dfc keystore the firstime it's started.
+# So, create one
+java -cp ${DOCUMENTUM_SHARED}/dctm.jar:${DOCUMENTUM_SHARED}/config \
+ com.documentum.fc.tools.DqlTool -dfc \
+ -docbase ${REPOSITORY_NAME:-devbox} -username dmadmin -password dmadmin \
+ "select * from dm_server_config"
 
 echo "Getting installer and ear..."
 mkdir ${XPRESS_HOME}/setup
@@ -72,8 +96,8 @@ JDBC_USER_PASSWORD=${XPRESS_DBOPWD}
 EMAIL_SERVERNAME=localhost
 SEC_TYPE=Local
 SetDocumentumClient_ROOT=true
-DocumentumConf_ROOT=${XPRESS_HOME}/dfc-config
-DocumentumClient_ROOT=${XPRESS_HOME}/documentum
+DocumentumConf_ROOT=${DFC_CONFIG_DIR}
+DocumentumClient_ROOT=${DOCUMENTUM_SHARED}
 COMMUNICATION_MODE=Local
 CLUSTER_NAME=xPressionGroups
 CURRENT_NODE_NAME=Node1
@@ -93,13 +117,14 @@ sudo chmod 4655      ${XPRESS_HOME}/Drivers/LinuxAuthUser
 
 # add dfc jars
 #tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main
-cp ${XPRESS_HOME}/documentum/*.jar ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/
+cp ${DOCUMENTUM_SHARED}/dfc/*.jar ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/
 
 # copy jdbc driver (seems the installer does not copy it)
 cp /usr/lib/oracle/11.2/client64/lib/ojdbc6.jar ${XPRESS_HOME}/jboss-7.1/modules/com/oracle/ojdbc6/main
 
+# probably not necessary
 cat > ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/dfc.properties <<EOF
-#include ${XPRESS_HOME}/dfc-config/dfc.properties
+#include ${DFC_CONFIG_DIR}/dfc.properties
 EOF
 
 # tell jboss to listen all network interfaces

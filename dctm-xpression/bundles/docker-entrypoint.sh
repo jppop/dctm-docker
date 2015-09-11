@@ -24,17 +24,17 @@ die() {
 }
 
 # check container links
-[ -z "${DBORA_NAME}" ] && dockerUsage
+[ -z "${DBORA_NAME}" -o -z "${DCTM_CS_NAME}"] && dockerUsage
 
 if [ ! -f ${XPRESS_HOME}/xPressionVersion.properties ]; then
 	# install xPression Server
 	/bundles/install-xpression.sh
 fi
 
-DFC_DATA_DIR=${XPRESS_HOME}/dfc-data
+DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
 [ -d "${DFC_DATA_DIR}" ] || mkdir -p ${DFC_DATA_DIR}
 
-cat > ${XPRESS_HOME}/dfc-config/dfc.properties << __EOF__
+cat > ${DOCUMENTUM_SHARED}/config/dfc.properties << __EOF__
 dfc.name=xpression
 dfc.data.dir=${DFC_DATA_DIR}
 dfc.tokenstorage.enable=false
