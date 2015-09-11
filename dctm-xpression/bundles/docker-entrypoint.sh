@@ -24,7 +24,7 @@ die() {
 }
 
 # check container links
-[ -z "${DBORA_NAME}" -o -z "${DCTM_CS_NAME}"] && dockerUsage
+[ -z "${DBORA_NAME}" -o -z "${DCTM_CS_NAME}" ] && dockerUsage
 
 if [ ! -f ${XPRESS_HOME}/xPressionVersion.properties ]; then
 	# install xPression Server
