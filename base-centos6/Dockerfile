@@ -2,6 +2,10 @@ FROM centos:centos6
 
 MAINTAINER Jean-Pierre FRANCONIERI <jean-pierre.franconieri@soprasteria.com>
 
+ENV TIMEZONE Europe/Paris
+RUN echo ZONE="$TIMEZONE" > /etc/sysconfig/clock && \
+    cp "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
+
 RUN yum update -y \
  && yum install -y openssh-server \
  && yum install -y tar
