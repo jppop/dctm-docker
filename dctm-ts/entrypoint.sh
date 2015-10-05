@@ -23,9 +23,11 @@ setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 [ -r $setEnvScript ] && source $setEnvScript
 
 
-# append the registry information to the dfc.properties
-if [ -z $(grep dfc.globalregistry.repository ${DOCUMENTUM_SHARED}/config/dfc.properties) ]; then
-	cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
+cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
+dfc.data.dir=${DOCUMENTUM_SHARED}
+dfc.tokenstorage.dir=${DOCUMENTUM_SHARED}/apptoken
+dfc.tokenstorage.enable=false
+dfc.session.secure_connect_default=try_native_first
 dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
 dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
 dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
@@ -34,7 +36,6 @@ dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPK
 dfc.session.allow_trusted_login = true
 dfc.name=ts
 __EOF__
-fi
 
 echo "Waiting for the server availibility"
 
