@@ -8,6 +8,8 @@ ENV LOGDIR /var/log/tomcat
 #VOLUME /var/xms
 #ENV XMS_DATA_DIR /var/xms
 
+EXPOSE 8443
+
 # the entrypoint (wrap catalina script)
 COPY bundles/entrypoint.sh ${CATALINA_HOME}/docker-entrypoint.sh
 
