@@ -52,8 +52,8 @@ export REPOSITORY_NAME=$repo
 [ -n "$xPRESSION_HOST" -a -n "$xPRESSION_IP" ] && xPressOpt="--add-host $xPRESSION_HOST:$xPRESSION_IP" || xPressOpt=
 
 docker create --name dctm-xmsdata dctm-xmsdata
-docker run -dP -p 1521:1521 --name dbora -h dbora -v $(pwd):/shared oracle-xe
+docker run -dP -p 1521:1521 -p 7999:8080 -p 2223:22 --name dbora -h dbora -v $(pwd):/shared oracle-xe
 #docker run -dP --name broker -h broker dctm-broker
-docker run -dP -p 1489:1489 -p 49000:49000 -p 9080:9080 --name dctm-cs -h dctm-cs --link dbora:dbora \
+docker run -dP -p 1489:1489 -p 49000:49000 -p 9080:9080 -p 2222:22 --name dctm-cs -h dctm-cs --link dbora:dbora \
 	$ctsOpt $xPressOpt -v $(pwd):/shared dctm-cs --repo-name $repo
 #docker logs -f dctm-cs
