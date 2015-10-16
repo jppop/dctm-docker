@@ -13,7 +13,7 @@ select file_name from DBA_DATA_FILES where TABLESPACE_NAME='SYSTEM';
 exit
 EOF
 `
-[ -z "${sysdbf}" ] && dbfpath=$(dirname $sysdbf)
+[ -z "${sysdbf}" ] || dbfpath=$(dirname $sysdbf)
 [ -z "${dbfpath}" ] && dbfpath=/u01/app/oracle/oradata/XE
 
 echo "Creating xPression DB owner.."

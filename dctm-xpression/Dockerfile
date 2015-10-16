@@ -19,8 +19,8 @@ RUN mv /etc/localtime /etc/localtime.old; ln -s /usr/share/zoneinfo/Europe/Paris
 RUN groupadd xpress && useradd -g xpress xpress
 RUN echo xpress | passwd --stdin xpress
 # add an user to be used by developpers
-RUN useradd -r xpression
-RUN echo xpresson | passwd --stdin xpression
+RUN useradd -g xpress xpression
+RUN echo xpression | passwd --stdin xpression
 
 RUN echo "xpress ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
  && echo "Defaults:xpress !requiretty" >> /etc/sudoers
@@ -76,6 +76,9 @@ ENV XPRESS_DBOUSER xpressdbo
 ENV XPRESS_DBOPWD xpressdbo
 
 ENV DOCUMENTUM_SHARED /opt/documentum
+
+RUN	sudo mkdir -p ${DOCUMENTUM_SHARED} \
+ &&	sudo chown xpress:xpress ${DOCUMENTUM_SHARED}
 
 RUN chmod a+x ${XPRESS_HOME}/entrypoint.sh
 ENTRYPOINT ["/opt/xpression/entrypoint.sh" ]

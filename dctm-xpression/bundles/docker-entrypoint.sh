@@ -12,7 +12,7 @@ dockerUsage() {
     cat 2>&1 <<EOF
 This container must be linked with the db (as 'dbora') and the cs (as dctm-cs) server.
 Something like:
-  docker run -dP --name xpress -h xpress --link dbora:dbora --link dctm-cs:dctm-cs xpress [--repo-name REPOSITORY_NAME]
+  docker run -dP --name xpress -h xpress --link dbora:dbora [--link dctm-cs:dctm-cs] xpress [--repo-name REPOSITORY_NAME]
 EOF
   exit 2
 }
@@ -24,11 +24,12 @@ die() {
 }
 
 # check container links
-[ -z "${DBORA_NAME}" -o -z "${DCTM_CS_NAME}" ] && dockerUsage
+##[ -z "${DBORA_NAME}" -o -z "${DCTM_CS_NAME}" ] && dockerUsage
+[ -z "${DBORA_NAME}"  ] && dockerUsage
 
 if [ ! -f ${XPRESS_HOME}/xPressionVersion.properties ]; then
 	# install xPression Server
-	/bundles/install-xpression.sh
+	/bundles/install-xpression.sh $@
 fi
 
 DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
