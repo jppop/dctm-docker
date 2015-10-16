@@ -88,6 +88,7 @@ RUN mkdir patch-install \
  && cd patch-install \
  && cp /bundles/patch/*.* . \
  && source /etc/profile.d/documentum.sh \
+ && chmod u+x ./patch.bin \
  && ./patch.bin LAX_VM $(which java) -f patch-install.properties \
  && cp logs/install.log ${DOCUMENTUM_LOG}/patch-install.log \
  && cd .. \
