@@ -38,7 +38,7 @@
     </logger>
 
 	<root>
-		<priority value="info" />
+		<priority value="error" />
 		<!-- <appender-ref ref="file" />  -->
 		<appender-ref ref="console" />
 <!-- 		<appender-ref ref="FlatFileAppender" /> -->

@@ -6,7 +6,7 @@ die() {
 	exit $2
 }
 
-OPTS=`getopt -o n -l no-dctm -- "$@"`
+OPTS=`getopt -o d -l dctm -- "$@"`
 if [ $? != 0 ]
 then
     exit 1
@@ -15,40 +15,44 @@ fi
 eval set -- "$OPTS"
 
 # default values
-installDfc=1
+installDfc='false'
 while true ; do
     case "$1" in
-        --no-dctm|-n) installDfc=0; shift 1;;
+        --dctm|-d) installDfc='true'; shift 1;;
         --) shift; break;;
     esac
 done
 
-if [ $installDfc ]; then
-	echo "Copying DFC.."
-	tar -xf /bundles/dfc-jars.7.1.tar -C ${DOCUMENTUM_SHARED}
-	DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
-	DFC_CONFIG_DIR=${DOCUMENTUM_SHARED}/config
-	mkdir ${DFC_CONFIG_DIR} ${DFC_DATA_DIR}
+echo "Copying DFC.."
+tar -xf /bundles/dfc-jars.7.1.tar -C ${DOCUMENTUM_SHARED}
+DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
+DFC_CONFIG_DIR=${DOCUMENTUM_SHARED}/config
+DFC_ROOT_DIR=${DOCUMENTUM_SHARED}
+mkdir ${DFC_CONFIG_DIR} ${DFC_DATA_DIR}
 
-	cat > ${DFC_CONFIG_DIR}/dfc.properties << __EOF__
-	dfc.name=xpression
-	dfc.data.dir=${DFC_DATA_DIR}
-	dfc.tokenstorage.enable=false
-	dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
-	dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
-	dfc.session.secure_connect_default=try_native_first
-	dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
-	dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
-	dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
-	dfc.session.allow_trusted_login = false
-	__EOF__
+cat > ${DFC_CONFIG_DIR}/dfc.properties << __EOF__
+dfc.name=xpression
+dfc.data.dir=${DFC_DATA_DIR}
+dfc.tokenstorage.enable=false
+dfc.docbroker.host[0]=${DOCBROKER_ADR:-$DCTM_CS_PORT_1489_TCP_ADDR}
+dfc.docbroker.port[0]=${DOCBROKER_PORT:-$DCTM_CS_PORT_1489_TCP_PORT}
+dfc.session.secure_connect_default=try_native_first
+dfc.globalregistry.repository=${REPOSITORY_NAME:-devbox}
+dfc.globalregistry.username=${REGISTRY_USER:-dm_bof_registry}
+dfc.globalregistry.password=${REGISTRY_CRYPTPWD:-AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv}
+dfc.session.allow_trusted_login = false
+__EOF__
 
-	# Workaraound: XPRS failed to create the dfc keystore the firstime it's started.
-	# So, create one
-	java -cp ${DOCUMENTUM_SHARED}/dctm.jar:${DOCUMENTUM_SHARED}/config \
-	 com.documentum.fc.tools.DqlTool -dfc \
-	 -docbase ${REPOSITORY_NAME:-devbox} -username dmadmin -password dmadmin \
-	 "select * from dm_server_config"
+# Workaraound: XPRS failed to create the dfc keystore the firstime it's started.
+# So, create one
+java -cp ${DOCUMENTUM_SHARED}/dctm.jar:${DOCUMENTUM_SHARED}/config \
+ com.documentum.fc.tools.DqlTool -dfc \
+ -docbase ${REPOSITORY_NAME:-devbox} -username dmadmin -password dmadmin \
+ "select * from dm_server_config"
+
+if [ $installDfc = 'false' ]; then
+	unset DFC_CONFIG_DIR
+	unset DFC_ROOT_DIR
 fi
 
 echo "Getting installer and ear..."
@@ -112,9 +116,9 @@ JDBC_USER_NAME=${XPRESS_DBOUSER}
 JDBC_USER_PASSWORD=${XPRESS_DBOPWD}
 EMAIL_SERVERNAME=localhost
 SEC_TYPE=Local
-SetDocumentumClient_ROOT=true
+SetDocumentumClient_ROOT=${installDfc}
 DocumentumConf_ROOT=${DFC_CONFIG_DIR}
-DocumentumClient_ROOT=${DOCUMENTUM_SHARED}
+DocumentumClient_ROOT=${DFC_ROOT_DIR}
 COMMUNICATION_MODE=Local
 CLUSTER_NAME=xPressionGroups
 CURRENT_NODE_NAME=Node1
@@ -134,7 +138,7 @@ sudo chmod 4655      ${XPRESS_HOME}/Drivers/LinuxAuthUser
 
 # add dfc jars
 #tar -xf /bundles/dfc-jars.7.1.tar -C ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main
-if [ $installDfc ]; then
+if [ $installDfc = 'true' ]; then
 	cp ${DOCUMENTUM_SHARED}/dfc/*.jar ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/
 	# probably not necessary
 	cat > ${XPRESS_HOME}/jboss-7.1/modules/com/documentum/main/dfc.properties <<EOF

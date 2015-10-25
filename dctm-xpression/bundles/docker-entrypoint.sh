@@ -34,6 +34,7 @@ fi
 
 DFC_DATA_DIR=${DOCUMENTUM_SHARED}/data
 [ -d "${DFC_DATA_DIR}" ] || mkdir -p ${DFC_DATA_DIR}
+[ -d "${DOCUMENTUM_SHARED}/config" ] || mkdir -p ${DOCUMENTUM_SHARED}/config
 
 cat > ${DOCUMENTUM_SHARED}/config/dfc.properties << __EOF__
 dfc.name=xpression

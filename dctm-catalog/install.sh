@@ -34,6 +34,9 @@ cp $SOURCE/documentum/xms-agent/1.1.13/xms-agent-1.1-P13.zip $TARGET/dctm-xmsage
 echo "Copying xMS tools bundle"
 cp $SOURCE/documentum/xms-tools/1.2/xms-tools-1.2.zip $TARGET/dctm-xmstools/bundles/
 
+echo "Copying xPlore bundle"
+cp $SOURCE/documentum/xplore/1.4/xPlore_1.4_linux-x64.tar $TARGET/dctm-xplore/bundles/
+
 if [  -d $TARGET/dctm-xpression ]; then
 	echo "Copying xPression bundle"
 	cp $SOURCE/oracle/11.2/*.* $TARGET/dctm-xpression/bundles/

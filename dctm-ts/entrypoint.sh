@@ -23,7 +23,7 @@ setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 [ -r $setEnvScript ] && source $setEnvScript
 
 
-cat >> ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
+cat > ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
 dfc.data.dir=${DOCUMENTUM_SHARED}
 dfc.tokenstorage.dir=${DOCUMENTUM_SHARED}/apptoken
 dfc.tokenstorage.enable=false

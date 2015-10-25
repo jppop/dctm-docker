@@ -6,9 +6,13 @@ ENV TIMEZONE Europe/Paris
 RUN echo ZONE="$TIMEZONE" > /etc/sysconfig/clock && \
     cp "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
 
+ENV TIMEZONE Europe/Paris
+RUN echo ZONE="$TIMEZONE" > /etc/sysconfig/clock && \
+    cp "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
+
 RUN yum update -y \
  && yum install -y openssh-server \
- && yum install -y tar
+                   tar sudo which tar zip unzip telnet install wget gettext bc passwd
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:root' | chpasswd
