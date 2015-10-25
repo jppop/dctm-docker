@@ -1,7 +1,8 @@
 # Documentum XMS tools 1.1
 # Documentum is a registred trademark from EMC (http://www.emc.com/legal/emc-corporation-trademarks.htm)
 
-FROM dockerfile/java:oracle-java7
+#FROM dockerfile/java:oracle-java7
+FROM java:7
 
 ENV XMSTOOL_HOME /opt/xms-tools
 
