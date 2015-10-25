@@ -3,7 +3,7 @@
 export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
 export ORACLE_SID=XE
 
-${ORACLE_HOME}/bin/sqlplus system/oracle@localhost << __EOF__
+${ORACLE_HOME}/bin/sqlplus / as sysdba << __EOF__
 -- suppress password expiration
 ALTER PROFILE "DEFAULT" LIMIT PASSWORD_VERIFY_FUNCTION NULL;
 ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;

@@ -132,6 +132,8 @@ __EOF__
     echo "Stopping the repository"
     ${DOCUMENTUM}/dba/dm_shutdown_${REPOSITORY_NAME}
 
+    echo "export REPOSITORY_NAME=$REPOSITORY_NAME" >> ~/.bash_profile
+
     touch .stop-install
 fi
 
@@ -158,9 +160,10 @@ trap shutdown SIGHUP SIGINT SIGTERM
 
 echo "Starting the repository ${REPOSITORY_NAME}.."
 
-echo "+ starting jms in background.."
+echo " + starting jms in background.."
 ${JMS_HOME}/startJms.sh > ${DOCUMENTUM_LOG}/jms.out &
 
+echo " + starting repoditory server.."
 cd ${DM_HOME}/bin
 ./documentum -docbase_name $REPOSITORY_NAME -security acl \
   -init_file $DOCUMENTUM/dba/config/$REPOSITORY_NAME/server.ini 2>&1 | tee -a ${DOCUMENTUM_LOG}/repository.log
