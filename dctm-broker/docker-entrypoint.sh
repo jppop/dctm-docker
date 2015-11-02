@@ -62,7 +62,7 @@ fi
 	iapi ${repo} -U${user} -P${passwd} -e << __EOF__
 fetch,c,serverconfig
 set,c,l,projection_targets
-$(hostname -i)
+$(ifconfig eth0 2>/dev/null|awk '/inet / {print $2}'|sed 's/addr://')
 set,c,l,projection_proxval
 10
 set,c,l,projection_ports
