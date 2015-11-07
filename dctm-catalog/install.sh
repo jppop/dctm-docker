@@ -26,6 +26,7 @@ echo "Copying Thumbnail Server bundle"
 cp $SOURCE/documentum/thumbnail-server/7.1/Thumbnail_Server_7.1_linux.tar $TARGET/dctm-ts/bundles/
 
 echo "Copying xCP Designer bundle"
+[ -d $TARGET/dctm-xcpdesigner/bundles ] || mkdir -p $TARGET/dctm-xcpdesigner/bundles
 cp $SOURCE/documentum/xcp-designer/2.1.11/xCPDesigner_linux64_2.1.tar $TARGET/dctm-xcpdesigner/bundles/
 
 echo "Copying xMS Agent bundle"
