@@ -11,6 +11,7 @@ RUN curl -sSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binari
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
 ENV MAVEN_HOME /usr/share/maven
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64/jre
 
 ENV XCPDESIGNER_HOME /opt/xCPDesigner
 ENV XCPDESIGNER_WORKSPACE /var/xcp-workspace
@@ -22,7 +23,7 @@ RUN mkdir ${XCPDESIGNER_HOME} \
  && echo Done
 
 # Install jenkins
-RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add - \
+RUN wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add - \
  && echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list \
  && apt-get update \
  && apt-get install -y jenkins
@@ -31,4 +32,3 @@ EXPOSE 8080
 
 RUN mkdir /root/.m2
 COPY settings.xml /root/.m2/
-

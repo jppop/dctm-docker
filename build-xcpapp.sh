@@ -8,9 +8,10 @@ EOF
 
 set -e
 
-SOURCE_URL=https://use.steria.com/gitroot/backoffpi/xcp-project.git
+#SOURCE_URL=https://pic_inpi@use.steria.com/gitroot/backoffpi/xcp-project.git
+SOURCE_URL=pic_inpi@use.steria.com:/gitroot/backoffpi/xcp-project.git
 #BRANCH=rc-beta-1
-BRANCH=develop
+BRANCH=master
 
 BUILD_HOME=${XCPDESIGNER_WORKSPACE}/build
 [ -d "${BUILD_HOME}" ] || mkdir -p ${BUILD_HOME}
