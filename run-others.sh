@@ -106,7 +106,7 @@ function run() {
             echo "run xPression"
             docker run -dP -p 9070:8080 -p 9072:9990 -p 5678:5678 --name xpress -h xpress \
                   -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora \
-                  -v $(pwd):/shared
+                  -v $(pwd):/shared \
                   dctm-xpression
             ;;
     esac
