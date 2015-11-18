@@ -18,6 +18,34 @@
         <app.host>apphost</app.host>
         <app.port>8080</app.port>
       </properties>
+      <repositories>
+				<repository>
+					<id>Builder</id>
+					<url>http://localhost:2910/maven</url>
+				</repository>
+				<repository>
+					<id>Builder-offline</id>
+					<url>file:///${designerPath}/maven</url>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>Builder</id>
+					<url>http://localhost:2910/maven</url>
+					<releases>
+						<updatePolicy>never</updatePolicy>
+						<enabled>true</enabled>
+					</releases>
+				</pluginRepository>
+				<pluginRepository>
+					<id>Builder-offline</id>
+					<url>file:///${designerPath}/maven</url>
+					<releases>
+						<updatePolicy>never</updatePolicy>
+						<enabled>true</enabled>
+					</releases>
+				</pluginRepository>
+			</pluginRepositories>
     </profile>
   </profiles>
 
