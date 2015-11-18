@@ -65,7 +65,7 @@ marker=$(docker exec -it dctm-cs ls -a1 ${DM_HOME}/install/.stop-install)
 function run() {
     container=$1
     case "$1" in
-        extbroker) 
+        extbroker)
             echo "Run extborker"
             docker run -d -p 1589:1489 --name extbroker -h extbroker \
                --link dctm-cs:dctm-cs -e REPOSITORY_NAME=$repo -e HOST_IP=$HOST_IP dctm-broker
@@ -104,7 +104,10 @@ function run() {
             ;;
         xpress)
             echo "run xPression"
-            docker run -dP -p 9070:8080 -p 9072:9990 -p 5678:5678 --name xpress -h xpress -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-xpression
+            docker run -dP -p 9070:8080 -p 9072:9990 -p 5678:5678 --name xpress -h xpress \
+                  -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora \
+                  -v $(pwd):/shared
+                  dctm-xpression
             ;;
     esac
 }
