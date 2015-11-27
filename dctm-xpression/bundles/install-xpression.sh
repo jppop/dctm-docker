@@ -150,10 +150,14 @@ fi
 cp /usr/lib/oracle/11.2/client64/lib/ojdbc6.jar ${XPRESS_HOME}/jboss-7.1/modules/com/oracle/ojdbc6/main
 
 # tell jboss to listen all network interfaces
-sed -i.bck.0 -e 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' \
-  ${XPRESS_HOME}/jboss-7.1/standalone/configuration/xpression-standalone.xml
-sed -i.bck.1 -e 's/jboss.bind.address:127.0.0.1/jboss.bind.address:0.0.0.0/' \
-  ${XPRESS_HOME}/jboss-7.1/standalone/configuration/xpression-standalone.xml
+##sed -i.bck.0 -e 's/jboss.bind.address.management:127.0.0.1/jboss.bind.address.management:0.0.0.0/' \
+##  ${XPRESS_HOME}/jboss-7.1/standalone/configuration/xpression-standalone.xml
+##sed -i.bck.1 -e 's/jboss.bind.address:127.0.0.1/jboss.bind.address:0.0.0.0/' \
+##  ${XPRESS_HOME}/jboss-7.1/standalone/configuration/xpression-standalone.xml
+
+cat <<EOF >>${XPRESS_HOME}/jboss-7.1/bin/standalone.conf
+JAVA_OPTS="\$JAVA_OPTS -Djboss.bind.address.management=0.0.0.0 -Djboss.bind.address=0.0.0.0 -Djava.security.egd=file:/dev/random"
+EOF
 
 # patch xPression with P10
 mkdir ${XPRESS_HOME}/setup/p10 && cd ${XPRESS_HOME}/setup/p10
@@ -173,5 +177,3 @@ EOF
 /bundles/create-tables.sh
 
 popd
-
-
