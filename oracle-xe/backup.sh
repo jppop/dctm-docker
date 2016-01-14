@@ -5,7 +5,7 @@ BACKUP_PATH=/shared/backup
 
 rman target / <<EOF
 configure retention policy to redundancy 1;
-configure channel device type disk format "'$BACKUP_PATH/%U'" maxpiecesize 2 G;
+configure channel device type disk format "$BACKUP_PATH/%U" maxpiecesize 2 G;
 shutdown immediate;
 startup mount;
 backup spfile;
