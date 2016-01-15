@@ -23,7 +23,7 @@ echo "Copying DA bundle"
 cp $SOURCE/documentum/da/7.1/da.war $TARGET/dctm-da/bundles/
 
 echo "Copying Thumbnail Server bundle"
-cp $SOURCE/documentum/thumbnail-server/7.1/Thumbnail_Server_7.1_linux.tar $TARGET/dctm-ts/bundles/
+cp $SOURCE/documentum/thumbnail-server/7.1/Thumbnail_Server_7.1_linux.tar $TARGET/dctm-cs/bundles/
 
 echo "Copying xCP Designer bundle"
 [ -d $TARGET/dctm-xcpdesigner/bundles ] || mkdir -p $TARGET/dctm-xcpdesigner/bundles

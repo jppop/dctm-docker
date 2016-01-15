@@ -23,7 +23,7 @@ setEnvScript=$DM_HOME/bin/dm_set_server_env.sh
 [ -r $setEnvScript ] && source $setEnvScript
 
 
-cat > ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__ 
+cat > ${DOCUMENTUM_SHARED}/config/dfc.properties <<__EOF__
 dfc.data.dir=${DOCUMENTUM_SHARED}
 dfc.tokenstorage.dir=${DOCUMENTUM_SHARED}/apptoken
 dfc.tokenstorage.enable=false
@@ -56,7 +56,7 @@ echo "Content server alive."
 if [ ! -f ${DM_HOME}/install/.ts-configured ]; then
 	echo "Registering the repository ${REPOSITORY_NAME}.."
 	cat > ${TS_HOME}/configurator/tsConfig.ini << __EOF__
-[[COMMON]
+[COMMON]
 SECURE.INSTALL_OWNER_PASSWORD=admin
 
 [THUMBNAIL_SERVER]
@@ -80,4 +80,3 @@ fi
 
 cd ${TS_HOME}/container/bin
 exec "$@"
-

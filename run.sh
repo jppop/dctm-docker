@@ -40,11 +40,13 @@ repo=$REPOSITORY_NAME
 while true ; do
     case "$1" in
         --repo-name|-r) repo=$2; shift 2;;
+        --host-ip|-i) HOST_IP=$2; shift 2;;
         --) shift; break;;
     esac
 done
 
 [ -z "$repo" ]  && die "No repository name." 1
+[ -z "$HOST_IP" ]  && die "No host ip." 1
 export REPOSITORY_NAME=$repo
 
 
@@ -54,6 +56,8 @@ export REPOSITORY_NAME=$repo
 docker create --name dctm-xmsdata dctm-xmsdata
 docker run -dP -p 1521:1521 -p 7999:8080 -p 2223:22 --name dbora -h dbora -v $(pwd):/shared oracle-xe
 #docker run -dP --name broker -h broker dctm-broker
-docker run -dP -p 1489:1489 -p 49000:49000 -p 9080:9080 -p 2222:22 --name dctm-cs -h dctm-cs --link dbora:dbora \
-	$ctsOpt $xPressOpt -v $(pwd):/shared dctm-cs --repo-name $repo
+docker run -dP -p 1489:1489 -p 49000:49000 -p 9080:9080 -p 8020:8080 -p 2222:22 --name dctm-cs -h dctm-cs \
+  --link dbora:dbora \
+	$ctsOpt $xPressOpt --add-host dockerhost:$HOST_IP -e HOST_IP=$HOST_IP
+  -v $(pwd):/shared dctm-cs --repo-name $repo
 #docker logs -f dctm-cs

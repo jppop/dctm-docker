@@ -39,7 +39,7 @@ fi
 
 # default values
 repo=$REPOSITORY_NAME
-containers=extbroker,xplore,da,bam,bps,ts,apphost,xms
+containers=extbroker,xplore,da,bam,bps,apphost,xms
 while true ; do
     case "$1" in
         --repo-name|-r) repo=$2; shift 2;;
