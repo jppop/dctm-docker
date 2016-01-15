@@ -24,10 +24,12 @@ hostIp=${HOST_IP:-localhost}
 tsPort=${TS_PORT:-8020}
 
 idql ${repo} -U${user} -P${passwd} -e 2>&1 << EOF
-echo "Updating Thumbnail Server base url"
+echo "Updating Thumbnail Server base and ACS urls"
 update dm_filestore objects
 set base_url = 'http://${hostIp}:${tsPort}/thumbsrv/getThumbnail?'
 where name = 'thumbnail_store_01';
 go
+update dm_acs_config objects
+set acs_base_url[0] = 'http://${hostIp}:9080/ACS/servlet/ACS'
 exit
 EOF
