@@ -17,14 +17,13 @@ fi
 eval set -- "$OPTS"
 
 # default values
-userName= userPwd= tablespace= 
-REPOSITORY_ID=$(od -vAn -N3 -tu4 < /dev/urandom)
+userName= userPwd= tablespace=
 forbroker='false'
 while true ; do
     case "$1" in
         --user-name|-u) userName=$2; shift 2;;
         --pwd|-p) userPwd=$2; shift 2;;
-        --tbs-name|-t) tablespace='true'; shift 1;;
+        --tbs-name|-t) tablespace=$2; shift 2;;
         --) shift; break;;
     esac
 done
@@ -69,4 +68,3 @@ create user ${userName} identified by ${userPwd} default tablespace
 grant connect, resource, create view, create sequence to ${userName};
 exit;
 EOF
-
