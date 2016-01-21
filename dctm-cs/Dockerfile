@@ -7,6 +7,11 @@ COPY create-responsefile.sh $DM_HOME/install/create-responsefile.sh
 RUN chown dmadmin:dmadmin $DM_HOME/install/create-responsefile.sh; \
     chmod a+x $DM_HOME/install/create-responsefile.sh
 
+# helper script to welcome world (make ACS and TS reachable from outside Docker)
+COPY welcome-world.sh $DM_HOME/install/welcome-world.sh
+RUN chown dmadmin:dmadmin $DM_HOME/install/welcome-world.sh; \
+    chmod a+x $DM_HOME/install/welcome-world.sh
+
 # helper script used to delete any previous installation
 COPY delete-schema.sh $DM_HOME/install/delete-schema.sh
 RUN chown dmadmin:dmadmin $DM_HOME/install/delete-schema.sh; \
@@ -46,6 +51,8 @@ RUN mv /bundles/broker-install.properties $DM_HOME/install/broker-install.proper
 
 EXPOSE 1489 49000 49001
 EXPOSE 9080
+# Thumnail Server
+EXPOSE 8080 8008
 
 USER dmadmin
 WORKDIR $DOCUMENTUM
@@ -60,6 +67,16 @@ RUN mv $DM_HOME/install/startJms.sh ${JMS_HOME}/startJms.sh
 
 # install Connection Broker
 RUN $DM_HOME/install/dm_launch_server_config_program.sh -f $DM_HOME/install/broker-install.properties
+
+# installing Thumbnail Server
+ENV TS_HOME ${DM_HOME}/thumbsrv
+RUN mkdir /tmp/ts-install \
+ && tar -xvf /bundles/Thumbnail_Server_7.1_linux.tar -C /tmp/ts-install \
+ && cd /tmp/ts-install \
+ && chmod u+x ./thumbserverLinuxSetup.bin \
+ && ./thumbserverLinuxSetup.bin -config /bundles/tsInstall.ini -silent \
+ && cat install.log \
+ && echo "done"
 
 ENTRYPOINT ["/opt/documentum/entrypoint.sh", "--repo-name=devbox" ]
 #CMD ["--repo-name=devbox"]

@@ -26,7 +26,8 @@ RUN mv /etc/localtime /etc/localtime.old; ln -s /usr/share/zoneinfo/Europe/Paris
 RUN groupadd dmadmin && useradd -g dmadmin dmadmin
 RUN echo dmadmin | passwd --stdin dmadmin
 
-RUN echo "dmadmin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN echo "dmadmin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+  && echo "Defaults:dmadmin !requiretty" >> /etc/sudoers
 
 # Creating documentum directories
 ENV DOCUMENTUM /opt/documentum
@@ -40,7 +41,7 @@ RUN chown -R dmadmin:dmadmin ${DOCUMENTUM}
 ## FIXME: cannot use volumes since chown fails to change ownership (may be specific to OSX)
 ## see https://github.com/boot2docker/boot2docker/issues/581
 ## VOLUME [ "/var/log/documentum", "/var/dctm-data"]
-## RUN ls -al /var/log/documentum /var/dctm-data 
+## RUN ls -al /var/log/documentum /var/dctm-data
 ##RUN mkdir -p ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
 ##RUN chown -R dmadmin:dmadmin ${DOCUMENTUM_DATA} ${DOCUMENTUM_LOG}
 
