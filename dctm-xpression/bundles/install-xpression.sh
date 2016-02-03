@@ -45,7 +45,9 @@ __EOF__
 
 # Workaraound: XPRS failed to create the dfc keystore the firstime it's started.
 # So, create one
-java -cp ${DOCUMENTUM_SHARED}/dctm.jar:${DOCUMENTUM_SHARED}/config \
+java -cp ${DOCUMENTUM_SHARED}/dctm.jar \
+ -Djava.security.egd=file:/dev/./urandom \
+ -Ddfc.properties.file=${DOCUMENTUM_SHARED}/config/dfc.properties \
  com.documentum.fc.tools.DqlTool -dfc \
  -docbase ${REPOSITORY_NAME:-devbox} -username dmadmin -password dmadmin \
  "select * from dm_server_config"
@@ -156,7 +158,7 @@ cp /usr/lib/oracle/11.2/client64/lib/ojdbc6.jar ${XPRESS_HOME}/jboss-7.1/modules
 ##  ${XPRESS_HOME}/jboss-7.1/standalone/configuration/xpression-standalone.xml
 
 cat <<EOF >>${XPRESS_HOME}/jboss-7.1/bin/standalone.conf
-JAVA_OPTS="\$JAVA_OPTS -Djboss.bind.address.management=0.0.0.0 -Djboss.bind.address=0.0.0.0 -Djava.security.egd=file:/dev/random"
+JAVA_OPTS="\$JAVA_OPTS -Djboss.bind.address.management=0.0.0.0 -Djboss.bind.address=0.0.0.0 -Djava.security.egd=file:/dev/./random"
 EOF
 
 # patch xPression with P10
