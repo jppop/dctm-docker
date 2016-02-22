@@ -82,15 +82,15 @@ RUN JAVA_BINARY=`ls -1d $DOCUMENTUM_SHARED/java*/*/bin/java 2>/dev/null | head -
  && echo "export PATH=\${JAVA_HOME}/bin:\${PATH}" >> /etc/profile.d/documentum.sh \
  && echo "done"
 
-# installing patch 09
+# installing patch 25
 USER dmadmin
 WORKDIR /tmp
 RUN mkdir patch-install \
  && cd patch-install \
- && cp /bundles/patch/*.* . \
+ && tar -zxf /bundles/patch/CS_7.1.*.gz  \
  && source /etc/profile.d/documentum.sh \
  && chmod u+x ./patch.bin \
- && ./patch.bin LAX_VM $(which java) -f patch-install.properties \
+ && ./patch.bin LAX_VM $(which java) -f /bundles/patch/patch-install.properties \
  && cp logs/install.log ${DOCUMENTUM_LOG}/patch-install.log \
  && cd .. \
  && rm -rf patch-install \

@@ -66,7 +66,7 @@ function run() {
     container=$1
     case "$1" in
         extbroker)
-            echo "Run extborker"
+            echo "Run extbroker"
             docker run -d -p 1589:1489 --name extbroker -h extbroker \
                --link dctm-cs:dctm-cs -e REPOSITORY_NAME=$repo -e HOST_IP=$HOST_IP dctm-broker
             ;;
@@ -87,7 +87,7 @@ function run() {
             docker run -dP -p 8010:8080 --name bps -h bps -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-bps
             ;;
         ts)
-            echo "run Thumnail Server"
+            echo "run Thumbnail Server"
             docker run -dP -p 8020:8080 --name ts -h ts -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-ts dctm-ts
             ;;
         apphost)
@@ -118,6 +118,4 @@ do
     run $c
 done
 
-echo "All services started."
-echo "Wait for the end of xms start"
-echo "using: docker logs -f xms"
+echo "Containers started: $containers"

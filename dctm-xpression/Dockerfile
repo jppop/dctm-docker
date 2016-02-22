@@ -43,16 +43,20 @@ RUN echo "export ORACLE_HOME=/usr/lib/oracle/11.2/client64" >> /etc/profile.d/xp
     echo "export TNS_ADMIN=\${XPRESS_HOME}" >> /etc/profile.d/xpress.sh
 
 # installing Oracle Java
+##RUN cd /tmp \
+## && curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.rpm' \
+##        -H 'Cookie: oraclelicense=accept-securebackup-cookie' \
+## && rpm -i jdk-7u79-linux-x64.rpm \
+## && rm jdk-7u79-linux-x64.rpm
+
 RUN cd /tmp \
- && curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.rpm' \
-        -H 'Cookie: oraclelicense=accept-securebackup-cookie' \
- && rpm -i jdk-7u79-linux-x64.rpm \
- && rm jdk-7u79-linux-x64.rpm
+ && rpm -i /bundles/jdk-7u79-linux-x64.rpm \
+ && echo Done
 
 # installing JBoss 7.1
+### && curl -LO http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip \
 RUN cd ${XPRESS_HOME} \
- && curl -LO http://download.jboss.org/jbossas/7.1/jboss-as-7.1.1.Final/jboss-as-7.1.1.Final.zip \
- && unzip -q jboss-as-7.1.1.Final.zip  \
+ && unzip -q /bundles/jboss-as-7.1.1.Final.zip  \
  && mv jboss-as-7.1.1.Final jboss-7.1  \
  && rm -f jboss-as-7.1.1.Final.zip 
 

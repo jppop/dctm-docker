@@ -7,7 +7,7 @@ dctm-bam
 dctm-bps
 #dctm-cis
 dctm-da
-dctm-ts
+#dctm-ts
 dctm-xmsdata
 dctm-xmsagent
 dctm-xmstools

@@ -12,7 +12,9 @@ cp $SOURCE/documentum/bps/2.1/bps.war $TARGET/dctm-bps/bundles/
 
 echo "Copying Content Server bundle"
 cp $SOURCE/documentum/content-server/7.1/Content_Server_7.1_linux64_oracle.tar $TARGET/dctm-base/bundles/
-cp $SOURCE/documentum/content-server/7.1/CS_7.1.0090/*.* $TARGET/dctm-base/bundles/patch/
+[ -d $TARGET/dctm-base/bundles/patch ] || mkdir -p $TARGET/dctm-base/bundles/patch
+#cp $SOURCE/documentum/content-server/7.1/CS_7.1.0090/*.* $TARGET/dctm-base/bundles/patch/
+cp $SOURCE/documentum/content-server/7.1/CS_7.1.0250/*.* $TARGET/dctm-base/bundles/patch/
 
 echo "Copying Repository bundle"
 cp -r $SOURCE/documentum/content-server/7.1/dars $TARGET/dctm-cs/bundles/dars
@@ -47,4 +49,8 @@ if [  -d $TARGET/dctm-xpression ]; then
 	cp $SOURCE/documentum/xPression/4.5.SP1/xPRS_EE4.5.1_P10.ear $TARGET/dctm-xpression/bundles/
 	cp $SOURCE/documentum/xPression/4.5.SP1/XP45SP1_B13_cr_scripts.zip $TARGET/dctm-xpression/bundles/
 	cp -r $SOURCE/documentum/xPression/4.5.SP1/CRUpgrade $TARGET/dctm-xpression/bundles/
+        cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xpression/bundles/
+	cp $SOURCES/jboss/7.1.1/jboss-as-7.1.1.Final.zip  $TARGET/dctm-xpression/bundles/
+
+
 fi
