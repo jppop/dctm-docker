@@ -113,7 +113,7 @@ function run() {
             echo "run xPression"
             # check subnet has been created
             subnet=$(docker network inspect --format='{{range .IPAM.Config}}{{.Subnet}}{{end}}' net2 2>/dev/null)
-            if [ -z $"subnet" ]; then
+            if [ -z "$subnet" ]; then
               echo "Docker subnet 'net2' has not been created. Run first:"
               echo "docker network create --subnet=172.29.121.0/16 net2"
               echo "xprs container not created"
