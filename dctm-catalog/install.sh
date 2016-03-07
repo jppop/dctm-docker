@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE=./distrib
+SOURCE=~/distrib
 # the root folder of the dctm-docker project
 TARGET=..
 
