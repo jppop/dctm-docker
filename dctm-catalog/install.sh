@@ -50,7 +50,7 @@ if [  -d $TARGET/dctm-xpression ]; then
 	cp $SOURCE/documentum/xPression/4.5.SP1/XP45SP1_B13_cr_scripts.zip $TARGET/dctm-xpression/bundles/
 	cp -r $SOURCE/documentum/xPression/4.5.SP1/CRUpgrade $TARGET/dctm-xpression/bundles/
         cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xpression/bundles/
-	cp $SOURCES/jboss/7.1.1/jboss-as-7.1.1.Final.zip  $TARGET/dctm-xpression/bundles/
+	cp $SOURCE/jboss/7.1.1/jboss-as-7.1.1.Final.zip  $TARGET/dctm-xpression/bundles/
 
 
 fi
