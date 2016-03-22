@@ -37,6 +37,8 @@ fi
 [ -n "$CTS_HOST" -a -n "$CTS_IP" ] && ctsOpt="--add-host $CTS_HOST:$CTS_IP" || ctsOpt=
 [ -n "$xPRESSION_HOST" -a -n "$xPRESSION_IP" ] && xPressOpt="--add-host $xPRESSION_HOST:$xPRESSION_IP" || xPressOpt=
 
+[ -f ./env.list ] && envOpt="--env-file ./env.list" || envOpt=""
+
 # default values
 repo=$REPOSITORY_NAME
 containers=extbroker,xplore,da,bam,bps,apphost,xms
@@ -68,44 +70,58 @@ function run() {
         extbroker)
             echo "Run extbroker"
             docker run -d -p 1589:1489 --name extbroker -h extbroker \
-               --link dctm-cs:dctm-cs -e REPOSITORY_NAME=$repo -e HOST_IP=$HOST_IP dctm-broker
+            $envOpt \
+            --link dctm-cs:dctm-cs -e REPOSITORY_NAME=$repo -e HOST_IP=$HOST_IP dctm-broker
             ;;
         xplore)
             echo "Run xplore"
-            docker run -dP -p 9300:9300 -p 9200:9200 --name xplore -h xplore -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-xplore
+            docker run -dP -p 9300:9300 -p 9200:9200 --name xplore -h xplore -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs dctm-xplore
             ;;
         da)
             echo "Run da"
-            docker run -dP -it --name da -p 7002:8080 -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-da
+            docker run -dP -it --name da -p 7002:8080 -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs dctm-da
             ;;
         bam)
             echo "run bam"
-            docker run -dP -p 8000:8080 --name bam -h bam -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora dctm-bam
+            docker run -dP -p 8000:8080 --name bam -h bam -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs --link dbora:dbora dctm-bam
             ;;
         bps)
             echo "run bps"
-            docker run -dP -p 8010:8080 --name bps -h bps -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-bps
+            docker run -dP -p 8010:8080 --name bps -h bps -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs dctm-bps
             ;;
         ts)
             echo "run Thumbnail Server"
-            docker run -dP -p 8020:8080 --name ts -h ts -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs dctm-ts dctm-ts
+            docker run -dP -p 8020:8080 --name ts -h ts -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs dctm-ts dctm-ts
             ;;
         apphost)
             echo "run apphost"
             [ -d $HOME/ctsws-config ] && ctswsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctswsOpt=
             docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
              $ctswsOpt $xPressOpt --link dctm-cs:dctm-cs --link bam:bam \
+             $envOpt \
              -v $(pwd):/shared dctm-apphost
             ;;
         xms)
             echo "run xms agent"
             docker run -dP -p 7000:8080 --name xms -h xms -e REPOSITORY_NAME=$repo --volumes-from dctm-xmsdata \
+            $envOpt \
                --link dctm-cs:dctm-cs --link bam:bam --link xplore:xplore --link apphost:apphost dctm-xmsagent
             ;;
         xpress)
             echo "run xPression"
             docker run -dP -p 9070:8080 -p 9072:9990 -p 5678:5678 -p 2224:22 --name xpress -h xpress \
                   -e REPOSITORY_NAME=$repo --link dctm-cs:dctm-cs --link dbora:dbora \
+                  $envOpt \
                   -v $(pwd):/shared \
                   dctm-xpression --dctm
             ;;
@@ -118,12 +134,13 @@ function run() {
               echo "docker network create --subnet=172.29.121.0/16 net2"
               echo "xprs container not created"
             else
-	      docker run --net net2 --ip 172.29.121.188 -dP \
+	             docker run --net net2 --ip 172.29.121.188 -dP \
                 -p 9070:8080 -p 9072:9990 -p 5678:5678 -p 2224:22 --name xprs -h xpress \
                 -e REPOSITORY_NAME=$repo \
                 -e DBORA_NAME=dbora -e DOCBROKER_PORT=1589 -e DOCBROKER_ADR=dctm-cs \
                 --add-host dbora:$(hostname -i) --add-host dctm-cs:$(hostname -i) \
                 -v $(pwd):/shared \
+                $envOpt \
                 dctm-xpression --dctm
             fi
             ;;
