@@ -77,7 +77,7 @@ ENV REPOSITORY_XPLORE_PWD dmadmin
 ENV REGISTRY_USER dm_bof_registry
 ENV REGISTRY_CRYPTPWD AAAAEGksM99HhP8PaQO7r43ADePXDPKXd+lEei1ddxmWgnBv
 ENV REGISTRY_PWD dm_bof_registry
-ENV JAVA_HOME /usr/java/jdk1.7.0_75
+ENV JAVA_HOME /usr/java/jdk1.7.0_79
 
 WORKDIR ${XPLORE_HOME}
 # FIXME: can't use variable in ENTRYPOINT directive
