@@ -39,6 +39,7 @@ cp $SOURCE/documentum/xms-tools/1.2/xms-tools-1.2.zip $TARGET/dctm-xmstools/bund
 
 echo "Copying xPlore bundle"
 cp $SOURCE/documentum/xplore/1.4/xPlore_1.4_linux-x64.tar $TARGET/dctm-xplore/bundles/
+cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xplore/bundles/
 
 if [  -d $TARGET/dctm-xpression ]; then
 	echo "Copying xPression bundle"
@@ -49,8 +50,6 @@ if [  -d $TARGET/dctm-xpression ]; then
 	cp $SOURCE/documentum/xPression/4.5.SP1/xPRS_EE4.5.1_P10.ear $TARGET/dctm-xpression/bundles/
 	cp $SOURCE/documentum/xPression/4.5.SP1/XP45SP1_B13_cr_scripts.zip $TARGET/dctm-xpression/bundles/
 	cp -r $SOURCE/documentum/xPression/4.5.SP1/CRUpgrade $TARGET/dctm-xpression/bundles/
-        cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xpression/bundles/
+  cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xpression/bundles/
 	cp $SOURCE/jboss/7.1.1/jboss-as-7.1.1.Final.zip  $TARGET/dctm-xpression/bundles/
-
-
 fi

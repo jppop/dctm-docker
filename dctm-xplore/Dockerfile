@@ -19,12 +19,15 @@ RUN yum update -y \
 
 RUN yum -y --noplugins clean all
 
-RUN cd /tmp \
- && curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-x64.rpm' \
- 		-H 'Cookie: oraclelicense=accept-securebackup-cookie' \
- && rpm -i jdk-7u75-linux-x64.rpm \
- && rm jdk-7u75-linux-x64.rpm \
- && echo "done"
+## && curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-x64.rpm' \
+## 		-H 'Cookie: oraclelicense=accept-securebackup-cookie' \
+## && rpm -i jdk-7u75-linux-x64.rpm \
+## && rm jdk-7u75-linux-x64.rpm \
+## && echo "done"
+
+ RUN cd /tmp \
+  && rpm -i /bundles/jdk-7u79-linux-x64.rpm \
+  && echo "done"
 
 RUN mkdir -p /tmp/xplore-install/setup
 
