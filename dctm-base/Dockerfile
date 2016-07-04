@@ -82,7 +82,7 @@ RUN JAVA_BINARY=`ls -1d $DOCUMENTUM_SHARED/java*/*/bin/java 2>/dev/null | head -
  && echo "export PATH=\${JAVA_HOME}/bin:\${PATH}" >> /etc/profile.d/documentum.sh \
  && echo "done"
 
-# installing patch 25
+# installing patch
 USER dmadmin
 WORKDIR /tmp
 RUN mkdir patch-install \

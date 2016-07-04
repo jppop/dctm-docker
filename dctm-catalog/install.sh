@@ -40,6 +40,7 @@ cp $SOURCE/documentum/xms-tools/1.2/xms-tools-1.2.zip $TARGET/dctm-xmstools/bund
 echo "Copying xPlore bundle"
 cp $SOURCE/documentum/xplore/1.4/xPlore_1.4_linux-x64.tar $TARGET/dctm-xplore/bundles/
 cp $SOURCE/oracle/java/1.7/jdk-7u79-linux-x64.rpm $TARGET/dctm-xplore/bundles/
+cp $SOURCE/apache-ant/1.9 $TARGET/dctm-xplore/bundles/
 
 if [  -d $TARGET/dctm-xpression ]; then
 	echo "Copying xPression bundle"
