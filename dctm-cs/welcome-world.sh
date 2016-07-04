@@ -31,5 +31,6 @@ where name = 'thumbnail_store_01';
 go
 update dm_acs_config objects
 set acs_base_url[0] = 'http://${hostIp}:9080/ACS/servlet/ACS'
+go
 exit
 EOF
