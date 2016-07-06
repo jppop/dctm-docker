@@ -23,8 +23,8 @@ echo "Content server alive."
 hostIp=${HOST_IP:-localhost}
 tsPort=${TS_PORT:-8020}
 
-idql ${repo} -U${user} -P${passwd} -e 2>&1 << EOF
 echo "Updating Thumbnail Server base and ACS urls"
+idql ${repo} -U${user} -P${passwd} -e 2>&1 << EOF
 update dm_filestore objects
 set base_url = 'http://${hostIp}:${tsPort}/thumbsrv/getThumbnail?'
 where name = 'thumbnail_store_01';
