@@ -31,7 +31,7 @@ fi
 eval set -- "$OPTS"
 
 if [ -f .dctm-docker.env ]; then
-    source .dctm-docker.env
+    . .dctm-docker.env
 fi
 
 [ -n "$CTS_HOST" -a -n "$CTS_IP" ] && ctsOpt="--add-host $CTS_HOST:$CTS_IP" || ctsOpt=
@@ -85,6 +85,13 @@ function run() {
             $envOpt \
             --link dctm-cs:dctm-cs dctm-da
             ;;
+       rest)
+            echo "Run dctm rest"
+            docker run -dP -it --name dctm-rest -p 7004:8080 -e REPOSITORY_NAME=$repo \
+            $envOpt \
+            --link dctm-cs:dctm-cs dctm-rest
+            ;;
+
         bam)
             echo "run bam"
             docker run -dP -p 8000:8080 --name bam -h bam -e REPOSITORY_NAME=$repo \
@@ -106,8 +113,11 @@ function run() {
         apphost)
             echo "run apphost"
             [ -d $HOME/ctsws-config ] && ctswsOpt="-v $HOME/ctsws-config:/ctsws-config" || ctswsOpt=
+            [ -d $(pwd)/etc/apphost ] || mkdir -p $(pwd)/etc/apphost
             docker run -dP -p 8040:8080 --name apphost -h apphost -e REPOSITORY_NAME=$repo -e MEM_XMSX=2048m \
              $ctswsOpt $xPressOpt --link dctm-cs:dctm-cs --link bam:bam \
+             --add-host dockerbox:$HOST_IP \
+             -v $(pwd)/etc/apphost:/etc/tomcat \
              $envOpt \
              -v $(pwd):/shared dctm-apphost
             ;;
@@ -131,17 +141,19 @@ function run() {
             subnet=$(docker network inspect --format='{{range .IPAM.Config}}{{.Subnet}}{{end}}' net2 2>/dev/null)
             if [ -z "$subnet" ]; then
               echo "Docker subnet 'net2' has not been created. Run first:"
-              echo "docker network create --subnet=172.29.121.0/16 net2"
+              echo "docker network create --subnet=$EXT_XPRS_IP/16 net2"
               echo "xprs container not created"
             else
-	             docker run --net net2 --ip 172.29.121.188 -dP \
+                docker run --net net2 --ip $EXT_XPRS_IP -dP \
                 -p 9070:8080 -p 9072:9990 -p 5678:5678 -p 2224:22 --name xprs -h xpress \
                 -e REPOSITORY_NAME=$repo \
                 -e DBORA_NAME=dbora -e DOCBROKER_PORT=1589 -e DOCBROKER_ADR=dctm-cs \
-                --add-host dbora:$(hostname -i) --add-host dctm-cs:$(hostname -i) \
+                --add-host dbora:$HOST_IP --add-host dctm-cs:$HOST_IP \
                 -v $(pwd):/shared \
                 $envOpt \
                 dctm-xpression --dctm
+                # connect xprs to the others containers
+#                docker network connect bridge xprs
             fi
             ;;
     esac
