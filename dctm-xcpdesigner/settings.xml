@@ -4,7 +4,7 @@
   <mirrors>
   	<mirror>
   		<id>Builder-offline</id>
-  		<url>file:////opt/xCPDesigner/maven</url>
+  		<url>file:////opt/xCPDesigner/maven/designer</url>
   		<mirrorOf>Builder</mirrorOf>
   	</mirror>
   </mirrors>

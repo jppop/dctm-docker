@@ -7,6 +7,7 @@ if [ ! -f ${ORACLE_HOME}/.tuned ]; then
 	${ORACLE_HOME}/bin/sqlplus / as sysdba << __EOF__
 alter system set sessions=300 scope=spfile;
 alter system set processes=300 scope=spfile;
+alter system set open_cursors=500 scope=both;
 shutdown immediate;
 exit
 __EOF__

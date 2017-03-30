@@ -19,7 +19,7 @@ ENV XCPDESIGNER_WORKSPACE /var/xcp-workspace
 COPY ./bundles /bundles
 RUN mkdir ${XCPDESIGNER_HOME} \
  && mkdir ${XCPDESIGNER_WORKSPACE} \
- && tar xf /bundles/xCPDesigner_linux64_2.1.tar -C /opt \
+ && tar xf /bundles/xCPDesigner_linux64_2.2.0090.6322.tar -C /opt \
  && echo Done
 
 # Install jenkins
