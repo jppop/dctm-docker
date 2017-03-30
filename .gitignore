@@ -18,3 +18,5 @@ tmp
 dctm-data/
 .dctm-docker.env
 dctm-xpression/bundles/CRUpgrade
+etc
+
