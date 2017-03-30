@@ -26,6 +26,8 @@ ENV CUSTOM_CATALINA_OUT ${LOGDIR}/catalina.out
 # ovveride some tomcat configuration web.xml
 COPY bundles/tomcat-conf/*.* ${CATALINA_HOME}/conf/
 
+VOLUME /etc/tomcat
+
 # extra config for CTS
 RUN mkdir -p ${CATALINA_HOME}/conf/ctsws-config
 COPY bundles/tomcat-conf/ctsws-config/*.* ${CATALINA_HOME}/conf/ctsws-config/
